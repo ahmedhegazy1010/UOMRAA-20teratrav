@@ -109,8 +109,8 @@ export const createPackage: RequestHandler = async (req, res) => {
     const result = db
       .prepare(
         `
-      INSERT INTO packages (name, duration, mecca_stay, medina_stay, itinerary, price_double, price_triple, price_quad, price_infant, price_child, popular, description)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO packages (name, duration, mecca_stay, medina_stay, itinerary, price_double, price_triple, price_quad, price_infant, price_child, status, popular, description)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `,
       )
       .run(
@@ -124,6 +124,7 @@ export const createPackage: RequestHandler = async (req, res) => {
         parseInt(price_quad),
         price_infant ? parseInt(price_infant) : null,
         price_child ? parseInt(price_child) : null,
+        status,
         popular ? 1 : 0,
         description || null,
       );
