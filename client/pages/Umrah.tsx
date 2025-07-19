@@ -227,7 +227,7 @@ export default function Umrah() {
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-16 animate-fadeInUp">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 text-gradient-animate">
-              باقات العمرة المميزة
+              ��اقات العمرة المميزة
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -252,7 +252,7 @@ export default function Umrah() {
               {packages.map((pkg: any, index) => (
                 <Card
                   key={pkg.id}
-                  className={`relative overflow-hidden transform hover:scale-105 transition-all duration-500 bg-gray-900/80 backdrop-blur-sm border-red-500/30 shadow-2xl shadow-red-500/20 hover:shadow-red-500/40 animate-fadeInUp ${
+                  className={`relative overflow-hidden transform hover:scale-105 transition-all duration-500 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20 hover:shadow-red-500/40 animate-fadeInUp ${
                     pkg.popular ? "ring-2 ring-red-400 animate-glow" : ""
                   }`}
                   style={{ animationDelay: `${index * 0.2}s` }}
@@ -387,7 +387,7 @@ export default function Umrah() {
             {includedItems.map((item, index) => (
               <div
                 key={index}
-                className="flex items-center space-x-4 rtl:space-x-reverse p-6 bg-gray-900/80 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-red-500/20"
+                className="flex items-center space-x-4 rtl:space-x-reverse p-6 bg-gray-900/60 backdrop-blur-md rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-red-500/20"
               >
                 <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <item.icon className="w-6 h-6 text-white" />
@@ -416,7 +416,7 @@ export default function Umrah() {
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               {/* Phone Numbers */}
-              <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 bg-gray-900/80 border-red-500/30">
+              <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
                 <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Phone className="w-8 h-8 text-white" />
                 </div>
@@ -438,7 +438,7 @@ export default function Umrah() {
               </Card>
 
               {/* WhatsApp */}
-              <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 bg-gray-900/80 border-red-500/30">
+              <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
                   <MessageCircle className="w-8 h-8 text-white" />
                 </div>
