@@ -61,8 +61,8 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
       className="min-h-screen flex items-center justify-center p-4 rtl relative"
       dir="rtl"
     >
-      {/* Islamic Animated Background */}
-      <IslamicBackground />
+      {/* Enhanced Islamic Animated Background */}
+      <EnhancedIslamicBackground />
 
       <Card className="w-full max-w-md bg-gray-900/80 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20 animate-fadeInUp">
         <CardHeader className="text-center space-y-4">
@@ -77,7 +77,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
             تسجيل دخول الإدارة
           </CardTitle>
           <p className="text-gray-400">
-            ادخل بيانات تسج��ل الدخول للوصول إلى لوحة التحكم
+            ادخ�� بيانات تسجيل الدخول للوصول إلى لوحة التحكم
           </p>
         </CardHeader>
 
