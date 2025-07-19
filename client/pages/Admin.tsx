@@ -373,7 +373,7 @@ function AdminContent() {
                   <Label htmlFor="medina">الإقامة بالمدينة</Label>
                   <Input
                     id="medina"
-                    placeholder="مثال: 4 ليالي - فندق 5 ��جوم"
+                    placeholder="مثال: 4 ليالي - فندق 5 نجوم"
                   />
                 </div>
               </div>
@@ -487,7 +487,7 @@ function AdminContent() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">جميع الحجوزات</SelectItem>
-            <SelectItem value="pending">في الانتظار</SelectItem>
+            <SelectItem value="pending">في ��لانتظار</SelectItem>
             <SelectItem value="confirmed">مؤكدة</SelectItem>
             <SelectItem value="completed">مكتملة</SelectItem>
             <SelectItem value="cancelled">ملغاة</SelectItem>
@@ -816,6 +816,21 @@ function AdminContent() {
               >
                 <X className="w-5 h-5" />
               </button>
+            </div>
+          </div>
+
+          {/* User Info */}
+          <div className="px-6 py-4 border-b border-red-600/30">
+            <div className="flex items-center space-x-3 rtl:space-x-reverse">
+              <div className="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold text-sm">
+                  {user?.username?.charAt(0).toUpperCase()}
+                </span>
+              </div>
+              <div>
+                <p className="text-white font-medium">{user?.username}</p>
+                <p className="text-gray-400 text-xs">مدير النظام</p>
+              </div>
             </div>
           </div>
 
