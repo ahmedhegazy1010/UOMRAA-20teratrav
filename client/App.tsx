@@ -35,7 +35,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
-              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin-setup" element={<AdminSetup />} />
               <Route path="/demo" element={<Index />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
