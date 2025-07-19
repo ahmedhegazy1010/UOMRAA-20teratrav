@@ -129,10 +129,10 @@ export default function Umrah() {
   };
 
   const includedItems = [
-    { icon: Shield, text: "رس��م التأشيرة" },
+    { icon: Shield, text: "رسوم التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
-    { icon: Users, text: "التنقلات ��لداخلية بأحدث الباصات" },
+    { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "زيارات دينية" },
     { icon: Gift, text: "هدايا وشنطة عمرة" },
@@ -214,7 +214,7 @@ export default function Umrah() {
                   onClick={() => scrollToSection("packages")}
                   className="text-gray-300 hover:text-red-400 transition-all duration-300 px-4 text-right font-medium transform hover:translate-x-2"
                 >
-                  رحلات ا��عمرة
+                  رحلات العمرة
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
