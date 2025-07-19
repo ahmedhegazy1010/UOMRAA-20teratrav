@@ -244,7 +244,7 @@ export default function Umrah() {
               رحلات العمرة - المولد النب��ي الشريف
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 text-gray-200 leading-relaxed animate-slideInLeft">
-              سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة
+              سافر مع تيراتراف براحة وأمان – با��ات متنوعة وخدمة مميزة
             </p>
             <Button
               size="lg"
@@ -317,7 +317,7 @@ export default function Umrah() {
                       <Clock size={32} />
                     </div>
                   </div>
-                  <CardTitle className="text-2xl font-bold text-gray-900 mb-2">
+                  <CardTitle className="text-2xl font-bold text-white mb-3 animate-slideInLeft">
                     {pkg.duration}
                   </CardTitle>
                   <CardDescription className="text-gray-600">
