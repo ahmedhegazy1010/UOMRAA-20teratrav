@@ -66,6 +66,7 @@ export default function AdminDashboard() {
 
   // Package management state
   const [showPackageModal, setShowPackageModal] = useState(false);
+  const [editingPackage, setEditingPackage] = useState(null);
   const [packageForm, setPackageForm] = useState({
     name: "",
     duration: "",
@@ -244,6 +245,59 @@ export default function AdminDashboard() {
       status: "active",
       popular: false,
     });
+    setEditingPackage(null);
+  };
+
+  const handleEditPackage = (pkg: any) => {
+    setEditingPackage(pkg);
+    setPackageForm({
+      name: pkg.name,
+      duration: pkg.duration,
+      mecca_stay: pkg.mecca_stay || "",
+      medina_stay: pkg.medina_stay || "",
+      itinerary: pkg.itinerary || "",
+      price_double: pkg.price_double?.toString() || "",
+      price_triple: pkg.price_triple?.toString() || "",
+      price_quad: pkg.price_quad?.toString() || "",
+      price_child: pkg.price_child?.toString() || "",
+      price_infant: pkg.price_infant?.toString() || "",
+      status: pkg.status || "active",
+      popular: pkg.popular || false,
+    });
+    setShowPackageModal(true);
+  };
+
+  const handleDeletePackage = async (packageId: number) => {
+    if (!confirm("هل أنت متأكد من حذف هذه الباقة؟")) {
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("admin_token");
+      const packagesUrl = isProduction
+        ? `${apiBaseUrl}/packages-admin/${packageId}`
+        : `/api/packages/${packageId}`;
+
+      const response = await fetch(packagesUrl, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("تم حذف الباقة بنجاح!");
+        loadDashboardData(); // إعادة تحميل البيانات
+      } else {
+        alert(`خطأ في حذف الباقة: ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Error deleting package:", error);
+      alert(`خطأ في الاتصال: ${error.message}`);
+    }
   };
 
   const handleSavePackage = async () => {
@@ -293,12 +347,16 @@ export default function AdminDashboard() {
       );
 
       const response = await fetch(packagesUrl, {
-        method: "POST",
+        method: editingPackage ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(packageData),
+        body: JSON.stringify(
+          editingPackage
+            ? { ...packageData, id: editingPackage.id }
+            : packageData,
+        ),
       });
 
       let data;
@@ -311,7 +369,9 @@ export default function AdminDashboard() {
       }
 
       if (response.ok) {
-        alert("تم إضافة الباقة بنجاح!");
+        alert(
+          editingPackage ? "تم تحديث الباقة بنجاح!" : "تم إضافة الباقة بنجاح!",
+        );
         setShowPackageModal(false);
         resetPackageForm();
         loadDashboardData(); // Reload packages
@@ -747,9 +807,7 @@ export default function AdminDashboard() {
                         <Button
                           size="sm"
                           variant="outline"
-                          onClick={() =>
-                            alert("سيتم إضافة ميزة التحديث قريباً!")
-                          }
+                          onClick={() => handleEditPackage(pkg)}
                           className="text-blue-400 border-blue-400 hover:bg-blue-400 hover:text-white"
                         >
                           تحديث
@@ -757,11 +815,7 @@ export default function AdminDashboard() {
                         <Button
                           size="sm"
                           variant="destructive"
-                          onClick={() => {
-                            if (confirm("هل أنت متأكد من حذف هذه الباقة؟")) {
-                              alert("سيتم إضافة ميزة الحذف قريباً!");
-                            }
-                          }}
+                          onClick={() => handleDeletePackage(pkg.id)}
                           className="text-red-400 hover:bg-red-600"
                         >
                           حذف
@@ -787,7 +841,7 @@ export default function AdminDashboard() {
                 <Card className="w-full max-w-4xl bg-gray-900/95 border-red-500/30 max-h-[90vh] overflow-y-auto">
                   <CardHeader>
                     <CardTitle className="text-white">
-                      إضافة باقة جديدة
+                      {editingPackage ? "تحديث باقة" : "إضافة باقة جديدة"}
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
@@ -1050,7 +1104,11 @@ export default function AdminDashboard() {
                         disabled={packageLoading}
                         className="bg-green-600 hover:bg-green-700 text-white"
                       >
-                        {packageLoading ? "جاري الحفظ..." : "إضافة"}
+                        {packageLoading
+                          ? "جاري الحفظ..."
+                          : editingPackage
+                            ? "تحديث"
+                            : "إضافة"}
                       </Button>
                     </div>
                   </CardContent>
