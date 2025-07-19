@@ -134,9 +134,11 @@ export const createPackage: RequestHandler = async (req, res) => {
     });
   } catch (error) {
     console.error("Error creating package:", error);
+    console.error("Request body was:", req.body);
     res.status(500).json({
       success: false,
       message: "خطأ في إنشاء الباقة",
+      error: process.env.NODE_ENV === "development" ? error.message : undefined,
     });
   }
 };
