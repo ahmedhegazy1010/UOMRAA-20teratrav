@@ -292,10 +292,10 @@ export default function Umrah() {
 
             {/* Subtitle */}
             <p
-              className="text-xl sm:text-2xl md:text-3xl mb-12 text-gray-200 leading-relaxed max-w-4xl mx-auto animate-fadeInUp"
-              style={{ animationDelay: "0.4s" }}
+              className="text-xl sm:text-2xl md:text-3xl mb-12 text-gray-200 leading-relaxed mx-auto animate-fadeInUp"
+              style={{ animationDelay: "0.4s", maxWidth: "999px" }}
             >
-              ساف�� مع تيراتراف براحة وأمان – باقات متن��عة وخدمة مميزة لرحلة
+              سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة لرحلة
               روحانية لا تُنسى
             </p>
 
