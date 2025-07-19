@@ -140,7 +140,7 @@ async function insertDefaults() {
         INSERT INTO packages (name, duration, mecca_stay, medina_stay, itinerary, price_double, price_triple, price_quad, price_infant, price_child, status, popular)
         VALUES 
           ('باقة 8 أيام', '8 أيام', '4 ليالي - فندق 4 نجوم', '3 ليالي - فندق 4 نجوم', 'مكة - المدينة - مكة', 25000, 23000, 21000, 8000, 15000, 'active', false),
-          ('باقة 10 أيام', '10 أيام', '5 ليالي - فندق 5 نجوم', '4 ليالي - فندق 5 نجوم', '��كة - المدينة - مكة', 35000, 32000, 29000, 10000, 20000, 'active', true),
+                    ('باقة 10 أيام', '10 أيام', '5 ليالي - فندق 5 نجوم', '4 ليالي - فندق 5 نجوم', 'مكة - المدينة - مكة', 35000, 32000, 29000, 10000, 20000, 'active', true),
           ('باقة 14 يوم', '14 يوم', '7 ليالي - فندق فاخر', '6 ليالي - فندق فاخر', 'مكة - المدينة - مكة', 45000, 42000, 38000, 12000, 25000, 'active', false)
       `;
       console.log("✅ Sample packages created");
