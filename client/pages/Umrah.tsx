@@ -147,7 +147,7 @@ export default function Umrah() {
                   onClick={() => scrollToSection("packages")}
                   className="text-gray-300 hover:text-red-400 transition-all duration-300 px-4 text-right font-medium transform hover:translate-x-2"
                 >
-                  رحلات العمرة
+                  رحلات ��لعمرة
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
@@ -267,20 +267,6 @@ export default function Umrah() {
               </svg>
             </div>
 
-            {/* Company Badge */}
-            <div className="mb-8 flex justify-center animate-fadeInUp">
-              <div className="bg-gradient-to-r from-red-600/20 to-red-800/20 backdrop-blur-md rounded-full px-8 py-3 border border-red-500/30 shadow-lg">
-                <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                  <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center shadow-lg">
-                    <span className="text-white font-bold text-sm">T</span>
-                  </div>
-                  <span className="text-red-100 font-semibold text-lg">
-                    تيراتراف للسياحة الدينية
-                  </span>
-                </div>
-              </div>
-            </div>
-
             {/* Main Title */}
             <h1
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight animate-fadeInUp"
@@ -374,7 +360,7 @@ export default function Umrah() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات ��لمدروسة
+              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
               بعناية
             </p>
           </div>
