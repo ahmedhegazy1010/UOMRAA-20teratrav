@@ -214,7 +214,7 @@ export default function Umrah() {
                   onClick={() => scrollToSection("packages")}
                   className="text-gray-300 hover:text-red-400 transition-all duration-300 px-4 text-right font-medium transform hover:translate-x-2"
                 >
-                  رحلات العمرة
+                  رحلات ا��عمرة
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
@@ -484,10 +484,10 @@ export default function Umrah() {
                       </div>
                     </div>
                     <CardTitle className="text-2xl font-bold text-white mb-3 animate-slideInLeft">
-                      {pkg.duration}
+                      {pkg.name}
                     </CardTitle>
                     <CardDescription className="text-gray-300 text-lg">
-                      برنامج شامل ومتكامل
+                      {pkg.duration} - برنامج شامل ومتكامل
                     </CardDescription>
                   </CardHeader>
 
