@@ -98,7 +98,10 @@ export default function AdminDashboard() {
       }
 
       // Verify token with server
-      const response = await fetch("/.netlify/functions/verify", {
+      const verifyUrl = isProduction
+        ? `${apiBaseUrl}/verify`
+        : `${apiBaseUrl}/auth/verify`;
+      const response = await fetch(verifyUrl, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -520,7 +523,7 @@ export default function AdminDashboard() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-300 mb-1">
-                    ��جمالي الباقات
+                    إجمالي الباقات
                   </p>
                   <p className="text-2xl font-bold text-white">
                     {packages.length}
@@ -1110,7 +1113,7 @@ export default function AdminDashboard() {
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <Settings className="w-5 h-5 ml-2 text-red-400" />
-                  إعدادات الشركة
+                  إعداد��ت الشركة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
                   معلومات الشركة الأساسية وبيانات الاتصال
