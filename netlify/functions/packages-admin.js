@@ -6,6 +6,22 @@ const JWT_SECRET = "teratrav_jwt_secret_2024_umrah_admin";
 // متغير عام لتخزين الباقات (فارغ في البداية - بدون بيانات تجريبية)
 let packages = [];
 
+// دالة لحفظ البيانات في global للمشاركة مع packages.js
+function saveToGlobal() {
+  if (typeof global !== "undefined") {
+    global.sharedPackages = packages;
+    console.log("Data saved to global, packages count:", packages.length);
+  }
+}
+
+// دالة لقراءة البيانات من global
+function loadFromGlobal() {
+  if (typeof global !== "undefined" && global.sharedPackages) {
+    packages = global.sharedPackages;
+    console.log("Data loaded from global, packages count:", packages.length);
+  }
+}
+
 // Helper function to verify JWT token
 function verifyToken(authHeader) {
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -43,14 +59,9 @@ function addPackage(newPackage) {
   };
   packages.push(packageWithId);
 
-  // تحديث البيانات في packages.js أيضاً
-  try {
-    if (global.packagesData) {
-      global.packagesData.packages = packages;
-    }
-  } catch (e) {
-    // تجاهل الخطأ إذا لم يكن packages.js محملاً
-  }
+  // حفظ البيانات في المتغير العام للمشاركة
+  saveToGlobal();
+  console.log("Package added successfully, total packages:", packages.length);
 
   return packageWithId;
 }
@@ -68,14 +79,9 @@ function updatePackage(id, updateData) {
     updated_at: new Date().toISOString().split("T")[0],
   };
 
-  // تحديث البيانات في packages.js أيضاً
-  try {
-    if (global.packagesData) {
-      global.packagesData.packages = packages;
-    }
-  } catch (e) {
-    // تجاهل الخطأ إذا لم يكن packages.js محملاً
-  }
+  // حفظ البيانات في المتغير العام للمشاركة
+  saveToGlobal();
+  console.log("Package updated successfully, total packages:", packages.length);
 
   return packages[index];
 }
@@ -89,19 +95,16 @@ function deletePackage(id) {
   const deletedPackage = packages[index];
   packages.splice(index, 1);
 
-  // تحديث البيانات في packages.js أيضاً
-  try {
-    if (global.packagesData) {
-      global.packagesData.packages = packages;
-    }
-  } catch (e) {
-    // تجاهل الخطأ إذا لم يكن packages.js محملاً
-  }
+  // حفظ البيانات في المتغير العام للمشاركة
+  saveToGlobal();
+  console.log("Package deleted successfully, total packages:", packages.length);
 
   return deletedPackage;
 }
 
 exports.handler = async (event, context) => {
+  // تحميل البيانات من global في بداية كل طلب
+  loadFromGlobal();
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
