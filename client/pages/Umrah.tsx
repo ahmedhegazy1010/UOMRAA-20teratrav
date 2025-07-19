@@ -374,7 +374,7 @@ export default function Umrah() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              اختر الباقة التي تناسب�� من مجموعة متنوعة من الخيارات المدروسة
+              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
               بعناية
             </p>
           </div>
@@ -477,7 +477,7 @@ export default function Umrah() {
                         <div className="flex justify-between items-center">
                           <span className="text-gray-300">ثلاثي:</span>
                           <span className="font-bold text-red-400">
-                            {pkg.price_triple?.toLocaleString()} جنيه
+                            {pkg.price_triple?.toLocaleString()} جن��ه
                           </span>
                         </div>
                         <div className="flex justify-between items-center">
