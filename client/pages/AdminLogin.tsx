@@ -77,7 +77,7 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
             تسجيل دخول الإدارة
           </CardTitle>
           <p className="text-gray-400">
-            ادخ�� بيانات تسجيل الدخول للوصول إلى لوحة التحكم
+            ادخل بيانات تسجيل الدخول للوصول إلى لوحة التحكم
           </p>
         </CardHeader>
 
