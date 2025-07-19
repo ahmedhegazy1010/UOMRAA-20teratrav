@@ -76,7 +76,7 @@ export default function Umrah() {
 
   const includedItems = [
     { icon: Shield, text: "رسوم التأشيرة" },
-    { icon: Plane, text: "تذاكر الطيران" },
+    { icon: Plane, text: "ت��اكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
     { icon: Users, text: "التنقلات الداخلية بأحدث ا��باصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
@@ -508,9 +508,7 @@ export default function Umrah() {
                     </div>
 
                     <Button
-                      onClick={() =>
-                        openWhatsApp(`${pkg.duration} - ${pkg.itinerary}`)
-                      }
+                      onClick={() => navigate(`/booking?package=${pkg.id}`)}
                       className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30 animate-glow"
                     >
                       احجز الآن
