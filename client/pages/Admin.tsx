@@ -30,6 +30,7 @@ function AdminContent() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [stats, setStats] = useState(null);
   const [packages, setPackages] = useState([]);
+  const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const handleLogout = () => {
