@@ -78,6 +78,17 @@ const includedItems = [
 export default function Umrah() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+    setIsMenuOpen(false);
+  };
+
   return (
     <div
       className="min-h-screen bg-gradient-to-b from-amber-50 to-white rtl"
@@ -147,7 +158,7 @@ export default function Umrah() {
                   href="#packages"
                   className="text-gray-700 hover:text-amber-600 transition-colors px-4"
                 >
-                  رحلا�� العمرة
+                  رحلات العمرة
                 </a>
                 <a
                   href="#contact"
@@ -209,7 +220,7 @@ export default function Umrah() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              باقات العمرة المم��زة
+              باقات العمرة المميزة
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
