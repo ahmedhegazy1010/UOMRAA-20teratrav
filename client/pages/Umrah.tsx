@@ -521,7 +521,7 @@ export default function Umrah() {
                       <div className="flex items-start space-x-3 rtl:space-x-reverse">
                         <MapPin className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold text-white">خ�� السير</p>
+                          <p className="font-semibold text-white">خط السير</p>
                           <p className="text-gray-300 text-sm">
                             {pkg.itinerary}
                           </p>
