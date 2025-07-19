@@ -1,5 +1,9 @@
+import dotenv from "dotenv";
 import { neon } from "@neondatabase/serverless";
 import bcrypt from "bcryptjs";
+
+// Load environment variables
+dotenv.config();
 
 // نحصل على connection string من متغيرات البيئة
 const sql = neon(
