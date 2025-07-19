@@ -346,17 +346,28 @@ export default function AdminDashboard() {
         `Environment: ${isProduction ? "Production (Netlify)" : "Development (Local)"}`,
       );
 
-      const response = await fetch(packagesUrl, {
+      let finalUrl = packagesUrl;
+      let requestBody = packageData;
+
+      if (editingPackage) {
+        // For PUT requests, add ID to URL path
+        finalUrl = isProduction
+          ? `${apiBaseUrl}/packages-admin`
+          : `/api/packages/${editingPackage.id}`;
+        requestBody = { ...packageData, id: editingPackage.id };
+      }
+
+      console.log(`Final URL: ${finalUrl}`);
+      console.log(`Method: ${editingPackage ? "PUT" : "POST"}`);
+      console.log(`Request body:`, requestBody);
+
+      const response = await fetch(finalUrl, {
         method: editingPackage ? "PUT" : "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(
-          editingPackage
-            ? { ...packageData, id: editingPackage.id }
-            : packageData,
-        ),
+        body: JSON.stringify(requestBody),
       });
 
       let data;
@@ -1255,7 +1266,7 @@ export default function AdminDashboard() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-300">
-                      البريد الإلكتروني
+                      البر��د الإلكتروني
                     </label>
                     <input
                       type="email"
