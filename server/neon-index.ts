@@ -1,5 +1,9 @@
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
+
+// Load environment variables
+dotenv.config();
 import { handleDemo } from "./routes/demo";
 import {
   handleLogin,
