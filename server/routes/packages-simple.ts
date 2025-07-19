@@ -90,18 +90,15 @@ export const createPackage: RequestHandler = async (req, res) => {
 
     // Validation
     if (
-      !name ||
-      !duration ||
-      !mecca_stay ||
-      !medina_stay ||
-      !itinerary ||
+      !name?.trim() ||
+      !duration?.trim() ||
       !price_double ||
       !price_triple ||
       !price_quad
     ) {
       return res.status(400).json({
         success: false,
-        message: "جميع الحقول الأساسية مطلوبة",
+        message: "الاسم والمدة والأسعار مطلوبة",
       });
     }
 
