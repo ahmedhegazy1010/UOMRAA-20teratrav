@@ -255,11 +255,23 @@ export default function EnhancedIslamicBackground() {
         />
       </div>
 
+      {/* Enhanced background pattern for more visibility */}
+      <div className="absolute inset-0 opacity-15">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23dc2626' stroke-width='0.5'%3E%3Cpath d='M50 10 L70 30 L70 70 L50 90 L30 70 L30 30 Z' opacity='0.4'/%3E%3Cpath d='M50 20 L60 40 L60 60 L50 80 L40 60 L40 40 Z' opacity='0.6'/%3E%3Ccircle cx='50' cy='50' r='15' opacity='0.3'/%3E%3C/g%3E%3C/svg%3E")`,
+            backgroundSize: "100px 100px",
+            animation: "drift 25s ease-in-out infinite alternate",
+          }}
+        />
+      </div>
+
       {/* Gradient overlays for depth and atmosphere */}
-      <div className="absolute inset-0 bg-gradient-to-r from-red-600/5 via-transparent to-black/25" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/8 to-black/35" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-black/50 via-transparent to-red-600/10" />
-      <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-black/20 to-red-800/5" />
+      <div className="absolute inset-0 bg-gradient-to-r from-red-600/8 via-transparent to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/12 to-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-black/45 via-transparent to-red-600/15" />
+      <div className="absolute inset-0 bg-gradient-to-bl from-transparent via-black/25 to-red-800/8" />
 
       {/* CSS Animations */}
       <style jsx>{`
