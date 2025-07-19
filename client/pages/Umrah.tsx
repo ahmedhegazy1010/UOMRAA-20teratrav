@@ -313,8 +313,17 @@ export default function Umrah() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl mx-auto">
-            {packages.map((pkg, index) => (
+                    {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl mx-auto">
+              {[...Array(3)].map((_, index) => (
+                <Card key={index} className="bg-gray-900/80 backdrop-blur-sm border-red-500/30 animate-pulse">
+                  <div className="h-64 bg-gray-700 rounded"></div>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl mx-auto">
+              {packages.map((pkg, index) => (
               <Card
                 key={pkg.id}
                 className={`relative overflow-hidden transform hover:scale-105 transition-all duration-500 bg-gray-900/80 backdrop-blur-sm border-red-500/30 shadow-2xl shadow-red-500/20 hover:shadow-red-500/40 animate-fadeInUp ${pkg.popular ? "ring-2 ring-red-400 animate-glow" : ""}`}
@@ -411,7 +420,7 @@ export default function Umrah() {
                     onClick={() =>
                       openWhatsApp(`${pkg.duration} - ${pkg.itinerary}`)
                     }
-                    className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30 animate-glow"
+                                        className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30 animate-glow"
                   >
                     احجز الآن
                   </Button>
@@ -422,14 +431,11 @@ export default function Umrah() {
         </div>
       </section>
 
-      {/* What's Included Section */}
+            {/* What's Included Section */}
       <section className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 right-20 w-32 h-32 border border-red-500 rounded-full animate-pulse"></div>
-          <div
-            className="absolute bottom-10 left-10 w-24 h-24 border-2 border-red-400 rounded-full animate-spin"
-            style={{ animationDuration: "10s" }}
-          ></div>
+          <div className="absolute bottom-10 left-10 w-24 h-24 border-2 border-red-400 rounded-full animate-spin" style={{animationDuration: '10s'}}></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
