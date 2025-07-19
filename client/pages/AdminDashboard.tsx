@@ -131,7 +131,10 @@ export default function AdminDashboard() {
     setLoginError("");
 
     try {
-      const response = await fetch("/.netlify/functions/login", {
+      const loginUrl = isProduction
+        ? `${apiBaseUrl}/login`
+        : `${apiBaseUrl}/auth/login`;
+      const response = await fetch(loginUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -483,7 +486,7 @@ export default function AdminDashboard() {
 
         {/* Footer */}
         <div className="absolute bottom-4 text-center text-gray-500 text-sm">
-          <p>© 2024 تي��اتراف - جميع الحقوق محفوظة</p>
+          <p>© 2024 تيراتراف - جميع الحقوق محفوظة</p>
         </div>
       </div>
     );
@@ -517,7 +520,7 @@ export default function AdminDashboard() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-300 mb-1">
-                    إجمالي الباقات
+                    ��جمالي الباقات
                   </p>
                   <p className="text-2xl font-bold text-white">
                     {packages.length}
