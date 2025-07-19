@@ -286,6 +286,12 @@ export default function AdminDashboard() {
       const packagesUrl = isProduction
         ? `${apiBaseUrl}/packages-admin`
         : "/api/packages";
+
+      console.log(`Sending request to: ${packagesUrl}`);
+      console.log(
+        `Environment: ${isProduction ? "Production (Netlify)" : "Development (Local)"}`,
+      );
+
       const response = await fetch(packagesUrl, {
         method: "POST",
         headers: {
