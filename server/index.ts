@@ -6,6 +6,8 @@ import {
   handleVerify,
   handleLogout,
   authenticateToken,
+  createUser,
+  resetPassword,
 } from "./routes/auth";
 import { initializeDatabase } from "./database/db";
 import {
