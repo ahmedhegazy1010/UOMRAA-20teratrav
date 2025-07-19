@@ -382,9 +382,20 @@ export default function AdminDashboard() {
             <CardTitle className="text-2xl font-bold text-white">
               تسجيل دخول الإدارة
             </CardTitle>
-            <p className="text-gray-400">
+            <p className="text-gray-400 mb-4">
               ادخل بيانات تسجيل الدخول للوصول إلى لوحة التحكم
             </p>
+
+            {/* Debug info */}
+            <div className="mb-4 p-3 bg-slate-700/30 rounded-lg text-xs border border-slate-600">
+              <p className="text-blue-300 mb-1">
+                البيئة: {isProduction ? "نتلايف (نشر)" : "خادم محلي (تطوير)"}
+              </p>
+              <p className="text-green-300 mb-1">API: {apiBaseUrl}</p>
+              <p className="text-yellow-300">
+                الرابط: {window.location.hostname}
+              </p>
+            </div>
           </CardHeader>
 
           <CardContent className="space-y-6">
@@ -762,7 +773,7 @@ export default function AdminDashboard() {
                           <option value="المولد النبوي (اكتوبر)">
                             المولد النبوي (اكتوبر)
                           </option>
-                          <option value="المولد النبوي (نوفمبر)">
+                          <option value="ال��ولد النبوي (نوفمبر)">
                             المولد النبوي (نوفمبر)
                           </option>
                           <option value="المولد النبوي (ديسمبر)">
@@ -891,7 +902,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
-                          سعر الغرفة الرباعية *
+                          سعر الغرفة ال��باعية *
                         </label>
                         <input
                           type="number"
@@ -1286,7 +1297,7 @@ export default function AdminDashboard() {
                   <Button
                     className="bg-red-600 hover:bg-red-700 text-white h-12"
                     onClick={() => {
-                      if (confirm("هل أنت متأكد من مسح الملفات المؤقتة؟")) {
+                      if (confirm("هل أن�� متأكد من مسح الملفات المؤقتة؟")) {
                         alert("تم مسح الملفات المؤقتة بنجاح!");
                       }
                     }}
