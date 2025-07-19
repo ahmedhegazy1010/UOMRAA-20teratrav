@@ -33,6 +33,14 @@ import { getStats } from "./routes/stats";
 export function createServer() {
   const app = express();
 
+  // Initialize database
+  try {
+    initializeDatabase();
+    console.log("🗄️ Database initialized successfully");
+  } catch (error) {
+    console.error("❌ Database initialization failed:", error);
+  }
+
   // Middleware
   app.use(cors());
   app.use(express.json());
