@@ -31,10 +31,62 @@ import {
   Send,
 } from "lucide-react";
 
+// باقات افتراضية للعرض في حالة عدم توفر API
+const defaultPackages = [
+  {
+    id: 1,
+    name: "المولد النبوي (اغسطس)",
+    duration: "7 أيام / 6 ليالي",
+    mecca_stay: "4 ليالي - فندق هيلتون الحرم",
+    medina_stay: "2 ليالي - فندق دار الهجرة",
+    itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
+    price_double: 4500,
+    price_triple: 3800,
+    price_quad: 3200,
+    price_infant: 1500,
+    price_child: 2800,
+    status: "active",
+    popular: true,
+    description: "باقة المولد النبوي الشريف تشمل زيارة الحرمين الشريفين",
+  },
+  {
+    id: 2,
+    name: "المولد النبوي (سبتمبر)",
+    duration: "10 أيام / 9 ليالي",
+    mecca_stay: "6 ليالي - فندق فيرمونت مكة",
+    medina_stay: "3 ليالي - فندق المدينة موفنبيك",
+    itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
+    price_double: 6800,
+    price_triple: 5900,
+    price_quad: 5200,
+    price_infant: 2200,
+    price_child: 4100,
+    status: "active",
+    popular: true,
+    description: "باقة شاملة للمولد النبوي مع إقامة ممتدة",
+  },
+  {
+    id: 3,
+    name: "عشر ذي الحجة (ديسمبر)",
+    duration: "8 أيام / 7 ليالي",
+    mecca_stay: "5 ليالي - برج الساعة فيرمونت",
+    medina_stay: "2 ليالي - فندق الأنصار الذهبي",
+    itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
+    price_double: 5200,
+    price_triple: 4500,
+    price_quad: 3900,
+    price_infant: 1800,
+    price_child: 3400,
+    status: "active",
+    popular: false,
+    description: "باقة العشر الأوائل من ذي الحجة",
+  },
+];
+
 export default function Umrah() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [packages, setPackages] = useState([]);
+  const [packages, setPackages] = useState(defaultPackages);
   const [loading, setLoading] = useState(true);
   const [contactForm, setContactForm] = useState({
     name: "",
