@@ -1,7 +1,7 @@
 import express, { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { queries, User } from "../database/init";
+import { getDB } from "../database/db";
 
 // JWT Secret (in production, use environment variable)
 const JWT_SECRET = process.env.JWT_SECRET || "teratrav_admin_secret_2024";
