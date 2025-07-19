@@ -113,6 +113,13 @@ export default function Umrah() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
+                onClick={() => navigate("/about")}
+                className="text-gray-300 hover:text-red-400 transition-all duration-300 font-medium relative group"
+              >
+                من نحن
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              <button
                 onClick={() => scrollToSection("contact")}
                 className="text-gray-300 hover:text-red-400 transition-all duration-300 font-medium relative group"
               >
@@ -638,7 +645,7 @@ export default function Umrah() {
                 <span className="text-xl font-bold">تيراتراف</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المميزة
+                رحلات العم��ة والحج بأعلى معايير الجودة والخدمة المميزة
               </p>
             </div>
 
