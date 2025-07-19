@@ -354,12 +354,7 @@ export default function Umrah() {
 
         {/* Enhanced Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 animate-bounce">
-          <div className="flex flex-col items-center space-y-2">
-            <span className="text-xs font-medium">استكشف المزيد</span>
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center relative">
-              <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-            </div>
-          </div>
+          <div className="flex flex-col items-center space-y-2"></div>
         </div>
       </section>
 
@@ -379,7 +374,7 @@ export default function Umrah() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروس��
+              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات ��لمدروسة
               بعناية
             </p>
           </div>
