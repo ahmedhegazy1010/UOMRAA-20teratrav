@@ -370,7 +370,7 @@ export default function Umrah() {
               className="text-4xl md:text-6xl font-bold text-white mb-6 text-gradient-animate"
               style={{ padding: "21px 0 25px" }}
             >
-              باقات العمرة المميزة
+              ب��قات العمرة المميزة
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
@@ -486,6 +486,22 @@ export default function Umrah() {
                             {pkg.price_quad?.toLocaleString()} جنيه
                           </span>
                         </div>
+                        {pkg.price_infant && (
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-300">رضيع:</span>
+                            <span className="font-bold text-yellow-400">
+                              {pkg.price_infant?.toLocaleString()} جنيه
+                            </span>
+                          </div>
+                        )}
+                        {pkg.price_child && (
+                          <div className="flex justify-between items-center">
+                            <span className="text-gray-300">طفل:</span>
+                            <span className="font-bold text-green-400">
+                              {pkg.price_child?.toLocaleString()} جنيه
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
 
