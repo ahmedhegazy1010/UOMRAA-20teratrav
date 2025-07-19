@@ -170,7 +170,7 @@ export const deleteInquiry: RequestHandler = async (req, res) => {
     console.error("Error deleting inquiry:", error);
     res.status(500).json({
       success: false,
-      message: "��طأ في حذف الاستفسار",
+      message: "خطأ في حذف الاستفسار",
     });
   }
 };
