@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 
 export default function Umrah() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -375,7 +376,7 @@ export default function Umrah() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروس��
+              اختر ا��باقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
               بعناية
             </p>
           </div>
