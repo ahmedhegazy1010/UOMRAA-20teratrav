@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import { Button } from "@/components/ui/button";
@@ -474,7 +474,7 @@ function AdminContent() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-gray-900 mb-2">
-          إ��ارة الحجوزات
+          إدارة الحجوزات
         </h2>
         <p className="text-gray-600">متابعة وإدارة حجوزات العملاء</p>
       </div>
