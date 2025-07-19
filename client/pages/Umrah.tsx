@@ -62,7 +62,38 @@ export default function Umrah() {
   const fetchPackages = async () => {
     try {
       console.log("Fetching packages from API...");
-      const response = await fetch("/.netlify/functions/packages");
+
+      // تحديد البيئة والرابط المناسب
+      const isNetlify = window.location.hostname.includes("netlify.app");
+      const isDev =
+        window.location.hostname.includes("fly.dev") ||
+        window.location.hostname === "localhost";
+
+      let apiUrl;
+      if (isNetlify) {
+        apiUrl = "/.netlify/functions/packages";
+      } else if (isDev) {
+        // في بيئة التطوير، استخدم API الخادم المحلي
+        apiUrl = "/api/packages";
+      } else {
+        apiUrl = "/.netlify/functions/packages";
+      }
+
+      console.log(
+        `Fetching from: ${apiUrl} (Environment: ${isNetlify ? "Netlify" : isDev ? "Development" : "Unknown"})`,
+      );
+
+      const response = await fetch(apiUrl);
+
+      // التحقق من نوع المحتوى
+      const contentType = response.headers.get("content-type");
+      console.log("Response content-type:", contentType);
+
+      if (!contentType || !contentType.includes("application/json")) {
+        console.warn("Response is not JSON, likely an HTML error page");
+        throw new Error("Server returned HTML instead of JSON");
+      }
+
       const data = await response.json();
       console.log("Packages API response:", data);
 
@@ -95,7 +126,7 @@ export default function Umrah() {
 
   const openWhatsApp = (packageInfo?: string) => {
     const phoneNumber = "201201666688";
-    const baseMessage = "السلام عليكم، أريد الاستفسار عن باقات العمرة";
+    const baseMessage = "السلام عليك��، أريد الاستفسار عن باقات العمرة";
     const message = packageInfo
       ? `${baseMessage}\n\nباقة ${packageInfo}`
       : baseMessage;
@@ -126,7 +157,7 @@ export default function Umrah() {
         setContactForm({ name: "", phone: "", email: "", message: "" });
 
         // Send to WhatsApp as well
-        const whatsappMessage = `استف��ار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nا��إيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
+        const whatsappMessage = `استفسار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nا��إيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
         window.open(
           `https://wa.me/201201666688?text=${encodeURIComponent(whatsappMessage)}`,
           "_blank",
@@ -549,7 +580,7 @@ export default function Umrah() {
                     {/* Pricing */}
                     <div className="bg-gray-800/50 rounded-lg p-4 space-y-3">
                       <h4 className="font-bold text-white text-center mb-3">
-                        السعر للفرد
+                        ��لسعر للفرد
                       </h4>
                       <div className="grid grid-cols-1 gap-2 text-sm">
                         <div className="flex justify-between items-center">
