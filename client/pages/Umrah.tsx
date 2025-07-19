@@ -149,8 +149,12 @@ export default function Umrah() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-2 rtl:space-x-reverse transform hover:scale-105 transition-all duration-300">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center shadow-lg shadow-red-500/30 animate-pulse">
-                <span className="text-white font-bold text-lg">T</span>
+              <div className="w-12 h-12 rounded-lg overflow-hidden shadow-lg shadow-red-500/30 animate-pulse bg-white/10 backdrop-blur-sm">
+                <img
+                  src="https://cdn.builder.io/o/assets%2F6e6933d312b74b23a89dafd2e32a307b%2F331dc497cf8948eeab1b0314f9019b47?alt=media&token=d7e14e32-f441-4824-978d-9df3e06b6cc7&apiKey=6e6933d312b74b23a89dafd2e32a307b"
+                  alt="تيراتراف"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-bold text-white bg-gradient-to-r from-white to-red-100 bg-clip-text text-transparent">
                 تيراتراف
