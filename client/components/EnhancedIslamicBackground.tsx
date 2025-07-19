@@ -142,7 +142,7 @@ export default function EnhancedIslamicBackground() {
       </div>
 
       {/* Layer 4: Rotating geometric rings */}
-      <div className="absolute inset-0 opacity-12">
+      <div className="absolute inset-0 opacity-18">
         {[...Array(4)].map((_, i) => (
           <div
             key={i}
