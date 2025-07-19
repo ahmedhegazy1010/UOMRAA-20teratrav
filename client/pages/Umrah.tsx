@@ -132,7 +132,7 @@ export default function Umrah() {
     { icon: Shield, text: "رس��م التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
-    { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
+    { icon: Users, text: "التنقلات ��لداخلية بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "زيارات دينية" },
     { icon: Gift, text: "هدايا وشنطة عمرة" },
@@ -343,7 +343,7 @@ export default function Umrah() {
                 className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent pb-7 mx-auto"
                 style={{ margin: "-5px auto 0" }}
               >
-                رحلات العمرة
+                عمرة مقبولة
               </span>
               <span
                 className="bg-gradient-to-r from-red-400 via-red-300 to-red-400 bg-clip-text text-transparent mx-auto"
@@ -353,7 +353,7 @@ export default function Umrah() {
                   padding: "20px 0 28px",
                 }}
               >
-                المولد النبوي الشريف
+                العمرة معانا اسهل
               </span>
             </h1>
 
@@ -521,7 +521,7 @@ export default function Umrah() {
                       <div className="flex items-start space-x-3 rtl:space-x-reverse">
                         <MapPin className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold text-white">خط السير</p>
+                          <p className="font-semibold text-white">خ�� السير</p>
                           <p className="text-gray-300 text-sm">
                             {pkg.itinerary}
                           </p>
@@ -748,7 +748,7 @@ export default function Umrah() {
                       {contactLoading ? (
                         <div className="flex items-center justify-center">
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-2"></div>
-                          جا��ي الإرسال...
+                          جاري الإرسال...
                         </div>
                       ) : (
                         <>
