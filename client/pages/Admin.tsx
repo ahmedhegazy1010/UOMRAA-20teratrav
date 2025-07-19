@@ -65,7 +65,7 @@ const packagesData = [
     name: "باقة 8 أيام",
     duration: "8 أيام",
     meccaStay: "4 ليالي - فندق 4 نجوم",
-    medinaStay: "3 ليالي - فندق 4 نجوم",
+    medinaStay: "3 ليال�� - فندق 4 نجوم",
     priceDouble: 25000,
     priceTriple: 23000,
     priceQuad: 21000,
@@ -230,7 +230,7 @@ export default function Admin() {
   const renderDashboard = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">ل��حة التحكم</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">لوحة التحكم</h2>
         <p className="text-gray-600">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
@@ -407,7 +407,7 @@ export default function Admin() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="text-right">اسم الباقة</TableHead>
+                <TableHead className="text-right">اسم البا��ة</TableHead>
                 <TableHead className="text-right">المدة</TableHead>
                 <TableHead className="text-right">الإقامة</TableHead>
                 <TableHead className="text-right">الأسعار</TableHead>
@@ -489,7 +489,7 @@ export default function Admin() {
             <TableHeader>
               <TableRow>
                 <TableHead className="text-right">اسم العميل</TableHead>
-                <TableHead className="text-right">معلوم��ت الاتصال</TableHead>
+                <TableHead className="text-right">معلومات الاتصال</TableHead>
                 <TableHead className="text-right">الباقة</TableHead>
                 <TableHead className="text-right">التفاصيل</TableHead>
                 <TableHead className="text-right">المبلغ الإجمالي</TableHead>
@@ -767,18 +767,16 @@ export default function Admin() {
       <div className="flex">
         {/* Sidebar */}
         <div
-          className={`fixed inset-y-0 right-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
+          className={`fixed inset-y-0 right-0 z-50 w-64 bg-gray-900/95 backdrop-blur-md shadow-2xl shadow-red-500/20 border-l border-red-600/30 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
             sidebarOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex items-center justify-between h-16 px-6 border-b">
+          <div className="flex items-center justify-between h-16 px-6 border-b border-red-600/30">
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center shadow-lg shadow-red-500/30 animate-pulse">
                 <span className="text-white font-bold">T</span>
               </div>
-              <span className="text-lg font-bold text-gray-900">
-                لوحة التحكم
-              </span>
+              <span className="text-lg font-bold text-white">لوحة التحكم</span>
             </div>
             <button
               onClick={() => setSidebarOpen(false)}
