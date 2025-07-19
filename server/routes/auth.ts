@@ -108,7 +108,11 @@ export const handleVerify: RequestHandler = async (req, res) => {
     };
 
     // Check if user still exists in database
-    const user = queries.getUserByUsername.get(decoded.username) as User;
+    const db = getDB();
+    const user = db
+      .prepare("SELECT * FROM users WHERE username = ? AND is_active = 1")
+      .get(decoded.username) as any;
+
     if (!user || user.id.toString() !== decoded.id) {
       return res.status(401).json({
         success: false,
