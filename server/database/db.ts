@@ -98,6 +98,9 @@ function initTables() {
     )
   `);
 
+  // Run migrations
+  runMigrations();
+
   // Insert default data
   insertDefaults();
 }
