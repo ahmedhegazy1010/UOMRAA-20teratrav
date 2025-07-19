@@ -72,6 +72,7 @@ export const getPackageById: RequestHandler = async (req, res) => {
 
 export const createPackage: RequestHandler = async (req, res) => {
   try {
+    console.log("Creating package with data:", req.body);
     const {
       name,
       duration,
@@ -135,7 +136,7 @@ export const createPackage: RequestHandler = async (req, res) => {
     console.error("Error creating package:", error);
     res.status(500).json({
       success: false,
-      message: "خطأ في إن��اء الباقة",
+      message: "خطأ في إنشاء الباقة",
     });
   }
 };
