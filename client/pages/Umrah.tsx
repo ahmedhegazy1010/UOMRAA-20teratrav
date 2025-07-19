@@ -151,7 +151,7 @@ export default function Umrah() {
             <div className="flex items-center space-x-2 rtl:space-x-reverse transform hover:scale-105 transition-all duration-300">
               <div className="w-12 h-12 rounded-lg overflow-hidden shadow-lg shadow-red-500/30 animate-pulse bg-white/10 backdrop-blur-sm">
                 <img
-                  src="https://cdn.builder.io/o/assets%2F6e6933d312b74b23a89dafd2e32a307b%2F331dc497cf8948eeab1b0314f9019b47?alt=media&token=d7e14e32-f441-4824-978d-9df3e06b6cc7&apiKey=6e6933d312b74b23a89dafd2e32a307b"
+                  src="https://cdn.builder.io/api/v1/image/assets%2F6e6933d312b74b23a89dafd2e32a307b%2Fd916b8a876584dc48a2246340e732356?format=webp&width=800"
                   alt="تيراتراف"
                   className="w-full h-full object-contain"
                 />
@@ -576,7 +576,7 @@ export default function Umrah() {
                       onClick={() => navigate(`/booking?package=${pkg.id}`)}
                       className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30 animate-glow"
                     >
-                      احجز الآ��
+                      احجز الآن
                     </Button>
                   </CardContent>
                 </Card>
