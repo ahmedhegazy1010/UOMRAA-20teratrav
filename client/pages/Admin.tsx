@@ -51,9 +51,10 @@ function AdminContent() {
         "Content-Type": "application/json",
       };
 
-      const [packagesRes, statsRes] = await Promise.all([
+      const [packagesRes, statsRes, bookingsRes] = await Promise.all([
         fetch("/api/packages", { headers }),
         fetch("/api/stats", { headers }),
+        fetch("/api/bookings", { headers }),
       ]);
 
       if (packagesRes.ok) {
@@ -64,6 +65,11 @@ function AdminContent() {
       if (statsRes.ok) {
         const statsData = await statsRes.json();
         setStats(statsData.data.stats || null);
+      }
+
+      if (bookingsRes.ok) {
+        const bookingsData = await bookingsRes.json();
+        setBookings(bookingsData.data || []);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
