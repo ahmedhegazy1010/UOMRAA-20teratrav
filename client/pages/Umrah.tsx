@@ -153,7 +153,7 @@ export default function Umrah() {
                 <span className="text-white font-bold text-lg">T</span>
               </div>
               <span className="text-xl font-bold text-white bg-gradient-to-r from-white to-red-100 bg-clip-text text-transparent">
-                تيرات��اف
+                تيراتراف
               </span>
             </div>
 
@@ -230,7 +230,7 @@ export default function Umrah() {
         <div className="absolute inset-0">
           <div className="w-full h-full relative">
             <img
-              src="/kaaba-placeholder.svg"
+              src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3"
               alt="الكعبة المشرفة"
               className="w-full h-full object-cover opacity-60"
             />
