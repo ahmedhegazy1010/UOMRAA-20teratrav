@@ -1,14 +1,10 @@
 // وظائف إدارة باقات العمرة
 const jwt = require("jsonwebtoken");
-const {
-  getAllPackages,
-  getPackageById,
-  addPackage,
-  updatePackage,
-  deletePackage,
-} = require("./shared-packages");
 
 const JWT_SECRET = "teratrav_jwt_secret_2024_umrah_admin";
+
+// متغير عام لتخزين الباقات (فارغ في البداية - بدون بيانات تجريبية)
+let packages = [];
 
 // Helper function to verify JWT token
 function verifyToken(authHeader) {
@@ -22,6 +18,87 @@ function verifyToken(authHeader) {
   } catch (error) {
     throw new Error("رمز المصادقة غير صحيح");
   }
+}
+
+// دوال إدارة البيانات
+function getAllPackages() {
+  return packages;
+}
+
+function getActivePackages() {
+  return packages.filter((pkg) => pkg.status === "active");
+}
+
+function getPackageById(id) {
+  return packages.find((pkg) => pkg.id === parseInt(id));
+}
+
+function addPackage(newPackage) {
+  const newId = Math.max(...packages.map((p) => p.id), 0) + 1;
+  const packageWithId = {
+    ...newPackage,
+    id: newId,
+    created_at: new Date().toISOString().split("T")[0],
+    updated_at: new Date().toISOString().split("T")[0],
+  };
+  packages.push(packageWithId);
+
+  // تحديث البيانات في packages.js أيضاً
+  try {
+    if (global.packagesData) {
+      global.packagesData.packages = packages;
+    }
+  } catch (e) {
+    // تجاهل الخطأ إذا لم يكن packages.js محملاً
+  }
+
+  return packageWithId;
+}
+
+function updatePackage(id, updateData) {
+  const index = packages.findIndex((pkg) => pkg.id === parseInt(id));
+  if (index === -1) {
+    return null;
+  }
+
+  packages[index] = {
+    ...packages[index],
+    ...updateData,
+    id: parseInt(id),
+    updated_at: new Date().toISOString().split("T")[0],
+  };
+
+  // تحديث البيانات في packages.js أيضاً
+  try {
+    if (global.packagesData) {
+      global.packagesData.packages = packages;
+    }
+  } catch (e) {
+    // تجاهل الخطأ إذا لم يكن packages.js محملاً
+  }
+
+  return packages[index];
+}
+
+function deletePackage(id) {
+  const index = packages.findIndex((pkg) => pkg.id === parseInt(id));
+  if (index === -1) {
+    return null;
+  }
+
+  const deletedPackage = packages[index];
+  packages.splice(index, 1);
+
+  // تحديث البيانات في packages.js أيضاً
+  try {
+    if (global.packagesData) {
+      global.packagesData.packages = packages;
+    }
+  } catch (e) {
+    // تجاهل الخطأ إذا لم يكن packages.js محملاً
+  }
+
+  return deletedPackage;
 }
 
 exports.handler = async (event, context) => {
