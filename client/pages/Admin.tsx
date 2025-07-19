@@ -474,7 +474,7 @@ function AdminContent() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-gray-900 mb-2">
-          إدارة الحجوزات
+          إ��ارة الحجوزات
         </h2>
         <p className="text-gray-600">متابعة وإدارة حجوزات العملاء</p>
       </div>
@@ -487,7 +487,7 @@ function AdminContent() {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">جميع الحجوزات</SelectItem>
-            <SelectItem value="pending">في ��لانتظار</SelectItem>
+            <SelectItem value="pending">في الانتظار</SelectItem>
             <SelectItem value="confirmed">مؤكدة</SelectItem>
             <SelectItem value="completed">مكتملة</SelectItem>
             <SelectItem value="cancelled">ملغاة</SelectItem>
@@ -871,5 +871,13 @@ function AdminContent() {
         />
       )}
     </div>
+  );
+}
+
+export default function Admin() {
+  return (
+    <ProtectedRoute>
+      <AdminContent />
+    </ProtectedRoute>
   );
 }
