@@ -119,18 +119,18 @@ export default function Umrah() {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-              <a
-                href="#packages"
+              <button
+                onClick={() => scrollToSection("packages")}
                 className="text-gray-700 hover:text-amber-600 transition-colors"
               >
                 رحلات العمرة
-              </a>
-              <a
-                href="#contact"
+              </button>
+              <button
+                onClick={() => scrollToSection("contact")}
                 className="text-gray-700 hover:text-amber-600 transition-colors"
               >
                 تواصل معنا
-              </a>
+              </button>
             </nav>
 
             {/* CTA Button */}
@@ -193,7 +193,7 @@ export default function Umrah() {
               رحلات العمرة - المولد النبوي الشريف
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-amber-100 leading-relaxed">
-              سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة
+              سافر مع تيراتراف براحة وأمان – باقات م��نوعة وخدمة مميزة
             </p>
             <Button
               size="lg"
@@ -223,7 +223,7 @@ export default function Umrah() {
               باقات العمرة المميزة
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
+              اختر الباقة التي تناسبك من مجموعة متنوعة من ��لخيارات المدروسة
               بعناية
             </p>
           </div>
@@ -339,7 +339,7 @@ export default function Umrah() {
               الأسعار تشمل
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              خدمات شاملة ومتكاملة لضمان رحلة مريحة ومباركة
+              خدمات شاملة ومتكاملة لضمان رحلة مريحة و��باركة
             </p>
           </div>
 
