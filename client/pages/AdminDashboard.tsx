@@ -490,7 +490,7 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
-        <p className="text-gray-300">نظرة عامة على أداء ��لموقع والحجوزات</p>
+        <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
       {dataLoading ? (
@@ -564,7 +564,7 @@ export default function AdminDashboard() {
                   </p>
                   <div className="flex items-center mt-2">
                     <TrendingUp className="w-4 h-4 text-yellow-500 ml-1" />
-                    <span className="text-sm text-yellow-400">استفسار</span>
+                    <span className="text-sm text-yellow-400">است��سار</span>
                   </div>
                 </div>
                 <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center">
@@ -634,7 +634,7 @@ export default function AdminDashboard() {
                       <div>مكة: {pkg.mecca_stay}</div>
                       <div>المدينة: {pkg.medina_stay}</div>
                       <div>
-                        الأسع��ر: {pkg.price_double?.toLocaleString()} -{" "}
+                        الأسعار: {pkg.price_double?.toLocaleString()} -{" "}
                         {pkg.price_quad?.toLocaleString()} ج
                       </div>
                       {(pkg.price_infant || pkg.price_child) && (
@@ -837,6 +837,8 @@ export default function AdminDashboard() {
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
                           placeholder="45000"
+                          required
+                          min="0"
                         />
                       </div>
                       <div className="space-y-2">
@@ -854,6 +856,8 @@ export default function AdminDashboard() {
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
                           placeholder="40000"
+                          required
+                          min="0"
                         />
                       </div>
                       <div className="space-y-2">
@@ -941,7 +945,7 @@ export default function AdminDashboard() {
                         disabled={packageLoading}
                         className="bg-green-600 hover:bg-green-700 text-white"
                       >
-                        {packageLoading ? "جاري الح��ظ..." : "إضافة"}
+                        {packageLoading ? "جاري الحفظ..." : "إضافة"}
                       </Button>
                     </div>
                   </CardContent>
