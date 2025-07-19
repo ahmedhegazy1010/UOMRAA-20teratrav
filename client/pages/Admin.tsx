@@ -297,6 +297,94 @@ function AdminContent() {
     </div>
   );
 
+  const renderInquiries = () => (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-3xl font-bold text-white mb-2">
+          إدارة الاستفسارات
+        </h2>
+        <p className="text-gray-300">عرض ومتابعة استفسارات العملاء</p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6">
+        {inquiries.length === 0 ? (
+          <Card className="bg-gray-900/80 border-red-500/30 p-8 text-center">
+            <p className="text-gray-300 text-lg">لا توجد استفسارات حتى الآن</p>
+          </Card>
+        ) : (
+          inquiries.map((inquiry: any) => (
+            <Card
+              key={inquiry.id}
+              className="bg-gray-900/80 border-red-500/30 hover:shadow-lg transition-shadow"
+            >
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-white flex items-center">
+                    <MessageSquare className="w-5 h-5 ml-2 text-red-400" />
+                    {inquiry.name}
+                  </CardTitle>
+                  <Badge
+                    className={
+                      inquiry.status === "new"
+                        ? "bg-blue-100 text-blue-800"
+                        : inquiry.status === "in_progress"
+                          ? "bg-yellow-100 text-yellow-800"
+                          : inquiry.status === "resolved"
+                            ? "bg-green-100 text-green-800"
+                            : "bg-gray-100 text-gray-800"
+                    }
+                  >
+                    {inquiry.status === "new"
+                      ? "جديد"
+                      : inquiry.status === "in_progress"
+                        ? "قيد المعالجة"
+                        : inquiry.status === "resolved"
+                          ? "تم الحل"
+                          : "مغلق"}
+                  </Badge>
+                </div>
+                <CardDescription className="text-gray-300">
+                  تاريخ الاستفسار:{" "}
+                  {new Date(inquiry.created_at).toLocaleDateString("ar-EG")}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div className="space-y-2 text-gray-300">
+                      <div>📞 الهاتف: {inquiry.phone}</div>
+                      {inquiry.email && <div>📧 الإيميل: {inquiry.email}</div>}
+                    </div>
+                  </div>
+
+                  <div className="bg-gray-800/50 rounded p-4">
+                    <h4 className="text-sm font-semibold text-white mb-2">
+                      الاستفسار:
+                    </h4>
+                    <p className="text-gray-300 text-sm leading-relaxed">
+                      {inquiry.message}
+                    </p>
+                  </div>
+
+                  {inquiry.admin_response && (
+                    <div className="bg-green-900/20 border border-green-500/30 rounded p-4">
+                      <h4 className="text-sm font-semibold text-green-400 mb-2">
+                        رد الإدارة:
+                      </h4>
+                      <p className="text-gray-300 text-sm leading-relaxed">
+                        {inquiry.admin_response}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        )}
+      </div>
+    </div>
+  );
+
   const renderContent = () => {
     switch (activeSection) {
       case "dashboard":
