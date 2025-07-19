@@ -109,7 +109,7 @@ export default function Umrah() {
                 onClick={() => scrollToSection("packages")}
                 className="text-gray-300 hover:text-red-400 transition-all duration-300 font-medium relative group"
               >
-                رح��ات العمرة
+                رحلات العمرة
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
