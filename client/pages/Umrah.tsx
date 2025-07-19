@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -372,7 +372,7 @@ export default function Umrah() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600">ثلاثي:</span>
+                        <span className="text-gray-600">ثلاث��:</span>
                         <span className="font-bold text-amber-600">
                           {pkg.priceTriple} جنيه
                         </span>
