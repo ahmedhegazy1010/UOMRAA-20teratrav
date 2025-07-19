@@ -412,7 +412,7 @@ export default function Admin() {
                 <TableHead className="text-right">الإقامة</TableHead>
                 <TableHead className="text-right">الأسعار</TableHead>
                 <TableHead className="text-right">الحجوزات</TableHead>
-                <TableHead className="text-right">الح��لة</TableHead>
+                <TableHead className="text-right">الحالة</TableHead>
                 <TableHead className="text-right">الإجراءات</TableHead>
               </TableRow>
             </TableHeader>
@@ -721,7 +721,27 @@ export default function Admin() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 rtl" dir="rtl">
+    <div
+      className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black rtl relative overflow-hidden"
+      dir="rtl"
+    >
+      {/* Animated background elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute inset-0">
+          {[...Array(15)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-red-500/30 rounded-full animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
       {/* Mobile Header */}
       <div className="lg:hidden bg-white shadow-sm border-b px-4 py-3">
         <div className="flex items-center justify-between">
