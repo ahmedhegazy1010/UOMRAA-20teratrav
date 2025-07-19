@@ -16,6 +16,7 @@ import Booking from "./pages/Booking";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
+import AdminSetup from "./pages/AdminSetup";
 
 const queryClient = new QueryClient();
 
