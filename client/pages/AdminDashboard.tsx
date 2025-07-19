@@ -441,7 +441,7 @@ export default function AdminDashboard() {
                   <span className="text-red-400 font-mono">admin</span>
                 </p>
                 <p>
-                  كلمة المرور:{" "}
+                  كلمة المر��ر:{" "}
                   <span className="text-red-400 font-mono">teratrav2024</span>
                 </p>
                 <p className="text-xs text-gray-600 mt-2">أو</p>
@@ -592,9 +592,7 @@ export default function AdminDashboard() {
                 <p className="text-gray-300">إدارة باقات العمرة المتاحة</p>
               </div>
               <Button
-                onClick={() => {
-                  alert("سيتم إضافة هذه الميزة قريباً!");
-                }}
+                onClick={() => setShowPackageModal(true)}
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
               >
                 إضافة باقة جديدة
@@ -696,7 +694,7 @@ export default function AdminDashboard() {
               {bookings.length === 0 ? (
                 <Card className="bg-gray-900/80 border-red-500/30 p-8 text-center">
                   <p className="text-gray-300 text-lg">
-                    لا توجد حجوزا�� حتى الآن
+                    لا توجد حجوزات حتى الآن
                   </p>
                 </Card>
               ) : (
