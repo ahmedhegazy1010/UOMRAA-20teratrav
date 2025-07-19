@@ -528,9 +528,42 @@ export default function AdminDashboard() {
                       <div>مكة: {pkg.mecca_stay}</div>
                       <div>المدينة: {pkg.medina_stay}</div>
                       <div>
-                        الأسعار: {pkg.price_double} - {pkg.price_quad} ج
+                        الأسعار: {pkg.price_double?.toLocaleString()} -{" "}
+                        {pkg.price_quad?.toLocaleString()} ج
                       </div>
-                      <div className="flex gap-2 mt-4">
+                      {(pkg.price_infant || pkg.price_child) && (
+                        <div className="text-xs space-y-1">
+                          {pkg.price_infant && (
+                            <div>
+                              رضيع: {pkg.price_infant?.toLocaleString()} ج
+                            </div>
+                          )}
+                          {pkg.price_child && (
+                            <div>
+                              طفل: {pkg.price_child?.toLocaleString()} ج
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <div className="mt-4 flex justify-between items-center">
+                      <div className="flex gap-2">
+                        <Badge
+                          className={
+                            pkg.status === "active"
+                              ? "bg-green-100 text-green-800"
+                              : "bg-gray-100 text-gray-800"
+                          }
+                        >
+                          {pkg.status === "active" ? "نشط" : "غير نشط"}
+                        </Badge>
+                        {pkg.popular && (
+                          <Badge className="bg-red-100 text-red-800">
+                            الأكثر طلباً
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="flex gap-2">
                         <Button
                           size="sm"
                           variant="outline"
@@ -823,7 +856,7 @@ export default function AdminDashboard() {
                   إعدادات النظام العامة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
-                  إعدادات عامة للموقع والنظام
+                  إعداد��ت عامة للموقع والنظام
                 </CardDescription>
               </CardHeader>
               <CardContent>
