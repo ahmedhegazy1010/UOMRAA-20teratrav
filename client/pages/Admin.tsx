@@ -169,9 +169,63 @@ function AdminContent() {
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [isAddingPackage, setIsAddingPackage] = useState(false);
 
+  // Real data state
+  const [packages, setPackages] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [inquiries, setInquiries] = useState([]);
+  const [stats, setStats] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const handleLogout = () => {
     logout();
     window.location.reload();
+  };
+
+  // Fetch data from API
+  useEffect(() => {
+    fetchAllData();
+  }, []);
+
+  const fetchAllData = async () => {
+    try {
+      const token = localStorage.getItem("admin_token");
+      const headers = {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      };
+
+      const [packagesRes, bookingsRes, inquiriesRes, statsRes] =
+        await Promise.all([
+          fetch("/api/packages", { headers }),
+          fetch("/api/bookings", { headers }),
+          fetch("/api/inquiries", { headers }),
+          fetch("/api/stats", { headers }),
+        ]);
+
+      if (packagesRes.ok) {
+        const packagesData = await packagesRes.json();
+        setPackages(packagesData.data || []);
+      }
+
+      if (bookingsRes.ok) {
+        const bookingsData = await bookingsRes.json();
+        setBookings(bookingsData.data || []);
+      }
+
+      if (inquiriesRes.ok) {
+        const inquiriesData = await inquiriesRes.json();
+        setInquiries(inquiriesData.data || []);
+      }
+
+      if (statsRes.ok) {
+        const statsData = await statsRes.json();
+        setStats(statsData.data.stats || null);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const stats = [
@@ -419,7 +473,7 @@ function AdminContent() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="text-right">اسم الباقة</TableHead>
+                <TableHead className="text-right">اسم ا��باقة</TableHead>
                 <TableHead className="text-right">المدة</TableHead>
                 <TableHead className="text-right">الإقامة</TableHead>
                 <TableHead className="text-right">الأسعار</TableHead>
