@@ -291,6 +291,13 @@ export default function AdminDashboard() {
       if (response.ok) {
         alert("تم حذف الباقة بنجاح!");
         loadDashboardData(); // إعادة تحميل البيانات
+
+        // Trigger refresh for homepage (if open in another tab)
+        window.dispatchEvent(
+          new CustomEvent("packagesUpdated", {
+            detail: { action: "deleted" },
+          }),
+        );
       } else {
         alert(`خطأ في حذف الباقة: ${data.message}`);
       }
@@ -386,6 +393,13 @@ export default function AdminDashboard() {
         setShowPackageModal(false);
         resetPackageForm();
         loadDashboardData(); // Reload packages
+
+        // Trigger refresh for homepage (if open in another tab)
+        window.dispatchEvent(
+          new CustomEvent("packagesUpdated", {
+            detail: { action: editingPackage ? "updated" : "added" },
+          }),
+        );
       } else {
         console.error("Server error:", data);
         console.error("Response status:", response.status);
@@ -1363,7 +1377,7 @@ export default function AdminDashboard() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input
                       type="text"
-                      placeholder="اسم المستخدم"
+                      placeholder="اسم المس��خدم"
                       className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
                     />
                     <input
@@ -1390,7 +1404,7 @@ export default function AdminDashboard() {
                   إعد��دات النظام العامة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
-                  إعداد��ت عامة للموقع والنظام
+                  إعداد��ت عام�� للموقع والنظام
                 </CardDescription>
               </CardHeader>
               <CardContent>
