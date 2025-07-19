@@ -52,7 +52,7 @@ function AdminContent() {
     {
       id: 1,
       username: "admin",
-      role: "م��ير عام",
+      role: "مدير عام",
       active: true,
       last_login: "منذ ساعة",
     },
@@ -171,7 +171,7 @@ function AdminContent() {
   };
 
   const sidebarItems = [
-    { id: "dashboard", label: "لوحة التحكم", icon: BarChart3 },
+    { id: "dashboard", label: "لوحة الت��كم", icon: BarChart3 },
     { id: "packages", label: "الباقات", icon: Package },
     { id: "bookings", label: "الحجوزات", icon: Users },
     { id: "inquiries", label: "الاستفسارات", icon: MessageSquare },
@@ -236,9 +236,17 @@ function AdminContent() {
 
   const renderPackages = () => (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold text-white mb-2">إدارة الباقات</h2>
-        <p className="text-gray-300">إدارة باقات العمرة المتاحة</p>
+      <div className="flex justify-between items-center">
+        <div>
+          <h2 className="text-3xl font-bold text-white mb-2">إدارة الباقات</h2>
+          <p className="text-gray-300">إدارة باقات العمرة المتاحة</p>
+        </div>
+        <Button
+          onClick={() => setShowPackageModal(true)}
+          className="bg-green-600 hover:bg-green-700 text-white"
+        >
+          إضافة باقة جديدة
+        </Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -267,26 +275,284 @@ function AdminContent() {
                   </div>
                 )}
               </div>
-              <div className="mt-4 flex justify-between">
-                <Badge
-                  className={
-                    pkg.status === "active"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-gray-100 text-gray-800"
-                  }
-                >
-                  {pkg.status === "active" ? "نشط" : "غير نشط"}
-                </Badge>
-                {pkg.popular && (
-                  <Badge className="bg-red-100 text-red-800">
-                    الأكثر طلباً
+              <div className="mt-4 flex justify-between items-center">
+                <div className="flex gap-2">
+                  <Badge
+                    className={
+                      pkg.status === "active"
+                        ? "bg-green-100 text-green-800"
+                        : "bg-gray-100 text-gray-800"
+                    }
+                  >
+                    {pkg.status === "active" ? "نشط" : "غير نشط"}
                   </Badge>
-                )}
+                  {pkg.popular && (
+                    <Badge className="bg-red-100 text-red-800">
+                      الأكثر طلباً
+                    </Badge>
+                  )}
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleEditPackage(pkg)}
+                    className="text-blue-400 border-blue-400 hover:bg-blue-400 hover:text-white"
+                  >
+                    تحديث
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    onClick={() => handleDeletePackage(pkg.id)}
+                    className="text-red-400 hover:bg-red-600"
+                  >
+                    حذف
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
         ))}
       </div>
+
+      {/* Package Modal */}
+      {showPackageModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <Card className="w-full max-w-2xl bg-gray-900/95 border-red-500/30 max-h-[90vh] overflow-y-auto">
+            <CardHeader>
+              <CardTitle className="text-white">
+                {editingPackage ? "تحديث الباقة" : "إضافة باقة جديدة"}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    اسم الباقة
+                  </label>
+                  <input
+                    type="text"
+                    value={packageForm.name}
+                    onChange={(e) =>
+                      setPackageForm({ ...packageForm, name: e.target.value })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="مثال: عمرة رمضان"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    المدة
+                  </label>
+                  <input
+                    type="text"
+                    value={packageForm.duration}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        duration: e.target.value,
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="مثال: 7 أيام / 6 ليالي"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    الإقامة بمكة
+                  </label>
+                  <input
+                    type="text"
+                    value={packageForm.mecca_stay}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        mecca_stay: e.target.value,
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="4 ليالي"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    الإقامة بالمدينة
+                  </label>
+                  <input
+                    type="text"
+                    value={packageForm.medina_stay}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        medina_stay: e.target.value,
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="2 ليالي"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    خط السير
+                  </label>
+                  <input
+                    type="text"
+                    value={packageForm.itinerary}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        itinerary: e.target.value,
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="القاهرة - جدة - مكة - المدينة"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    سعر الغرفة الثنائية
+                  </label>
+                  <input
+                    type="number"
+                    value={packageForm.price_double}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        price_double: parseInt(e.target.value),
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="50000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    سعر الغرفة الثلاثية
+                  </label>
+                  <input
+                    type="number"
+                    value={packageForm.price_triple}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        price_triple: parseInt(e.target.value),
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="45000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    سعر الغرفة الرباعية
+                  </label>
+                  <input
+                    type="number"
+                    value={packageForm.price_quad}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        price_quad: parseInt(e.target.value),
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="40000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    سعر الطفل
+                  </label>
+                  <input
+                    type="number"
+                    value={packageForm.price_child || ""}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        price_child: e.target.value
+                          ? parseInt(e.target.value)
+                          : null,
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="30000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    سعر الرضيع
+                  </label>
+                  <input
+                    type="number"
+                    value={packageForm.price_infant || ""}
+                    onChange={(e) =>
+                      setPackageForm({
+                        ...packageForm,
+                        price_infant: e.target.value
+                          ? parseInt(e.target.value)
+                          : null,
+                      })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                    placeholder="15000"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    الحالة
+                  </label>
+                  <select
+                    value={packageForm.status}
+                    onChange={(e) =>
+                      setPackageForm({ ...packageForm, status: e.target.value })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                  >
+                    <option value="active">نشط</option>
+                    <option value="inactive">غير نشط</option>
+                  </select>
+                </div>
+                <div className="space-y-2 flex items-center">
+                  <label className="flex items-center space-x-2 rtl:space-x-reverse text-gray-300">
+                    <input
+                      type="checkbox"
+                      checked={packageForm.popular}
+                      onChange={(e) =>
+                        setPackageForm({
+                          ...packageForm,
+                          popular: e.target.checked,
+                        })
+                      }
+                      className="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500"
+                    />
+                    <span>الأكثر طلباً</span>
+                  </label>
+                </div>
+              </div>
+              <div className="flex justify-end gap-4 pt-4">
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setShowPackageModal(false);
+                    setEditingPackage(null);
+                    resetPackageForm();
+                  }}
+                  className="border-gray-600 text-gray-300"
+                >
+                  إلغاء
+                </Button>
+                <Button
+                  onClick={handleSavePackage}
+                  className="bg-green-600 hover:bg-green-700 text-white"
+                >
+                  {editingPackage ? "تحديث" : "إضافة"}
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
     </div>
   );
 
@@ -352,7 +618,7 @@ function AdminContent() {
                     <div>⏱️ المدة: {booking.package_duration}</div>
                     {booking.travel_date && (
                       <div>
-                        📅 تاريخ السفر:{" "}
+                        📅 تار��خ السفر:{" "}
                         {new Date(booking.travel_date).toLocaleDateString(
                           "ar-EG",
                         )}
@@ -1047,7 +1313,7 @@ function AdminContent() {
               <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center shadow-lg shadow-red-500/30 animate-pulse">
                 <span className="text-white font-bold">T</span>
               </div>
-              <span className="text-lg font-bold text-white">لوحة التحكم</span>
+              <span className="text-lg font-bold text-white">لوحة الت��كم</span>
             </div>
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
               <button
