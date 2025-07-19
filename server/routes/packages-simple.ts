@@ -81,6 +81,8 @@ export const createPackage: RequestHandler = async (req, res) => {
       price_double,
       price_triple,
       price_quad,
+      price_infant,
+      price_child,
       popular = false,
       description,
     } = req.body;
