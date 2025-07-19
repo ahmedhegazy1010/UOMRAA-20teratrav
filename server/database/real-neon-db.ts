@@ -67,7 +67,7 @@ async function createTables() {
     )
   `;
 
-  // جدول ��لحجوزات
+  // جدول الحجوزات
   await sql`
     CREATE TABLE IF NOT EXISTS bookings (
       id SERIAL PRIMARY KEY,
@@ -129,7 +129,7 @@ async function insertRealData() {
         INSERT INTO users (username, password_hash, email, role)
         VALUES ('ahmed_hegazy', ${managerPassword}, 'ahmed@teratrav.sa', 'admin')
       `;
-      console.log("✅ Ahmed Hegazy user created");
+      console.log("��� Ahmed Hegazy user created");
     }
 
     // التحقق من وجود باقات العمرة الحقيقية
