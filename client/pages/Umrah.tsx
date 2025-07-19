@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import IslamicBackground from "@/components/IslamicBackground";
 import {
   Phone,
   MessageCircle,
