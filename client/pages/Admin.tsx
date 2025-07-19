@@ -219,8 +219,8 @@ function AdminContent() {
 
   return (
     <div className="min-h-screen rtl relative overflow-hidden" dir="rtl">
-      {/* Islamic Animated Background */}
-      <IslamicBackground />
+      {/* Enhanced Islamic Animated Background */}
+      <EnhancedIslamicBackground />
 
       {/* Mobile Header */}
       <div className="lg:hidden bg-black/90 backdrop-blur-md shadow-lg shadow-red-500/20 border-b border-red-600/30 px-4 py-3">
