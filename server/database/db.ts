@@ -132,7 +132,7 @@ async function insertDefaults() {
           "باقة 8 أيام",
           "8 أيام",
           "4 ليالي - فندق 4 نجوم",
-          "3 ليالي - فندق 4 نجوم",
+          "3 ليالي - ��ندق 4 نجوم",
           "مكة - المدينة - مكة",
           25000,
           23000,
@@ -173,8 +173,8 @@ async function insertDefaults() {
       ];
 
       const insertPackage = db.prepare(`
-        INSERT INTO packages (name, duration, mecca_stay, medina_stay, itinerary, price_double, price_triple, price_quad, status, popular)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO packages (name, duration, mecca_stay, medina_stay, itinerary, price_double, price_triple, price_quad, price_infant, price_child, status, popular)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `);
 
       for (const pkg of packages) {
