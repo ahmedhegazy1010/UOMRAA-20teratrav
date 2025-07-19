@@ -135,7 +135,10 @@ export default function Umrah() {
 
             {/* CTA Button */}
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
-              <Button className="bg-red-600 hover:bg-red-700 text-white px-6 py-2">
+              <Button
+                onClick={() => scrollToSection("contact")}
+                className="bg-red-600 hover:bg-red-700 text-white px-6 py-2"
+              >
                 احجز الآن
               </Button>
               {/* Mobile menu toggle */}
@@ -193,7 +196,7 @@ export default function Umrah() {
               رحلات العمرة - المولد النبوي الشريف
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-amber-100 leading-relaxed">
-              سافر مع تيراتراف براحة وأمان – باقات م��نوعة وخدمة مميزة
+              سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة
             </p>
             <Button
               size="lg"
@@ -223,7 +226,7 @@ export default function Umrah() {
               باقات العمرة المميزة
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              اختر الباقة التي تناسبك من مجموعة متنوعة من ��لخيارات المدروسة
+              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
               بعناية
             </p>
           </div>
@@ -339,7 +342,7 @@ export default function Umrah() {
               الأسعار تشمل
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              خدمات شاملة ومتكاملة لضمان رحلة مريحة و��باركة
+              خدمات شاملة ومتكاملة لضمان رحلة مريحة ومباركة
             </p>
           </div>
 
@@ -432,7 +435,7 @@ export default function Umrah() {
                 <span className="text-xl font-bold">تيراتراف</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المميزة
+                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المم��زة
               </p>
             </div>
 
