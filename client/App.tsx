@@ -20,30 +20,34 @@ import AdminSetup from "./pages/AdminSetup";
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Umrah />} />
-            <Route path="/umrah" element={<Umrah />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/admin-setup" element={<AdminSetup />} />
-            <Route path="/demo" element={<Index />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
-  </QueryClientProvider>
-);
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Umrah />} />
+              <Route path="/umrah" element={<Umrah />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/admin-setup" element={<AdminSetup />} />
+              <Route path="/demo" element={<Index />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  );
+}
+
+export default App;
 
 createRoot(document.getElementById("root")!).render(<App />);
