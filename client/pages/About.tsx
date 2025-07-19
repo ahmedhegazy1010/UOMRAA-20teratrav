@@ -49,7 +49,7 @@ export default function About() {
     {
       icon: Users,
       title: "الإرشاد السياحي",
-      description: "مرشدين متخصصين لإرشادكم طوال الرحلة",
+      description: "مرشدين متخصصين لإر��ادكم طوال الرحلة",
     },
   ];
 
@@ -83,7 +83,7 @@ export default function About() {
             <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/10 backdrop-blur-sm">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2F6e6933d312b74b23a89dafd2e32a307b%2Fd916b8a876584dc48a2246340e732356?format=webp&width=800"
-                alt="تيرات��اف"
+                alt="تيراتراف"
                 className="w-full h-full object-contain"
               />
             </div>
