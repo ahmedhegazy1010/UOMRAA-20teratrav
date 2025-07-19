@@ -82,12 +82,7 @@ export interface User {
 export function initializeDatabase() {
   console.log("🔧 Initializing TeraTrav database...");
 
-  // Create data directory if it doesn't exist
-  const fs = require("fs");
-  const dataDir = path.join(process.cwd(), "data");
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
+  const db = getDatabase();
 
   // Users table
   db.exec(`
