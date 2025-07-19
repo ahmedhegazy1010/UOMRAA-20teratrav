@@ -89,6 +89,14 @@ export default function Umrah() {
     setIsMenuOpen(false);
   };
 
+  const openWhatsApp = () => {
+    const phoneNumber = "201201666688"; // Main WhatsApp number
+    const message = encodeURIComponent(
+      "السلام عليكم، أريد الاستفسار عن باقات العمرة",
+    );
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
+  };
+
   return (
     <div
       className="min-h-screen bg-gradient-to-b from-amber-50 to-white rtl"
@@ -224,7 +232,7 @@ export default function Umrah() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              باقات العمرة المميزة
+              باقات العمرة المميز��
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
