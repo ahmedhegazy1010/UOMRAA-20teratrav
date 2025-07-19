@@ -666,7 +666,7 @@ export default function AdminDashboard() {
                           variant="destructive"
                           onClick={() => {
                             if (confirm("هل أنت متأكد من حذف هذه الباقة؟")) {
-                              alert("سيتم إضافة مي��ة الحذف قريباً!");
+                              alert("سيتم إضافة ميزة الحذف قريباً!");
                             }
                           }}
                           className="text-red-400 hover:bg-red-600"
@@ -682,7 +682,15 @@ export default function AdminDashboard() {
 
             {/* Package Modal */}
             {showPackageModal && (
-              <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+              <div
+                className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) {
+                    setShowPackageModal(false);
+                    resetPackageForm();
+                  }
+                }}
+              >
                 <Card className="w-full max-w-4xl bg-gray-900/95 border-red-500/30 max-h-[90vh] overflow-y-auto">
                   <CardHeader>
                     <CardTitle className="text-white">
@@ -926,7 +934,7 @@ export default function AdminDashboard() {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl font-bold text-white mb-2">
-                إدارة ال��جوزات
+                إدارة الحجوزات
               </h2>
               <p className="text-gray-300">عرض وإدارة طلبات الحجز</p>
             </div>
@@ -983,7 +991,7 @@ export default function AdminDashboard() {
               {inquiries.length === 0 ? (
                 <Card className="bg-gray-900/80 border-red-500/30 p-8 text-center">
                   <p className="text-gray-300 text-lg">
-                    ل�� توجد استفسارات حتى الآن
+                    لا توجد استفسارات حتى الآن
                   </p>
                 </Card>
               ) : (
@@ -1180,7 +1188,7 @@ export default function AdminDashboard() {
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <Settings className="w-5 h-5 ml-2 text-purple-400" />
-                  إعدادات النظام العامة
+                  إعد��دات النظام العامة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
                   إعداد��ت عامة للموقع والنظام
