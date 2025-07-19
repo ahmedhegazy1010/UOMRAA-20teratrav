@@ -69,7 +69,7 @@ export default function EnhancedIslamicBackground() {
       </div>
 
       {/* Layer 2: Floating Arabic calligraphy inspired shapes */}
-      <div className="absolute inset-0 opacity-15">
+      <div className="absolute inset-0 opacity-20">
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
