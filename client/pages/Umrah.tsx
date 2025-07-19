@@ -91,7 +91,7 @@ export default function Umrah() {
 
   const openWhatsApp = (packageInfo?: string) => {
     const phoneNumber = "201201666688"; // Main WhatsApp number
-    const baseMessage = "السلام عليكم، أريد الاستفسار عن باقات العمرة";
+    const baseMessage = "السلام عليكم، أريد الاس��فسار عن باقات العمرة";
     const message = packageInfo
       ? `${baseMessage}\n\nباقة ${packageInfo}`
       : baseMessage;
@@ -342,7 +342,7 @@ export default function Umrah() {
                       <Home className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-900">
-                          الإقامة بالمدينة
+                          الإقامة بالمد��نة
                         </p>
                         <p className="text-gray-600 text-sm">
                           {pkg.medinaStay}
@@ -390,7 +390,7 @@ export default function Umrah() {
                     onClick={() =>
                       openWhatsApp(`${pkg.duration} - ${pkg.itinerary}`)
                     }
-                    className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg transform hover:scale-105 transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg shadow-red-500/30 animate-glow"
                   >
                     احجز الآن
                   </Button>
