@@ -26,7 +26,7 @@ export const getActivePackages: RequestHandler = async (req, res) => {
     const db = getDB();
     const packages = db
       .prepare(
-        'SELECT * FROM packages WHERE status = "active" ORDER BY popular DESC, created_at DESC',
+        "SELECT * FROM packages WHERE status = 'active' ORDER BY popular DESC, created_at DESC",
       )
       .all();
     res.json({
