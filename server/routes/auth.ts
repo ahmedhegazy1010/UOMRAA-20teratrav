@@ -1,18 +1,7 @@
 import express, { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-
-// Simple in-memory user store (replace with database in production)
-const ADMIN_USERS = [
-  {
-    id: "1",
-    username: "admin",
-    // Password: teratrav2024 (hashed)
-    passwordHash:
-      "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi", // This is a bcrypt hash for "password"
-    role: "admin",
-  },
-];
+import { queries, User } from "../database/init";
 
 // JWT Secret (in production, use environment variable)
 const JWT_SECRET = process.env.JWT_SECRET || "teratrav_admin_secret_2024";
