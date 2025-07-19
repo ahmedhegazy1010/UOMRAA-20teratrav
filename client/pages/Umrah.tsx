@@ -241,7 +241,7 @@ export default function Umrah() {
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6">
           <div className="backdrop-blur-md bg-black/30 rounded-3xl p-6 sm:p-8 md:p-12 border border-red-500/30 shadow-2xl shadow-red-500/20 transform hover:scale-105 transition-all duration-700 animate-fadeInUp">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent animate-pulse">
-              رحلات العمرة - المولد النبوي الشريف
+              رحلات العمرة - المولد النب��ي الشريف
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 text-gray-200 leading-relaxed animate-slideInLeft">
               سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة
@@ -292,21 +292,22 @@ export default function Umrah() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
-            {packages.map((pkg) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl mx-auto">
+            {packages.map((pkg, index) => (
               <Card
                 key={pkg.id}
-                className={`relative overflow-hidden transform hover:scale-105 transition-all duration-300 ${pkg.popular ? "ring-2 ring-amber-400 shadow-2xl" : "shadow-lg"}`}
+                className={`relative overflow-hidden transform hover:scale-105 transition-all duration-500 bg-gray-900/80 backdrop-blur-sm border-red-500/30 shadow-2xl shadow-red-500/20 hover:shadow-red-500/40 animate-fadeInUp ${pkg.popular ? "ring-2 ring-red-400 animate-glow" : ""}`}
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 {pkg.popular && (
                   <div className="absolute top-4 right-4 z-10">
-                    <Badge className="bg-amber-500 text-white px-3 py-1 text-sm font-semibold">
+                    <Badge className="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 text-sm font-bold animate-pulse shadow-lg">
                       الأكثر طلباً
                     </Badge>
                   </div>
                 )}
 
-                <div className={`h-2 ${pkg.color}`}></div>
+                <div className="h-1 bg-gradient-to-r from-red-600 via-red-500 to-red-600 animate-shimmer"></div>
 
                 <CardHeader className="text-center pb-4">
                   <div className="flex items-center justify-center mb-4">
