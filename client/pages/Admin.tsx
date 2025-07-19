@@ -34,6 +34,53 @@ function AdminContent() {
   const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Settings state moved to component level
+  const [companySettings, setCompanySettings] = useState({
+    company_name: "تيراتراف",
+    phone_primary: "0225750707",
+    phone_secondary: "01201666688",
+    whatsapp: "201201666688",
+    email: "info@teratrav.com",
+    address: "القاهرة، مصر",
+    working_hours_weekdays: "9:00 ص - 9:00 م",
+    working_hours_friday: "2:00 م - 9:00 م",
+    license_number: "12345",
+    tax_number: "67890",
+  });
+
+  const [adminUsers, setAdminUsers] = useState([
+    {
+      id: 1,
+      username: "admin",
+      role: "مدير عام",
+      active: true,
+      last_login: "منذ ساعة",
+    },
+    {
+      id: 2,
+      username: "operator",
+      role: "مشغل",
+      active: true,
+      last_login: "منذ يومين",
+    },
+  ]);
+
+  const [systemSettings, setSystemSettings] = useState({
+    site_maintenance: false,
+    allow_registrations: true,
+    auto_backup: true,
+    email_notifications: true,
+    sms_notifications: false,
+    max_booking_days: 60,
+    booking_deposit_percentage: 30,
+  });
+
+  const [newAdmin, setNewAdmin] = useState({
+    username: "",
+    password: "",
+    role: "operator",
+  });
+
   const handleLogout = () => {
     logout();
     window.location.reload();
@@ -849,7 +896,7 @@ function AdminContent() {
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white">الإشعارات</h4>
+                <h4 className="text-lg font-semibold text-white">الإ��عارات</h4>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">
