@@ -232,7 +232,7 @@ export default function AdminDashboard() {
 
   const handleSavePackage = async () => {
     if (!packageForm.name?.trim() || !packageForm.duration?.trim()) {
-      alert("يرجى ملء اسم الباقة ��المدة على الأقل");
+      alert("يرجى ملء اسم الباقة والمدة على الأقل");
       return;
     }
 
@@ -241,7 +241,7 @@ export default function AdminDashboard() {
       !packageForm.price_triple ||
       !packageForm.price_quad
     ) {
-      alert("يرجى ملء جميع أسعار الغرف");
+      alert("يرجى ملء جم��ع أسعار الغرف");
       return;
     }
 
@@ -276,7 +276,14 @@ export default function AdminDashboard() {
         body: JSON.stringify(packageData),
       });
 
-      const data = await response.json();
+      let data;
+      try {
+        data = await response.json();
+      } catch (parseError) {
+        console.error("Error parsing response:", parseError);
+        alert("خطأ في معالجة استجابة الخادم");
+        return;
+      }
 
       if (response.ok) {
         alert("تم إضافة الباقة بنجاح!");
@@ -284,11 +291,12 @@ export default function AdminDashboard() {
         resetPackageForm();
         loadDashboardData(); // Reload packages
       } else {
-        alert(data.message || "حدث خطأ في إضافة الباقة");
+        console.error("Server error:", data);
+        alert(data.message || `حدث خطأ في إضافة الباقة: ${response.status}`);
       }
     } catch (error) {
       console.error("Error saving package:", error);
-      alert("حدث خطأ في إضافة الباقة");
+      alert("حدث خطأ في الاتصال بالخادم");
     } finally {
       setPackageLoading(false);
     }
@@ -606,7 +614,7 @@ export default function AdminDashboard() {
                 onClick={() => setShowPackageModal(true)}
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
               >
-                إض��فة باقة جديدة
+                إضافة باقة جديدة
               </Button>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -971,7 +979,7 @@ export default function AdminDashboard() {
                     <CardContent>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                         <div className="space-y-2 text-gray-300">
-                          <div>📞 الهاتف: {booking.phone}</div>
+                          <div>���� الهاتف: {booking.phone}</div>
                           <div>🏨 نوع الغرفة: {booking.room_type}</div>
                         </div>
                         <div className="space-y-2 text-gray-300">
@@ -1029,7 +1037,7 @@ export default function AdminDashboard() {
                         </div>
                         <div className="bg-gray-800/50 rounded p-4">
                           <h4 className="text-sm font-semibold text-white mb-2">
-                            الاس��فسار:
+                            الاستفسار:
                           </h4>
                           <p className="text-gray-300 text-sm leading-relaxed">
                             {inquiry.message}
@@ -1170,7 +1178,7 @@ export default function AdminDashboard() {
 
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold text-white">
-                    إضافة مستخدم جديد
+                    إضافة م��تخدم جديد
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input
