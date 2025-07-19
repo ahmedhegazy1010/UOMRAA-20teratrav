@@ -81,6 +81,24 @@ function AdminContent() {
     role: "operator",
   });
 
+  // Package management state
+  const [showPackageModal, setShowPackageModal] = useState(false);
+  const [editingPackage, setEditingPackage] = useState(null);
+  const [packageForm, setPackageForm] = useState({
+    name: "",
+    duration: "",
+    mecca_stay: "",
+    medina_stay: "",
+    itinerary: "",
+    price_double: 0,
+    price_triple: 0,
+    price_quad: 0,
+    price_child: null,
+    price_infant: null,
+    status: "active",
+    popular: false,
+  });
+
   const handleLogout = () => {
     logout();
     window.location.reload();
@@ -171,7 +189,7 @@ function AdminContent() {
   };
 
   const sidebarItems = [
-    { id: "dashboard", label: "لوحة الت��كم", icon: BarChart3 },
+    { id: "dashboard", label: "لوحة التحكم", icon: BarChart3 },
     { id: "packages", label: "الباقات", icon: Package },
     { id: "bookings", label: "الحجوزات", icon: Users },
     { id: "inquiries", label: "الاستفسارات", icon: MessageSquare },
@@ -618,7 +636,7 @@ function AdminContent() {
                     <div>⏱️ المدة: {booking.package_duration}</div>
                     {booking.travel_date && (
                       <div>
-                        📅 تار��خ السفر:{" "}
+                        📅 تاريخ السفر:{" "}
                         {new Date(booking.travel_date).toLocaleDateString(
                           "ar-EG",
                         )}
@@ -1313,7 +1331,7 @@ function AdminContent() {
               <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center shadow-lg shadow-red-500/30 animate-pulse">
                 <span className="text-white font-bold">T</span>
               </div>
-              <span className="text-lg font-bold text-white">لوحة الت��كم</span>
+              <span className="text-lg font-bold text-white">لوحة التحكم</span>
             </div>
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
               <button
