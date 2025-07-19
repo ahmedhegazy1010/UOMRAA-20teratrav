@@ -734,13 +734,67 @@ function AdminContent() {
                 {booking.special_requests && (
                   <div className="mt-4 p-3 bg-gray-800/50 rounded">
                     <h4 className="text-sm font-semibold text-white mb-2">
-                      طلبات خاصة:
+                      طلبات ��اصة:
                     </h4>
                     <p className="text-gray-300 text-sm">
                       {booking.special_requests}
                     </p>
                   </div>
                 )}
+
+                {/* Booking Actions */}
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {booking.status === "pending" && (
+                    <>
+                      <Button
+                        size="sm"
+                        onClick={() =>
+                          handleBookingStatusChange(booking.id, "confirmed")
+                        }
+                        className="bg-green-600 hover:bg-green-700 text-white"
+                      >
+                        تأكيد الحجز
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="destructive"
+                        onClick={() =>
+                          handleBookingStatusChange(booking.id, "cancelled")
+                        }
+                        className="bg-red-600 hover:bg-red-700"
+                      >
+                        إلغاء الحجز
+                      </Button>
+                    </>
+                  )}
+                  {booking.status === "confirmed" && (
+                    <Button
+                      size="sm"
+                      onClick={() =>
+                        handleBookingStatusChange(booking.id, "completed")
+                      }
+                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                    >
+                      تم الانتهاء
+                    </Button>
+                  )}
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleContactCustomer(booking)}
+                    className="border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
+                  >
+                    تواصل مع العميل
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleViewBookingDetails(booking)}
+                    className="border-gray-400 text-gray-400 hover:bg-gray-400 hover:text-white"
+                  >
+                    عرض التفاصيل
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))
@@ -1180,7 +1234,7 @@ function AdminContent() {
                     </label>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-300">السماح بالتسجيل</span>
+                    <span className="text-gray-300">��لسماح بالتسجيل</span>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
@@ -1198,7 +1252,7 @@ function AdminContent() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">
-                      النسخ الاحتياطي التلقائي
+                      النسخ الاحتياطي الت��قائي
                     </span>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
