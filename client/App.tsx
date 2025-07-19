@@ -12,6 +12,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Umrah from "./pages/Umrah";
 import Admin from "./pages/Admin";
+import Booking from "./pages/Booking";
 
 const queryClient = new QueryClient();
 
