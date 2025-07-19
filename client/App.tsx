@@ -11,7 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Umrah from "./pages/Umrah";
-import Admin from "./pages/Admin";
+import AdminDashboard from "./pages/AdminDashboard";
 import Booking from "./pages/Booking";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
