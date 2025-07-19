@@ -138,7 +138,7 @@ function AdminContent() {
   const renderPackages = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-white mb-2">إدارة الباقات</h2>
+        <h2 className="text-3xl font-bold text-white mb-2">إدارة الباق��ت</h2>
         <p className="text-gray-300">إدارة باقات العمرة المتاحة</p>
       </div>
 
@@ -218,27 +218,9 @@ function AdminContent() {
   };
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black rtl relative overflow-hidden"
-      dir="rtl"
-    >
-      {/* Animated background elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-red-500/30 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
-      </div>
+    <div className="min-h-screen rtl relative overflow-hidden" dir="rtl">
+      {/* Islamic Animated Background */}
+      <IslamicBackground />
 
       {/* Mobile Header */}
       <div className="lg:hidden bg-black/90 backdrop-blur-md shadow-lg shadow-red-500/20 border-b border-red-600/30 px-4 py-3">
