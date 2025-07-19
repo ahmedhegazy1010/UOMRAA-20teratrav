@@ -115,9 +115,9 @@ export const handleVerify: RequestHandler = async (req, res) => {
       role: string;
     };
 
-    // Check if user still exists
-    const user = ADMIN_USERS.find((u) => u.id === decoded.id);
-    if (!user) {
+    // Check if user still exists in database
+    const user = queries.getUserByUsername.get(decoded.username) as User;
+    if (!user || user.id.toString() !== decoded.id) {
       return res.status(401).json({
         success: false,
         message: "المستخدم غير موجود",
