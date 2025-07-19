@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -54,7 +54,7 @@ const packages = [
   {
     id: 3,
     duration: "14 يوم",
-    meccaStay: "7 ليالي - فندق فاخ��",
+    meccaStay: "7 ليالي - فندق فاخر",
     medinaStay: "6 ليالي - فندق فاخر",
     itinerary: "مكة - المدينة - مكة",
     priceDouble: "45,000",
