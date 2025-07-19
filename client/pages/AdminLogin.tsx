@@ -58,37 +58,11 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center p-4 rtl"
+      className="min-h-screen flex items-center justify-center p-4 rtl relative"
       dir="rtl"
     >
-      {/* Animated background elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-red-500/20 rounded-full animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='0.3'%3E%3Cpath d='M30 30l15-15v30l-15-15zm-15 0l15 15H0l15-15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: "60px 60px",
-            }}
-          />
-        </div>
-      </div>
+      {/* Islamic Animated Background */}
+      <IslamicBackground />
 
       <Card className="w-full max-w-md bg-gray-900/80 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20 animate-fadeInUp">
         <CardHeader className="text-center space-y-4">
