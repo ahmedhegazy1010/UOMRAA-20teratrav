@@ -129,7 +129,7 @@ export default function Umrah() {
   };
 
   const includedItems = [
-    { icon: Shield, text: "رسوم التأشيرة" },
+    { icon: Shield, text: "رس��م التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
     { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
@@ -883,8 +883,28 @@ export default function Umrah() {
               </div>
             </div>
 
-            {/* Copyright */}
+            {/* Links and Copyright */}
             <div className="text-center md:text-left">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-4">
+                <button
+                  onClick={() => navigate("/terms")}
+                  className="text-gray-400 hover:text-red-400 text-sm transition-colors"
+                >
+                  الشروط والأحكام
+                </button>
+                <button
+                  onClick={() => navigate("/privacy")}
+                  className="text-gray-400 hover:text-red-400 text-sm transition-colors"
+                >
+                  سياسة الخصوصية
+                </button>
+                <button
+                  onClick={() => navigate("/about")}
+                  className="text-gray-400 hover:text-red-400 text-sm transition-colors"
+                >
+                  من نحن
+                </button>
+              </div>
               <p className="text-gray-400 text-sm">
                 © {new Date().getFullYear()} TeraTrav. جميع الحقوق محفوظة
               </p>
