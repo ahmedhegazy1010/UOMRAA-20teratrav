@@ -289,9 +289,9 @@ function AdminContent() {
     return <Badge className={config.className}>{config.label}</Badge>;
   };
 
-    const renderDashboard = () => (
+  const renderDashboard = () => (
     <div className="space-y-6">
-      <div>
+            <div>
         <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
         <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
