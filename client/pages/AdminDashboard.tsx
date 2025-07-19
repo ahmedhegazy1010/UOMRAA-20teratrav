@@ -149,7 +149,7 @@ export default function AdminDashboard() {
         setLoginError(data.message || "فشل في تسجيل الدخول");
       }
     } catch (err) {
-      setLoginError("خطأ في الاتصال بالخادم");
+      setLoginError("خ��أ في الاتصال بالخادم");
     } finally {
       setLoginLoading(false);
     }
@@ -817,7 +817,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="space-y-2 md:col-span-2">
                         <label className="text-sm font-medium text-gray-300">
-                          خط ا��سير
+                          خط السير
                         </label>
                         <input
                           type="text"
