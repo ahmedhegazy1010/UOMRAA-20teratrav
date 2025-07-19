@@ -52,7 +52,7 @@ function AdminContent() {
     {
       id: 1,
       username: "admin",
-      role: "مدير عام",
+      role: "م��ير عام",
       active: true,
       last_login: "منذ ساعة",
     },
@@ -182,7 +182,7 @@ function AdminContent() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
-        <p className="text-gray-300">نظ��ة عامة على أداء الموقع والحجوزات</p>
+        <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
       {loading ? (
@@ -470,88 +470,6 @@ function AdminContent() {
   );
 
   const renderSettings = () => {
-    const [companySettings, setCompanySettings] = useState({
-      company_name: "تيراتراف",
-      phone_primary: "0225750707",
-      phone_secondary: "01201666688",
-      whatsapp: "201201666688",
-      email: "info@teratrav.com",
-      address: "القاهرة، مصر",
-      working_hours_weekdays: "9:00 ص - 9:00 م",
-      working_hours_friday: "2:00 م - 9:00 م",
-      license_number: "12345",
-      tax_number: "67890",
-    });
-
-    const [adminUsers, setAdminUsers] = useState([
-      {
-        id: 1,
-        username: "admin",
-        role: "مدير عام",
-        active: true,
-        last_login: "منذ ساعة",
-      },
-      {
-        id: 2,
-        username: "operator",
-        role: "مشغل",
-        active: true,
-        last_login: "منذ يومين",
-      },
-    ]);
-
-    const [systemSettings, setSystemSettings] = useState({
-      site_maintenance: false,
-      allow_registrations: true,
-      auto_backup: true,
-      email_notifications: true,
-      sms_notifications: false,
-      max_booking_days: 60,
-      booking_deposit_percentage: 30,
-    });
-
-    const [newAdmin, setNewAdmin] = useState({
-      username: "",
-      password: "",
-      role: "operator",
-    });
-
-    const handleCompanySettingsUpdate = async () => {
-      // Here you would normally send to API
-      alert("تم حفظ إعدادات الشركة بنجاح!");
-    };
-
-    const handleSystemSettingsUpdate = async () => {
-      // Here you would normally send to API
-      alert("تم حفظ إعدادات النظام بنجاح!");
-    };
-
-    const handleAddAdmin = async () => {
-      if (!newAdmin.username || !newAdmin.password) {
-        alert("يرجى ملء جميع البيانات المطلوبة");
-        return;
-      }
-      // Here you would normally send to API
-      const newUser = {
-        id: Date.now(),
-        username: newAdmin.username,
-        role: newAdmin.role === "admin" ? "مدير عام" : "مشغل",
-        active: true,
-        last_login: "لم يسجل دخول بعد",
-      };
-      setAdminUsers([...adminUsers, newUser]);
-      setNewAdmin({ username: "", password: "", role: "operator" });
-      alert("تم إضافة المستخدم بنجاح!");
-    };
-
-    const toggleAdminStatus = (id: number) => {
-      setAdminUsers(
-        adminUsers.map((user) =>
-          user.id === id ? { ...user, active: !user.active } : user,
-        ),
-      );
-    };
-
     return (
       <div className="space-y-8">
         <div>
@@ -590,7 +508,7 @@ function AdminContent() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-300">
-                  البريد الإلكت��وني
+                  البريد الإلكتروني
                 </label>
                 <input
                   type="email"
