@@ -467,12 +467,12 @@ export default function Umrah() {
                 >
                   <Instagram size={20} />
                 </a>
-                <a
-                  href="#"
+                <button
+                  onClick={openWhatsApp}
                   className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
                 >
                   <MessageCircle size={20} />
-                </a>
+                </button>
               </div>
             </div>
 
