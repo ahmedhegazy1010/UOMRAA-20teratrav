@@ -1,0 +1,5 @@
+# تأكد من إعادة توجيه جميع المسارات إلى index.html للـ SPA
+/*    /index.html   200
+
+# إعادة توجيه API إلى الوظائف إن وجدت
+/api/*  /.netlify/functions/:splat  200
