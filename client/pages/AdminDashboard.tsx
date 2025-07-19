@@ -60,6 +60,24 @@ export default function AdminDashboard() {
   const [inquiries, setInquiries] = useState([]);
   const [dataLoading, setDataLoading] = useState(false);
 
+  // Package management state
+  const [showPackageModal, setShowPackageModal] = useState(false);
+  const [packageForm, setPackageForm] = useState({
+    name: "",
+    duration: "",
+    mecca_stay: "",
+    medina_stay: "",
+    itinerary: "",
+    price_double: "",
+    price_triple: "",
+    price_quad: "",
+    price_child: "",
+    price_infant: "",
+    status: "active",
+    popular: false,
+  });
+  const [packageLoading, setPackageLoading] = useState(false);
+
   // Check authentication on mount
   useEffect(() => {
     checkAuth();
