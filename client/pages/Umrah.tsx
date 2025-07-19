@@ -103,18 +103,41 @@ export default function Umrah() {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-b from-amber-50 to-white rtl"
+      className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 rtl overflow-x-hidden"
       dir="rtl"
     >
-      {/* Islamic Geometric Pattern Background */}
-      <div className="fixed inset-0 opacity-5 pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.3'%3E%3Cpath d='M30 30l15-15v30l-15-15zm-15 0l15 15H0l15-15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: "60px 60px",
-          }}
-        />
+      {/* Animated Background Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        {/* Moving red particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-red-500 rounded-full opacity-70 animate-pulse"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 3}s`,
+                animationDuration: `${2 + Math.random() * 2}s`,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Islamic Geometric Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="absolute inset-0 animate-pulse"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='0.4'%3E%3Cpath d='M40 40l20-20v40l-20-20zm-20 0l20 20H0l20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundSize: "80px 80px",
+            }}
+          />
+        </div>
+
+        {/* Gradient overlays for depth */}
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/5 to-black/30" />
       </div>
 
       {/* Header */}
