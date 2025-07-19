@@ -57,9 +57,14 @@ export default function Umrah() {
       const data = await response.json();
       if (data.success) {
         setPackages(data.data);
+      } else {
+        // استخدام باقات افتراضية في حالة فشل API
+        setPackages(defaultPackages);
       }
     } catch (error) {
       console.error("Error fetching packages:", error);
+      // استخدام باقات افتراضية في حالة فشل API
+      setPackages(defaultPackages);
     } finally {
       setLoading(false);
     }
