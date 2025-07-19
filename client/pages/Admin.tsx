@@ -87,7 +87,7 @@ function AdminContent() {
   };
 
   const sidebarItems = [
-    { id: "dashboard", label: "ل��حة التحكم", icon: BarChart3 },
+    { id: "dashboard", label: "لوحة التحكم", icon: BarChart3 },
     { id: "packages", label: "الباقات", icon: Package },
     { id: "bookings", label: "الحجوزات", icon: Users },
     { id: "inquiries", label: "الاستفسارات", icon: MessageSquare },
@@ -191,7 +191,7 @@ function AdminContent() {
                       : "bg-gray-100 text-gray-800"
                   }
                 >
-                  {pkg.status === "active" ? "نشط" : "غير نشط"}
+                  {pkg.status === "active" ? "نشط" : "غي�� نشط"}
                 </Badge>
                 {pkg.popular && (
                   <Badge className="bg-red-100 text-red-800">
@@ -384,6 +384,610 @@ function AdminContent() {
       </div>
     </div>
   );
+
+  const renderSettings = () => {
+    const [companySettings, setCompanySettings] = useState({
+      company_name: "تيراتراف",
+      phone_primary: "0225750707",
+      phone_secondary: "01201666688",
+      whatsapp: "201201666688",
+      email: "info@teratrav.com",
+      address: "القاهرة، مصر",
+      working_hours_weekdays: "9:00 ص - 9:00 م",
+      working_hours_friday: "2:00 م - 9:00 م",
+      license_number: "12345",
+      tax_number: "67890",
+    });
+
+    const [adminUsers, setAdminUsers] = useState([
+      {
+        id: 1,
+        username: "admin",
+        role: "مدير عام",
+        active: true,
+        last_login: "منذ ساعة",
+      },
+      {
+        id: 2,
+        username: "operator",
+        role: "مشغل",
+        active: true,
+        last_login: "منذ يومين",
+      },
+    ]);
+
+    const [systemSettings, setSystemSettings] = useState({
+      site_maintenance: false,
+      allow_registrations: true,
+      auto_backup: true,
+      email_notifications: true,
+      sms_notifications: false,
+      max_booking_days: 60,
+      booking_deposit_percentage: 30,
+    });
+
+    const [newAdmin, setNewAdmin] = useState({
+      username: "",
+      password: "",
+      role: "operator",
+    });
+
+    const handleCompanySettingsUpdate = async () => {
+      // Here you would normally send to API
+      alert("تم حفظ إعدادات الشركة بنجاح!");
+    };
+
+    const handleSystemSettingsUpdate = async () => {
+      // Here you would normally send to API
+      alert("تم حفظ إعدادات النظام بنجاح!");
+    };
+
+    const handleAddAdmin = async () => {
+      if (!newAdmin.username || !newAdmin.password) {
+        alert("يرجى ملء جميع البيانات المطلوبة");
+        return;
+      }
+      // Here you would normally send to API
+      const newUser = {
+        id: Date.now(),
+        username: newAdmin.username,
+        role: newAdmin.role === "admin" ? "مدير عام" : "مشغل",
+        active: true,
+        last_login: "لم يسجل دخول بعد",
+      };
+      setAdminUsers([...adminUsers, newUser]);
+      setNewAdmin({ username: "", password: "", role: "operator" });
+      alert("تم إضافة المستخدم بنجاح!");
+    };
+
+    const toggleAdminStatus = (id: number) => {
+      setAdminUsers(
+        adminUsers.map((user) =>
+          user.id === id ? { ...user, active: !user.active } : user,
+        ),
+      );
+    };
+
+    return (
+      <div className="space-y-8">
+        <div>
+          <h2 className="text-3xl font-bold text-white mb-2">إعدادات النظام</h2>
+          <p className="text-gray-300">إدارة إعدادات الموقع والشركة</p>
+        </div>
+
+        {/* Company Settings */}
+        <Card className="bg-gray-900/80 border-red-500/30">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center">
+              <Settings className="w-5 h-5 ml-2 text-red-400" />
+              إعدادات الشركة
+            </CardTitle>
+            <CardDescription className="text-gray-300">
+              معلومات الشركة الأساسية وبيانات الاتصال
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  اسم الشركة
+                </label>
+                <input
+                  type="text"
+                  value={companySettings.company_name}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      company_name: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  البريد الإلكتروني
+                </label>
+                <input
+                  type="email"
+                  value={companySettings.email}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      email: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  الهاتف الرئيسي
+                </label>
+                <input
+                  type="tel"
+                  value={companySettings.phone_primary}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      phone_primary: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  الهاتف الثانوي
+                </label>
+                <input
+                  type="tel"
+                  value={companySettings.phone_secondary}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      phone_secondary: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  واتساب
+                </label>
+                <input
+                  type="tel"
+                  value={companySettings.whatsapp}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      whatsapp: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  العنوان
+                </label>
+                <input
+                  type="text"
+                  value={companySettings.address}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      address: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  ساعات العمل (السبت - الخميس)
+                </label>
+                <input
+                  type="text"
+                  value={companySettings.working_hours_weekdays}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      working_hours_weekdays: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  ساعات العمل (الجمعة)
+                </label>
+                <input
+                  type="text"
+                  value={companySettings.working_hours_friday}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      working_hours_friday: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  رقم الترخيص
+                </label>
+                <input
+                  type="text"
+                  value={companySettings.license_number}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      license_number: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-300">
+                  الرقم الضريبي
+                </label>
+                <input
+                  type="text"
+                  value={companySettings.tax_number}
+                  onChange={(e) =>
+                    setCompanySettings({
+                      ...companySettings,
+                      tax_number: e.target.value,
+                    })
+                  }
+                  className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                />
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <Button
+                onClick={handleCompanySettingsUpdate}
+                className="bg-green-600 hover:bg-green-700 text-white"
+              >
+                حفظ إعدادات الشركة
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Admin Users Management */}
+        <Card className="bg-gray-900/80 border-red-500/30">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center">
+              <UserCheck className="w-5 h-5 ml-2 text-blue-400" />
+              إدارة المستخدمين
+            </CardTitle>
+            <CardDescription className="text-gray-300">
+              إضافة وإدارة مستخدمي لوحة التحكم
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Current Admin Users */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-white">
+                المستخدمون الحاليون
+              </h4>
+              <div className="space-y-3">
+                {adminUsers.map((admin) => (
+                  <div
+                    key={admin.id}
+                    className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-600"
+                  >
+                    <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                      <div
+                        className={`w-3 h-3 rounded-full ${admin.active ? "bg-green-500" : "bg-red-500"}`}
+                      ></div>
+                      <div>
+                        <p className="text-white font-medium">
+                          {admin.username}
+                        </p>
+                        <p className="text-gray-400 text-sm">{admin.role}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                      <span className="text-gray-400 text-xs">
+                        {admin.last_login}
+                      </span>
+                      <Button
+                        size="sm"
+                        variant={admin.active ? "destructive" : "default"}
+                        onClick={() => toggleAdminStatus(admin.id)}
+                        className="text-xs"
+                      >
+                        {admin.active ? "إيقاف" : "تفعيل"}
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Add New Admin */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold text-white">
+                إضافة مستخدم جديد
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    اسم المستخدم
+                  </label>
+                  <input
+                    type="text"
+                    value={newAdmin.username}
+                    onChange={(e) =>
+                      setNewAdmin({ ...newAdmin, username: e.target.value })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    placeholder="username"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    كلمة المرور
+                  </label>
+                  <input
+                    type="password"
+                    value={newAdmin.password}
+                    onChange={(e) =>
+                      setNewAdmin({ ...newAdmin, password: e.target.value })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    placeholder="••••••••"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-gray-300">
+                    الدور
+                  </label>
+                  <select
+                    value={newAdmin.role}
+                    onChange={(e) =>
+                      setNewAdmin({ ...newAdmin, role: e.target.value })
+                    }
+                    className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                  >
+                    <option value="operator">مشغل</option>
+                    <option value="admin">مدير عام</option>
+                  </select>
+                </div>
+              </div>
+              <div className="flex justify-end">
+                <Button
+                  onClick={handleAddAdmin}
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                >
+                  إضافة مستخدم
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* System Settings */}
+        <Card className="bg-gray-900/80 border-red-500/30">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center">
+              <Settings className="w-5 h-5 ml-2 text-purple-400" />
+              إعدادات النظام
+            </CardTitle>
+            <CardDescription className="text-gray-300">
+              إعدادات عامة للموقع والنظام
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-white">
+                  الصيانة والأمان
+                </h4>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">وضع ال��يانة</span>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={systemSettings.site_maintenance}
+                        onChange={(e) =>
+                          setSystemSettings({
+                            ...systemSettings,
+                            site_maintenance: e.target.checked,
+                          })
+                        }
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+                    </label>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">السماح بالتسجيل</span>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={systemSettings.allow_registrations}
+                        onChange={(e) =>
+                          setSystemSettings({
+                            ...systemSettings,
+                            allow_registrations: e.target.checked,
+                          })
+                        }
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+                    </label>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">
+                      النسخ الاحتياطي التلقائي
+                    </span>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={systemSettings.auto_backup}
+                        onChange={(e) =>
+                          setSystemSettings({
+                            ...systemSettings,
+                            auto_backup: e.target.checked,
+                          })
+                        }
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-white">الإشعارات</h4>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">
+                      إشعارات البريد الإلكتروني
+                    </span>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={systemSettings.email_notifications}
+                        onChange={(e) =>
+                          setSystemSettings({
+                            ...systemSettings,
+                            email_notifications: e.target.checked,
+                          })
+                        }
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+                    </label>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-gray-300">
+                      إشعارات الرسائل القصيرة
+                    </span>
+                    <label className="relative inline-flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={systemSettings.sms_notifications}
+                        onChange={(e) =>
+                          setSystemSettings({
+                            ...systemSettings,
+                            sms_notifications: e.target.checked,
+                          })
+                        }
+                        className="sr-only peer"
+                      />
+                      <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-300 dark:peer-focus:ring-red-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-red-600"></div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-white">
+                  إعدادات الحجز
+                </h4>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      الحد الأقصى لأيام الحجز المسبق
+                    </label>
+                    <input
+                      type="number"
+                      value={systemSettings.max_booking_days}
+                      onChange={(e) =>
+                        setSystemSettings({
+                          ...systemSettings,
+                          max_booking_days: parseInt(e.target.value),
+                        })
+                      }
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                      min="1"
+                      max="365"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      نسبة العربون المطلوب (%)
+                    </label>
+                    <input
+                      type="number"
+                      value={systemSettings.booking_deposit_percentage}
+                      onChange={(e) =>
+                        setSystemSettings({
+                          ...systemSettings,
+                          booking_deposit_percentage: parseInt(e.target.value),
+                        })
+                      }
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                      min="10"
+                      max="100"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <Button
+                onClick={handleSystemSettingsUpdate}
+                className="bg-purple-600 hover:bg-purple-700 text-white"
+              >
+                حفظ إعدادات النظام
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Database & Backup */}
+        <Card className="bg-gray-900/80 border-red-500/30">
+          <CardHeader>
+            <CardTitle className="text-white flex items-center">
+              <Package className="w-5 h-5 ml-2 text-orange-400" />
+              النسخ الاحتياطي والصيانة
+            </CardTitle>
+            <CardDescription className="text-gray-300">
+              إدارة النسخ الاحتياطي وصيانة قاعدة البيانات
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <Button
+                className="bg-orange-600 hover:bg-orange-700 text-white h-12"
+                onClick={() => alert("جاري إنشاء نسخة احتياطية...")}
+              >
+                إنشاء نسخة احتياطية
+              </Button>
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 text-white h-12"
+                onClick={() => alert("جاري تحسين قاعدة البيانات...")}
+              >
+                تحسين قاعدة البيانات
+              </Button>
+              <Button
+                className="bg-red-600 hover:bg-red-700 text-white h-12"
+                onClick={() => {
+                  if (confirm("هل أنت متأكد من مسح الملفات المؤقتة؟")) {
+                    alert("تم مسح الملفات المؤقتة بنجاح!");
+                  }
+                }}
+              >
+                مسح الملفات المؤقتة
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  };
 
   const renderContent = () => {
     switch (activeSection) {
