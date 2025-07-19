@@ -122,6 +122,82 @@ export default function IslamicBackground() {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/5 to-black/30" />
       <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-red-600/10" />
 
+      {/* Islamic Arabesque patterns */}
+      <div className="absolute inset-0 opacity-5">
+        {[...Array(4)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              left: `${25 * i}%`,
+              top: `${20 + i * 20}%`,
+              animation: `arabesque ${8 + i * 2}s ease-in-out infinite`,
+              animationDelay: `${i * 1}s`,
+            }}
+          >
+            <svg
+              width="100"
+              height="100"
+              viewBox="0 0 100 100"
+              className="text-red-600"
+            >
+              <path
+                d="M50 10 C70 30, 70 70, 50 90 C30 70, 30 30, 50 10 Z M50 25 C60 35, 60 65, 50 75 C40 65, 40 35, 50 25 Z"
+                fill="currentColor"
+                opacity="0.3"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="15"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                opacity="0.5"
+              />
+            </svg>
+          </div>
+        ))}
+      </div>
+
+      {/* Mihrab arch patterns */}
+      <div className="absolute inset-0 opacity-8">
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              right: `${30 + i * 25}%`,
+              bottom: `${10 + i * 30}%`,
+              animation: `mihrab ${12 + i * 3}s ease-in-out infinite alternate`,
+              animationDelay: `${i * 2}s`,
+            }}
+          >
+            <svg
+              width="80"
+              height="120"
+              viewBox="0 0 80 120"
+              className="text-red-500"
+            >
+              <path
+                d="M10 120 L10 40 Q10 10, 40 10 Q70 10, 70 40 L70 120 Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                opacity="0.4"
+              />
+              <path
+                d="M20 120 L20 45 Q20 20, 40 20 Q60 20, 60 45 L60 120"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                opacity="0.3"
+              />
+            </svg>
+          </div>
+        ))}
+      </div>
+
       {/* Add CSS animations */}
       <style jsx>{`
         @keyframes float {
@@ -178,6 +254,29 @@ export default function IslamicBackground() {
           50% {
             opacity: 0.8;
             transform: scale(1.1);
+          }
+        }
+
+        @keyframes arabesque {
+          0%,
+          100% {
+            transform: scale(1) rotate(0deg);
+            opacity: 0.3;
+          }
+          50% {
+            transform: scale(1.2) rotate(5deg);
+            opacity: 0.6;
+          }
+        }
+
+        @keyframes mihrab {
+          0% {
+            transform: translateY(0px) scale(1);
+            opacity: 0.2;
+          }
+          100% {
+            transform: translateY(-10px) scale(1.05);
+            opacity: 0.5;
           }
         }
       `}</style>
