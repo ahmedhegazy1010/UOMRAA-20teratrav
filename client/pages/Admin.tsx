@@ -86,6 +86,43 @@ function AdminContent() {
     window.location.reload();
   };
 
+  // Settings helper functions
+  const handleCompanySettingsUpdate = async () => {
+    // Here you would normally send to API
+    alert("تم حفظ إعدادات الشركة بنجاح!");
+  };
+
+  const handleSystemSettingsUpdate = async () => {
+    // Here you would normally send to API
+    alert("تم حفظ إعدادات النظام بنجاح!");
+  };
+
+  const handleAddAdmin = async () => {
+    if (!newAdmin.username || !newAdmin.password) {
+      alert("يرجى ملء جميع البيانات المطلوبة");
+      return;
+    }
+    // Here you would normally send to API
+    const newUser = {
+      id: Date.now(),
+      username: newAdmin.username,
+      role: newAdmin.role === "admin" ? "مدير عام" : "مشغل",
+      active: true,
+      last_login: "لم يسجل دخول بعد",
+    };
+    setAdminUsers([...adminUsers, newUser]);
+    setNewAdmin({ username: "", password: "", role: "operator" });
+    alert("تم إضافة المستخدم بنجاح!");
+  };
+
+  const toggleAdminStatus = (id: number) => {
+    setAdminUsers(
+      adminUsers.map((user) =>
+        user.id === id ? { ...user, active: !user.active } : user,
+      ),
+    );
+  };
+
   // Fetch data from API
   useEffect(() => {
     fetchAllData();
@@ -145,7 +182,7 @@ function AdminContent() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
-        <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
+        <p className="text-gray-300">نظ��ة عامة على أداء الموقع والحجوزات</p>
       </div>
 
       {loading ? (
@@ -553,7 +590,7 @@ function AdminContent() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-300">
-                  البريد الإلكتروني
+                  البريد الإلكت��وني
                 </label>
                 <input
                   type="email"
@@ -896,7 +933,7 @@ function AdminContent() {
               </div>
 
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-white">الإ��عارات</h4>
+                <h4 className="text-lg font-semibold text-white">الإشعارات</h4>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">
