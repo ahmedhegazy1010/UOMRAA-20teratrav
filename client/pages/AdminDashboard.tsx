@@ -127,7 +127,7 @@ export default function AdminDashboard() {
     setLoginError("");
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("/.netlify/functions/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -232,7 +232,7 @@ export default function AdminDashboard() {
 
   const handleSavePackage = async () => {
     if (!packageForm.name?.trim() || !packageForm.duration?.trim()) {
-      alert("يرجى اختيار اسم الباقة وملء المدة");
+      alert("يرجى اختيار اسم الب��قة وملء المدة");
       return;
     }
 
@@ -853,7 +853,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
-                          سعر الغرفة الثلاثية *
+                          سعر الغ��فة الثلاثية *
                         </label>
                         <input
                           type="number"
