@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -104,7 +104,7 @@ const bookingsData = [
     customerName: "أحمد محمد",
     phone: "01234567890",
     email: "ahmed@example.com",
-    package: "باقة 10 أي��م",
+    package: "باقة 10 أيام",
     roomType: "ثنائي",
     travelers: 2,
     totalPrice: 70000,
@@ -176,7 +176,7 @@ export default function Admin() {
       trend: "+12%",
     },
     {
-      title: "المبيعات الشهرية",
+      title: "المبيعات الشهري��",
       value: "2.4M",
       icon: DollarSign,
       color: "text-green-600",
@@ -358,7 +358,7 @@ export default function Admin() {
                   <Input id="mecca" placeholder="مثال: 5 ليالي - فندق 5 نجوم" />
                 </div>
                 <div>
-                  <Label htmlFor="medina">الإقامة ��المدينة</Label>
+                  <Label htmlFor="medina">الإقامة بالمدينة</Label>
                   <Input
                     id="medina"
                     placeholder="مثال: 4 ليالي - فندق 5 نجوم"
@@ -632,7 +632,7 @@ export default function Admin() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <Label htmlFor="company-name">اسم الشركة</Label>
+              <Label htmlFor="company-name">اسم الشرك��</Label>
               <Input id="company-name" defaultValue="تيراتراف" />
             </div>
             <div>
@@ -665,7 +665,7 @@ export default function Admin() {
                   <SelectValue placeholder="اختر العملة" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="egp">جنيه مصري (ج)</SelectItem>
+                  <SelectItem value="egp">جنيه م��ري (ج)</SelectItem>
                   <SelectItem value="sar">ريال سعودي (ر.س)</SelectItem>
                   <SelectItem value="usd">دولار أمريكي ($)</SelectItem>
                 </SelectContent>
