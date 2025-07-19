@@ -31,6 +31,15 @@ export default function Umrah() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+  const [contactLoading, setContactLoading] = useState(false);
+  const [contactSuccess, setContactSuccess] = useState(false);
+  const [contactError, setContactError] = useState("");
 
   // Fetch packages from API
   useEffect(() => {
@@ -76,7 +85,7 @@ export default function Umrah() {
 
   const includedItems = [
     { icon: Shield, text: "رسوم التأشيرة" },
-    { icon: Plane, text: "ت��اكر الطيران" },
+    { icon: Plane, text: "ت���اكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
     { icon: Users, text: "التنقلات الداخلية بأحدث ا��باصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
