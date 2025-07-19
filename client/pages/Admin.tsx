@@ -107,7 +107,7 @@ function AdminContent() {
   // Settings helper functions
   const handleCompanySettingsUpdate = async () => {
     // Here you would normally send to API
-    alert("تم حفظ إعدادات الشركة بنجاح!");
+    alert("تم حفظ إعدا��ات الشركة بنجاح!");
   };
 
   const handleSystemSettingsUpdate = async () => {
@@ -139,6 +139,90 @@ function AdminContent() {
         user.id === id ? { ...user, active: !user.active } : user,
       ),
     );
+  };
+
+  // Package management functions
+  const resetPackageForm = () => {
+    setPackageForm({
+      name: "",
+      duration: "",
+      mecca_stay: "",
+      medina_stay: "",
+      itinerary: "",
+      price_double: 0,
+      price_triple: 0,
+      price_quad: 0,
+      price_child: null,
+      price_infant: null,
+      status: "active",
+      popular: false,
+    });
+  };
+
+  const handleEditPackage = (pkg: any) => {
+    setEditingPackage(pkg);
+    setPackageForm({
+      name: pkg.name,
+      duration: pkg.duration,
+      mecca_stay: pkg.mecca_stay,
+      medina_stay: pkg.medina_stay,
+      itinerary: pkg.itinerary,
+      price_double: pkg.price_double,
+      price_triple: pkg.price_triple,
+      price_quad: pkg.price_quad,
+      price_child: pkg.price_child,
+      price_infant: pkg.price_infant,
+      status: pkg.status,
+      popular: pkg.popular || false,
+    });
+    setShowPackageModal(true);
+  };
+
+  const handleDeletePackage = async (packageId: number) => {
+    if (confirm("هل أنت متأكد من حذف هذه الباقة؟")) {
+      try {
+        // Here you would normally send DELETE request to API
+        setPackages(packages.filter((pkg: any) => pkg.id !== packageId));
+        alert("تم حذف الباقة بنجاح!");
+      } catch (error) {
+        alert("حدث خطأ في حذف الباقة");
+      }
+    }
+  };
+
+  const handleSavePackage = async () => {
+    if (!packageForm.name || !packageForm.duration) {
+      alert("يرجى ملء جميع البيانات المطلوبة");
+      return;
+    }
+
+    try {
+      if (editingPackage) {
+        // Update existing package
+        setPackages(
+          packages.map((pkg: any) =>
+            pkg.id === editingPackage.id
+              ? { ...editingPackage, ...packageForm }
+              : pkg,
+          ),
+        );
+        alert("تم تحديث الباقة بنجاح!");
+      } else {
+        // Add new package
+        const newPackage = {
+          id: Date.now(),
+          ...packageForm,
+        };
+        setPackages([...packages, newPackage]);
+        alert("تم إضافة الباقة بنجاح!");
+      }
+
+      setShowPackageModal(false);
+      setEditingPackage(null);
+      resetPackageForm();
+    } catch (error) {
+      alert("حدث خطأ في حفظ الباقة");
+    }
   };
 
   // Fetch data from API
@@ -1075,7 +1159,7 @@ function AdminContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-4">
                 <h4 className="text-lg font-semibold text-white">
-                  الصيانة والأمان
+                  الصيانة ��الأمان
                 </h4>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
