@@ -15,6 +15,8 @@ import {
   getActivePackages,
   getPackageById,
   createPackage,
+  updatePackage,
+  deletePackage,
 } from "./routes/packages-simple";
 import { getStats } from "./routes/stats-simple";
 import {
@@ -75,6 +77,8 @@ export function createServer() {
   // Protected admin routes
   app.get("/api/packages", authenticateToken, getAllPackages);
   app.post("/api/packages", authenticateToken, createPackage);
+  app.put("/api/packages/:id", authenticateToken, updatePackage);
+  app.delete("/api/packages/:id", authenticateToken, deletePackage);
   app.get("/api/stats", authenticateToken, getStats);
 
   // Booking management routes (admin only)
