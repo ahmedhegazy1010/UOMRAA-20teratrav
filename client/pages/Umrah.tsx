@@ -54,7 +54,7 @@ const packages = [
   {
     id: 3,
     duration: "14 يوم",
-    meccaStay: "7 ليالي - فندق فاخر",
+    meccaStay: "7 ليالي - فندق فاخ��",
     medinaStay: "6 ليالي - فندق فاخر",
     itinerary: "مكة - المدينة - مكة",
     priceDouble: "45,000",
@@ -343,7 +343,7 @@ export default function Umrah() {
                     }
                     className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg transform hover:scale-105 transition-all duration-200"
                   >
-                    اح��ز الآن
+                    احجز الآن
                   </Button>
                 </CardContent>
               </Card>
@@ -488,7 +488,7 @@ export default function Umrah() {
                   <Instagram size={20} />
                 </a>
                 <button
-                  onClick={openWhatsApp}
+                  onClick={() => openWhatsApp()}
                   className="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
                 >
                   <MessageCircle size={20} />
