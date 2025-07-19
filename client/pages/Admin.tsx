@@ -65,7 +65,7 @@ const packagesData = [
     name: "باقة 8 أيام",
     duration: "8 أيام",
     meccaStay: "4 ليالي - فندق 4 نجوم",
-    medinaStay: "3 ليال�� - فندق 4 نجوم",
+    medinaStay: "3 ليالي - فندق 4 نجوم",
     priceDouble: 25000,
     priceTriple: 23000,
     priceQuad: 21000,
@@ -231,7 +231,7 @@ export default function Admin() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-gray-900 mb-2">لوحة التحكم</h2>
-        <p className="text-gray-600">نظرة عامة على أداء الموقع والحجوزات</p>
+        <p className="text-gray-600">نظ��ة عامة على أداء الموقع والحجوزات</p>
       </div>
 
       {/* Stats Cards */}
@@ -407,7 +407,7 @@ export default function Admin() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="text-right">اسم البا��ة</TableHead>
+                <TableHead className="text-right">اسم الباقة</TableHead>
                 <TableHead className="text-right">المدة</TableHead>
                 <TableHead className="text-right">الإقامة</TableHead>
                 <TableHead className="text-right">الأسعار</TableHead>
@@ -423,7 +423,7 @@ export default function Admin() {
                   <TableCell>{pkg.duration}</TableCell>
                   <TableCell>
                     <div className="text-sm">
-                      <div>مكة: {pkg.meccaStay}</div>
+                      <div>مك��: {pkg.meccaStay}</div>
                       <div>المدينة: {pkg.medinaStay}</div>
                     </div>
                   </TableCell>
@@ -795,10 +795,10 @@ export default function Admin() {
                     setActiveSection(item.id);
                     setSidebarOpen(false);
                   }}
-                  className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-md transition-all duration-300 ${
                     activeSection === item.id
-                      ? "bg-amber-100 text-amber-900"
-                      : "text-gray-700 hover:text-amber-900 hover:bg-amber-50"
+                      ? "bg-red-600/20 text-red-400 shadow-lg shadow-red-500/20"
+                      : "text-gray-300 hover:text-red-400 hover:bg-red-600/10"
                   }`}
                 >
                   <item.icon className="w-5 h-5 ml-3" />
