@@ -91,7 +91,7 @@ export default function Umrah() {
 
   const openWhatsApp = (packageInfo?: string) => {
     const phoneNumber = "201201666688"; // Main WhatsApp number
-    const baseMessage = "السلام عليكم، أريد الاس��فسار عن باقات العمرة";
+    const baseMessage = "السلام عليكم، أريد الاستفسار عن باقات العمرة";
     const message = packageInfo
       ? `${baseMessage}\n\nباقة ${packageInfo}`
       : baseMessage;
@@ -342,7 +342,7 @@ export default function Umrah() {
                       <Home className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" />
                       <div>
                         <p className="font-semibold text-gray-900">
-                          الإقامة بالمد��نة
+                          الإقامة بالمدينة
                         </p>
                         <p className="text-gray-600 text-sm">
                           {pkg.medinaStay}
@@ -402,13 +402,22 @@ export default function Umrah() {
       </section>
 
       {/* What's Included Section */}
-      <section className="py-20 bg-gradient-to-b from-amber-50 to-white">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      <section className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 right-20 w-32 h-32 border border-red-500 rounded-full animate-pulse"></div>
+          <div
+            className="absolute bottom-10 left-10 w-24 h-24 border-2 border-red-400 rounded-full animate-spin"
+            style={{ animationDuration: "10s" }}
+          ></div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-16 animate-fadeInUp">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 text-gradient-animate">
               الأسعار تشمل
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <div className="w-20 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6"></div>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               خدمات شاملة ومتكاملة لضمان رحلة مريحة ومباركة
             </p>
           </div>
