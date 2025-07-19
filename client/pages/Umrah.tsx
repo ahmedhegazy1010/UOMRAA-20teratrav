@@ -53,10 +53,22 @@ export default function Umrah() {
   useEffect(() => {
     fetchPackages();
 
+    // Event listener for package updates from admin dashboard
+    const handlePackageUpdate = (event) => {
+      console.log("Package update event received:", event.detail);
+      // Refresh packages immediately when admin makes changes
+      fetchPackages();
+    };
+
+    window.addEventListener("packagesUpdated", handlePackageUpdate);
+
     // إعادة تحميل الباقات كل 30 ثانية لضمان الحصول على أحدث البيانات
     const interval = setInterval(fetchPackages, 30000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener("packagesUpdated", handlePackageUpdate);
+    };
   }, []);
 
   const fetchPackages = async () => {
@@ -126,7 +138,7 @@ export default function Umrah() {
 
   const openWhatsApp = (packageInfo?: string) => {
     const phoneNumber = "201201666688";
-    const baseMessage = "السلام عليكم، أريد الاستفسار عن باقات العمرة";
+    const baseMessage = "السلام علي��م، أريد الاستفسار عن باقات العمرة";
     const message = packageInfo
       ? `${baseMessage}\n\nباقة ${packageInfo}`
       : baseMessage;
@@ -967,7 +979,7 @@ export default function Umrah() {
                   onClick={() => navigate("/terms")}
                   className="text-gray-400 hover:text-red-400 text-sm transition-colors"
                 >
-                  الشروط والأحكام
+                  ا��شروط والأحكام
                 </button>
                 <button
                   onClick={() => navigate("/privacy")}
