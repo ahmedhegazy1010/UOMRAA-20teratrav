@@ -134,7 +134,7 @@ export default function Umrah() {
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
     { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
-    { icon: MapPin, text: "زيارات دينية" },
+    { icon: MapPin, text: "مزارات دينية" },
     { icon: Gift, text: "هدايا وشنطة عمرة" },
   ];
 
