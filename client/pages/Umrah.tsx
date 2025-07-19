@@ -105,7 +105,7 @@ export default function Umrah() {
 
   const fetchPackages = async () => {
     try {
-      const response = await fetch("/api/packages/active");
+      const response = await fetch("/.netlify/functions/packages");
       const data = await response.json();
       if (data.success) {
         setPackages(data.data);
@@ -166,7 +166,7 @@ export default function Umrah() {
         setContactForm({ name: "", phone: "", email: "", message: "" });
 
         // Send to WhatsApp as well
-        const whatsappMessage = `استفسار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nالإيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
+        const whatsappMessage = `استفسار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nا��إيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
         window.open(
           `https://wa.me/201201666688?text=${encodeURIComponent(whatsappMessage)}`,
           "_blank",
