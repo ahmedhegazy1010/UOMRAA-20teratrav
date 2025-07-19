@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
-import IslamicBackground from "@/components/IslamicBackground";
+import EnhancedIslamicBackground from "@/components/EnhancedIslamicBackground";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -138,7 +138,7 @@ function AdminContent() {
   const renderPackages = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-white mb-2">إدارة الباق��ت</h2>
+        <h2 className="text-3xl font-bold text-white mb-2">إدارة الباقات</h2>
         <p className="text-gray-300">إدارة باقات العمرة المتاحة</p>
       </div>
 
