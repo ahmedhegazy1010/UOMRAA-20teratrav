@@ -109,28 +109,19 @@ async function insertRealData() {
     await sql`DELETE FROM users WHERE username IN ('admin', 'hegazy')`;
     await sql`DELETE FROM packages WHERE name LIKE 'باقة%' OR name LIKE '%أيام'`;
 
-    // إنشاء المستخدمين الحقيقيين
-    const existingAdmin =
-      await sql`SELECT id FROM users WHERE username = 'teratrav_admin'`;
-    if (existingAdmin.length === 0) {
-      const hashedPassword = await bcrypt.hash("TeraTrav@2024#Admin", 10);
-      await sql`
-        INSERT INTO users (username, password_hash, email, role)
-        VALUES ('teratrav_admin', ${hashedPassword}, 'admin@teratrav.sa', 'admin')
-      `;
-      console.log("✅ TeraTrav Admin user created");
-    }
+    // حذف المستخدمين القدامى وإعادة إنشائهم
+    await sql`DELETE FROM users WHERE username IN ('teratrav_admin', 'ahmed_hegazy')`;
 
-    const existingManager =
-      await sql`SELECT id FROM users WHERE username = 'ahmed_hegazy'`;
-    if (existingManager.length === 0) {
-      const managerPassword = await bcrypt.hash("Ahmed@TeraTrav2024", 10);
-      await sql`
-        INSERT INTO users (username, password_hash, email, role)
-        VALUES ('ahmed_hegazy', ${managerPassword}, 'ahmed@teratrav.sa', 'admin')
-      `;
-      console.log("✅ Ahmed Hegazy user created");
-    }
+    // إنشاء المستخدمين بكلمات مرور واضحة (غير مشفرة)
+    await sql`
+      INSERT INTO users (username, password_hash, email, role)
+      VALUES
+        ('teratrav_admin', 'TeraTrav@2024#Admin', 'admin@teratrav.sa', 'admin'),
+        ('ahmed_hegazy', 'Ahmed@TeraTrav2024', 'ahmed@teratrav.sa', 'admin')
+    `;
+    console.log("✅ Users created with clear passwords:");
+    console.log("✅ Admin: teratrav_admin / TeraTrav@2024#Admin");
+    console.log("✅ Ahmed: ahmed_hegazy / Ahmed@TeraTrav2024");
 
     // التحقق من وجود باقات العمرة الحقيقية
     const packageCount =
