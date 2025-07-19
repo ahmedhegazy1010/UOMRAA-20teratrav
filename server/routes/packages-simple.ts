@@ -142,3 +142,134 @@ export const createPackage: RequestHandler = async (req, res) => {
     });
   }
 };
+
+export const updatePackage: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("Updating package with ID:", id, "Data:", req.body);
+
+    const {
+      name,
+      duration,
+      mecca_stay,
+      medina_stay,
+      itinerary,
+      price_double,
+      price_triple,
+      price_quad,
+      price_infant,
+      price_child,
+      status = "active",
+      popular = false,
+      description,
+    } = req.body;
+
+    // Validation
+    if (
+      !name?.trim() ||
+      !duration?.trim() ||
+      !price_double ||
+      !price_triple ||
+      !price_quad
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "الاسم والمدة والأسعار مطلوبة",
+      });
+    }
+
+    const db = getDB();
+
+    // Check if package exists
+    const existingPackage = db
+      .prepare("SELECT * FROM packages WHERE id = ?")
+      .get(id);
+    if (!existingPackage) {
+      return res.status(404).json({
+        success: false,
+        message: "الباقة غير موجودة",
+      });
+    }
+
+    const result = db
+      .prepare(
+        `
+        UPDATE packages SET
+          name = ?, duration = ?, mecca_stay = ?, medina_stay = ?, itinerary = ?,
+          price_double = ?, price_triple = ?, price_quad = ?, price_infant = ?,
+          price_child = ?, status = ?, popular = ?, description = ?, updated_at = datetime('now')
+        WHERE id = ?
+      `,
+      )
+      .run(
+        name,
+        duration,
+        mecca_stay,
+        medina_stay,
+        itinerary,
+        parseInt(price_double) || 0,
+        parseInt(price_triple) || 0,
+        parseInt(price_quad) || 0,
+        price_infant && price_infant.trim() ? parseInt(price_infant) : null,
+        price_child && price_child.trim() ? parseInt(price_child) : null,
+        status,
+        popular ? 1 : 0,
+        description || null,
+        id,
+      );
+
+    // Get updated package
+    const updatedPackage = db
+      .prepare("SELECT * FROM packages WHERE id = ?")
+      .get(id);
+
+    res.json({
+      success: true,
+      data: updatedPackage,
+      message: "تم تحديث الباقة بنجاح",
+    });
+  } catch (error) {
+    console.error("Error updating package:", error);
+    console.error("Request body was:", req.body);
+    res.status(500).json({
+      success: false,
+      message: "خطأ في تحديث الباقة",
+      error: process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
+  }
+};
+
+export const deletePackage: RequestHandler = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("Deleting package with ID:", id);
+
+    const db = getDB();
+
+    // Check if package exists
+    const existingPackage = db
+      .prepare("SELECT * FROM packages WHERE id = ?")
+      .get(id);
+    if (!existingPackage) {
+      return res.status(404).json({
+        success: false,
+        message: "الباقة غير موجودة",
+      });
+    }
+
+    const result = db.prepare("DELETE FROM packages WHERE id = ?").run(id);
+
+    res.json({
+      success: true,
+      data: existingPackage,
+      message: "تم حذف الباقة بنجاح",
+    });
+  } catch (error) {
+    console.error("Error deleting package:", error);
+    res.status(500).json({
+      success: false,
+      message: "خطأ في حذف الباقة",
+      error: process.env.NODE_ENV === "development" ? error.message : undefined,
+    });
+  }
+};
