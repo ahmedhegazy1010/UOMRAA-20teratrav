@@ -31,6 +31,7 @@ function AdminContent() {
   const [stats, setStats] = useState(null);
   const [packages, setPackages] = useState([]);
   const [bookings, setBookings] = useState([]);
+  const [inquiries, setInquiries] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const handleLogout = () => {
