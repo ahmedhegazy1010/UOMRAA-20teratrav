@@ -316,7 +316,7 @@ async function insertDefaultData() {
           "سارة أحمد",
           "01111222333",
           "sara@example.com",
-          "أريد الاستفسار عن باقة العمرة لشهر رمضان المبارك، وما هي الخدمات المتاحة؟",
+          "أريد الاستفسار عن باقة العمرة لشهر رمضان ا��مبارك، وما هي الخدمات المتاحة؟",
           "new",
         ],
         [
@@ -342,12 +342,14 @@ async function insertDefaultData() {
 // Database query helpers
 export const queries = {
   // Users
-  getUserByUsername: db.prepare(
-    "SELECT * FROM users WHERE username = ? AND is_active = 1",
-  ),
-  updateUserLastLogin: db.prepare(
-    "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?",
-  ),
+  getUserByUsername: () =>
+    getDatabase().prepare(
+      "SELECT * FROM users WHERE username = ? AND is_active = 1",
+    ),
+  updateUserLastLogin: () =>
+    getDatabase().prepare(
+      "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?",
+    ),
 
   // Packages
   getAllPackages: db.prepare(
