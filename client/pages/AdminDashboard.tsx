@@ -232,7 +232,7 @@ export default function AdminDashboard() {
 
   const handleSavePackage = async () => {
     if (!packageForm.name?.trim() || !packageForm.duration?.trim()) {
-      alert("يرجى ملء اسم الباقة والمدة على الأقل");
+      alert("يرجى اختيار اسم الباقة وملء المدة");
       return;
     }
 
@@ -817,7 +817,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="space-y-2 md:col-span-2">
                         <label className="text-sm font-medium text-gray-300">
-                          خط السير
+                          خط ا��سير
                         </label>
                         <input
                           type="text"
