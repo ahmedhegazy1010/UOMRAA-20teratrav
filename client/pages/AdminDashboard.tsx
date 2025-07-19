@@ -149,7 +149,7 @@ export default function AdminDashboard() {
         setLoginError(data.message || "فشل في تسجيل الدخول");
       }
     } catch (err) {
-      setLoginError("خ��أ في الاتصال بالخادم");
+      setLoginError("خطأ في الاتصال بالخادم");
     } finally {
       setLoginLoading(false);
     }
@@ -1225,7 +1225,7 @@ export default function AdminDashboard() {
                     />
                     <input
                       type="password"
-                      placeholder="كلمة المرور"
+                      placeholder="كلمة ال��رور"
                       className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
                     />
                     <Button
