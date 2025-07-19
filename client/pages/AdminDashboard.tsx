@@ -666,7 +666,7 @@ export default function AdminDashboard() {
                           variant="destructive"
                           onClick={() => {
                             if (confirm("هل أنت متأكد من حذف هذه الباقة؟")) {
-                              alert("سيتم إضافة ميزة الحذف قريباً!");
+                              alert("سيتم إضافة مي��ة الحذف قريباً!");
                             }
                           }}
                           className="text-red-400 hover:bg-red-600"
@@ -679,6 +679,246 @@ export default function AdminDashboard() {
                 </Card>
               ))}
             </div>
+
+            {/* Package Modal */}
+            {showPackageModal && (
+              <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+                <Card className="w-full max-w-4xl bg-gray-900/95 border-red-500/30 max-h-[90vh] overflow-y-auto">
+                  <CardHeader>
+                    <CardTitle className="text-white">
+                      إضافة باقة جديدة
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          اسم الباقة *
+                        </label>
+                        <input
+                          type="text"
+                          value={packageForm.name}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              name: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="مثال: عمرة رمضان"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          المدة *
+                        </label>
+                        <input
+                          type="text"
+                          value={packageForm.duration}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              duration: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="مثال: 7 أيام / 6 ليالي"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          الإقامة بمكة
+                        </label>
+                        <input
+                          type="text"
+                          value={packageForm.mecca_stay}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              mecca_stay: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="4 ليالي - فندق 4 نجوم"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          الإقامة بالمدينة
+                        </label>
+                        <input
+                          type="text"
+                          value={packageForm.medina_stay}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              medina_stay: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="2 ليالي - فندق 4 نجوم"
+                        />
+                      </div>
+                      <div className="space-y-2 md:col-span-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          خط السير
+                        </label>
+                        <input
+                          type="text"
+                          value={packageForm.itinerary}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              itinerary: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="القاهرة - جدة - مكة - المدينة"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          سعر الغرفة الثنائية *
+                        </label>
+                        <input
+                          type="number"
+                          value={packageForm.price_double}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              price_double: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="50000"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          سعر الغرفة الثلاثية *
+                        </label>
+                        <input
+                          type="number"
+                          value={packageForm.price_triple}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              price_triple: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="45000"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          سعر الغرفة الرباعية *
+                        </label>
+                        <input
+                          type="number"
+                          value={packageForm.price_quad}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              price_quad: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="40000"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          سعر الطفل (اختياري)
+                        </label>
+                        <input
+                          type="number"
+                          value={packageForm.price_child}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              price_child: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="30000"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          سعر الرضيع (اختياري)
+                        </label>
+                        <input
+                          type="number"
+                          value={packageForm.price_infant}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              price_infant: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                          placeholder="15000"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-gray-300">
+                          الحالة
+                        </label>
+                        <select
+                          value={packageForm.status}
+                          onChange={(e) =>
+                            setPackageForm({
+                              ...packageForm,
+                              status: e.target.value,
+                            })
+                          }
+                          className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
+                        >
+                          <option value="active">نشط</option>
+                          <option value="inactive">غير نشط</option>
+                        </select>
+                      </div>
+                      <div className="space-y-2 flex items-center">
+                        <label className="flex items-center space-x-2 rtl:space-x-reverse text-gray-300">
+                          <input
+                            type="checkbox"
+                            checked={packageForm.popular}
+                            onChange={(e) =>
+                              setPackageForm({
+                                ...packageForm,
+                                popular: e.target.checked,
+                              })
+                            }
+                            className="w-4 h-4 text-red-600 bg-gray-100 border-gray-300 rounded focus:ring-red-500"
+                          />
+                          <span>الأكثر طلباً</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div className="flex justify-end gap-4 pt-4">
+                      <Button
+                        variant="outline"
+                        onClick={() => {
+                          setShowPackageModal(false);
+                          resetPackageForm();
+                        }}
+                        className="border-gray-600 text-gray-300"
+                      >
+                        إلغاء
+                      </Button>
+                      <Button
+                        onClick={handleSavePackage}
+                        disabled={packageLoading}
+                        className="bg-green-600 hover:bg-green-700 text-white"
+                      >
+                        {packageLoading ? "جاري الحفظ..." : "إضافة"}
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
           </div>
         );
       case "bookings":
@@ -686,7 +926,7 @@ export default function AdminDashboard() {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl font-bold text-white mb-2">
-                إدارة الحجوزات
+                إدارة ال��جوزات
               </h2>
               <p className="text-gray-300">عرض وإدارة طلبات الحجز</p>
             </div>
@@ -743,7 +983,7 @@ export default function AdminDashboard() {
               {inquiries.length === 0 ? (
                 <Card className="bg-gray-900/80 border-red-500/30 p-8 text-center">
                   <p className="text-gray-300 text-lg">
-                    لا توجد استفسارات حتى الآن
+                    ل�� توجد استفسارات حتى الآن
                   </p>
                 </Card>
               ) : (
