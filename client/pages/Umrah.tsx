@@ -182,12 +182,12 @@ export default function Umrah() {
               </Button>
               {/* Mobile menu toggle */}
               <button
-                className="md:hidden p-2"
+                className="md:hidden p-2 transform hover:scale-110 transition-all duration-300"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
               >
-                <div className="w-6 h-0.5 bg-gray-600 mb-1"></div>
-                <div className="w-6 h-0.5 bg-gray-600 mb-1"></div>
-                <div className="w-6 h-0.5 bg-gray-600"></div>
+                <div className="w-6 h-0.5 bg-red-400 mb-1 transition-all duration-300"></div>
+                <div className="w-6 h-0.5 bg-red-400 mb-1 transition-all duration-300"></div>
+                <div className="w-6 h-0.5 bg-red-400 transition-all duration-300"></div>
               </button>
             </div>
           </div>
