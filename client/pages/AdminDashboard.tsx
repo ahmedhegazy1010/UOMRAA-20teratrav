@@ -564,7 +564,7 @@ export default function AdminDashboard() {
                   </p>
                   <div className="flex items-center mt-2">
                     <TrendingUp className="w-4 h-4 text-yellow-500 ml-1" />
-                    <span className="text-sm text-yellow-400">است��سار</span>
+                    <span className="text-sm text-yellow-400">استفسار</span>
                   </div>
                 </div>
                 <div className="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center">
@@ -733,6 +733,7 @@ export default function AdminDashboard() {
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
                           placeholder="مثال: عمرة رمضان"
+                          required
                         />
                       </div>
                       <div className="space-y-2">
@@ -750,6 +751,7 @@ export default function AdminDashboard() {
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
                           placeholder="مثال: 7 أيام / 6 ليالي"
+                          required
                         />
                       </div>
                       <div className="space-y-2">
@@ -1189,7 +1191,7 @@ export default function AdminDashboard() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input
                       type="text"
-                      placeholder="اسم المستخدم"
+                      placeholder="ا��م المستخدم"
                       className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
                     />
                     <input
@@ -1216,7 +1218,7 @@ export default function AdminDashboard() {
                   إعد��دات النظام العامة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
-                  إعداد��ت عامة للموقع والنظام
+                  إعداد���� عامة للموقع والنظام
                 </CardDescription>
               </CardHeader>
               <CardContent>
