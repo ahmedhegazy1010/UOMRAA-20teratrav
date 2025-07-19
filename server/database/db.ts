@@ -105,6 +105,30 @@ function initTables() {
   insertDefaults();
 }
 
+function runMigrations() {
+  if (!db) return;
+
+  try {
+    // Check if price_infant and price_child columns exist
+    const tableInfo = db.prepare("PRAGMA table_info(packages)").all() as any[];
+    const columnNames = tableInfo.map((col: any) => col.name);
+
+    if (!columnNames.includes("price_infant")) {
+      console.log("Adding price_infant column to packages table...");
+      db.exec("ALTER TABLE packages ADD COLUMN price_infant INTEGER");
+    }
+
+    if (!columnNames.includes("price_child")) {
+      console.log("Adding price_child column to packages table...");
+      db.exec("ALTER TABLE packages ADD COLUMN price_child INTEGER");
+    }
+
+    console.log("✅ Database migrations completed");
+  } catch (error) {
+    console.error("Error running migrations:", error);
+  }
+}
+
 async function insertDefaults() {
   if (!db) return;
 
