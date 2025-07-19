@@ -158,15 +158,17 @@ export default function Umrah() {
             <nav className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
               <button
                 onClick={() => scrollToSection("packages")}
-                className="text-gray-700 hover:text-amber-600 transition-colors"
+                className="text-gray-300 hover:text-red-400 transition-all duration-300 font-medium relative group"
               >
                 رحلات العمرة
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="text-gray-700 hover:text-amber-600 transition-colors"
+                className="text-gray-300 hover:text-red-400 transition-all duration-300 font-medium relative group"
               >
                 تواصل معنا
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-500 transition-all duration-300 group-hover:w-full"></span>
               </button>
             </nav>
 
@@ -174,7 +176,7 @@ export default function Umrah() {
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
               <Button
                 onClick={() => scrollToSection("contact")}
-                className="bg-red-600 hover:bg-red-700 text-white px-6 py-2"
+                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2 shadow-lg shadow-red-500/30 transform hover:scale-105 transition-all duration-300 animate-pulse"
               >
                 احجز الآن
               </Button>
