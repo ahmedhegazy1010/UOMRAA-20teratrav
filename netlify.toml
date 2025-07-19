@@ -6,6 +6,21 @@
   NODE_VERSION = "18"
 
 [[redirects]]
+  from = "/api/packages/active"
+  to = "/.netlify/functions/packages"
+  status = 200
+
+[[redirects]]
+  from = "/api/packages*"
+  to = "/.netlify/functions/packages-admin"
+  status = 200
+
+[[redirects]]
+  from = "/api/auth/*"
+  to = "/.netlify/functions/auth"
+  status = 200
+
+[[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
