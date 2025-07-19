@@ -367,7 +367,7 @@ export default function Umrah() {
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center mb-16 animate-fadeInUp">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 text-gradient-animate">
-              ��اقات العمرة المميزة
+              باقات العمرة المميزة
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
