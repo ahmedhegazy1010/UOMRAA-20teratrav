@@ -87,7 +87,7 @@ function AdminContent() {
   };
 
   const sidebarItems = [
-    { id: "dashboard", label: "لوحة التحكم", icon: BarChart3 },
+    { id: "dashboard", label: "ل��حة التحكم", icon: BarChart3 },
     { id: "packages", label: "الباقات", icon: Package },
     { id: "bookings", label: "الحجوزات", icon: Users },
     { id: "inquiries", label: "الاستفسارات", icon: MessageSquare },
@@ -396,12 +396,7 @@ function AdminContent() {
       case "inquiries":
         return renderInquiries();
       case "settings":
-        return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-white mb-4">الإعدادات</h2>
-            <p className="text-gray-300">قريباً...</p>
-          </div>
-        );
+        return renderSettings();
       default:
         return renderDashboard();
     }
