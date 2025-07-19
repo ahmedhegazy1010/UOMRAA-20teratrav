@@ -103,7 +103,7 @@ const packagesData = [
 const bookingsData = [
   {
     id: 1,
-    customerName: "أحمد محمد",
+    customerName: "��حمد محمد",
     phone: "01234567890",
     email: "ahmed@example.com",
     package: "باقة 10 أيام",
@@ -155,18 +155,24 @@ const inquiriesData = [
     id: 2,
     customerName: "عبدالله محمد",
     phone: "01444555666",
-    message: "هل يمكن تخصيص باقة خاصة لمجموعة من 20 شخص؟",
+    message: "��ل يمكن تخصيص باقة خاصة لمجموعة من 20 شخص؟",
     date: "2024-01-21",
     status: "replied",
   },
 ];
 
-export default function Admin() {
+function AdminContent() {
+  const { user, logout } = useAuth();
   const [activeSection, setActiveSection] = useState("dashboard");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [isAddingPackage, setIsAddingPackage] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    window.location.reload();
+  };
 
   const stats = [
     {
