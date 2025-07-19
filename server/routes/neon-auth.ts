@@ -1,7 +1,7 @@
 import express, { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { sql } from "../database/neon-db";
+import { sql } from "../database/real-neon-db";
 
 // JWT Secret (في الإنتاج، استخدم متغير بيئة)
 const JWT_SECRET = process.env.JWT_SECRET || "teratrav_admin_secret_2024";
@@ -256,7 +256,7 @@ export const authenticateToken: RequestHandler = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({
         success: false,
-        message: "م��لوب تسجيل الدخول",
+        message: "مطلوب تسجيل الدخول",
       });
     }
 
