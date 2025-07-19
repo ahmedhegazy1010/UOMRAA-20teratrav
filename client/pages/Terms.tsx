@@ -26,7 +26,7 @@ export default function Terms() {
         "العميل مسؤول عن صحة وسلامة المستندات المقدمة",
         "الشركة غير مسؤولة عن تأخير أو إلغاء الرحلات بسبب ظروف خارجة عن إرادتها",
         "العميل مسؤول عن الالتزام بقوانين وأنظمة المملكة العربية السعودية",
-        "الشركة محق في إنهاء الخدمة في حالة مخالفة العميل للأنظمة",
+        "الشركة محق في إنهاء الخدمة في حالة مخالفة ا��عميل للأنظمة",
       ],
     },
     {
@@ -71,7 +71,7 @@ export default function Terms() {
           <div className="flex items-center space-x-2 rtl:space-x-reverse">
             <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/10 backdrop-blur-sm">
               <img
-                src="https://cdn.builder.io/o/assets%2F6e6933d312b74b23a89dafd2e32a307b%2F331dc497cf8948eeab1b0314f9019b47?alt=media&token=d7e14e32-f441-4824-978d-9df3e06b6cc7&apiKey=6e6933d312b74b23a89dafd2e32a307b"
+                src="https://cdn.builder.io/api/v1/image/assets%2F6e6933d312b74b23a89dafd2e32a307b%2Fd916b8a876584dc48a2246340e732356?format=webp&width=800"
                 alt="تيراتراف"
                 className="w-full h-full object-contain"
               />
@@ -158,7 +158,7 @@ export default function Terms() {
                     هل لديك أسئلة حول الشروط والأحكام؟
                   </h3>
                   <p className="text-green-200 mb-6">
-                    فريق خدمة العملاء لدينا جاهز للإجاب�� على جميع استفساراتك
+                    فريق خدمة العملاء لدينا جاهز للإجابة على جميع استفساراتك
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button
