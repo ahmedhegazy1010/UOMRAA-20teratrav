@@ -212,6 +212,77 @@ export default function AdminDashboard() {
     if (loginError) setLoginError("");
   };
 
+  // Package management functions
+  const resetPackageForm = () => {
+    setPackageForm({
+      name: "",
+      duration: "",
+      mecca_stay: "",
+      medina_stay: "",
+      itinerary: "",
+      price_double: "",
+      price_triple: "",
+      price_quad: "",
+      price_child: "",
+      price_infant: "",
+      status: "active",
+      popular: false,
+    });
+  };
+
+  const handleSavePackage = async () => {
+    if (!packageForm.name || !packageForm.duration) {
+      alert("يرجى ملء جميع البيانات المطلوبة");
+      return;
+    }
+
+    setPackageLoading(true);
+    try {
+      const token = localStorage.getItem("admin_token");
+      const response = await fetch("/api/packages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: packageForm.name,
+          duration: packageForm.duration,
+          mecca_stay: packageForm.mecca_stay,
+          medina_stay: packageForm.medina_stay,
+          itinerary: packageForm.itinerary,
+          price_double: parseInt(packageForm.price_double) || 0,
+          price_triple: parseInt(packageForm.price_triple) || 0,
+          price_quad: parseInt(packageForm.price_quad) || 0,
+          price_child: packageForm.price_child
+            ? parseInt(packageForm.price_child)
+            : null,
+          price_infant: packageForm.price_infant
+            ? parseInt(packageForm.price_infant)
+            : null,
+          status: packageForm.status,
+          popular: packageForm.popular,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("تم إضافة الباقة بنجاح!");
+        setShowPackageModal(false);
+        resetPackageForm();
+        loadDashboardData(); // Reload packages
+      } else {
+        alert(data.message || "حدث خطأ في إضافة الباقة");
+      }
+    } catch (error) {
+      console.error("Error saving package:", error);
+      alert("حدث خطأ في إضافة الباقة");
+    } finally {
+      setPackageLoading(false);
+    }
+  };
+
   // Sidebar items
   const sidebarItems = [
     { id: "dashboard", label: "لوحة التحكم", icon: BarChart3 },
@@ -625,7 +696,7 @@ export default function AdminDashboard() {
               {bookings.length === 0 ? (
                 <Card className="bg-gray-900/80 border-red-500/30 p-8 text-center">
                   <p className="text-gray-300 text-lg">
-                    لا توجد حجوزات حتى الآن
+                    لا توجد حجوزا�� حتى الآن
                   </p>
                 </Card>
               ) : (
