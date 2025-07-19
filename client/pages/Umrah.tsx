@@ -84,8 +84,8 @@ export default function Umrah() {
 
   return (
     <div className="min-h-screen rtl overflow-x-hidden relative" dir="rtl">
-      {/* Islamic Animated Background */}
-      <IslamicBackground />
+      {/* Enhanced Islamic Animated Background */}
+      <EnhancedIslamicBackground />
 
       {/* Header */}
       <header className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-red-600/30 shadow-lg shadow-red-500/20 transition-all duration-500">
