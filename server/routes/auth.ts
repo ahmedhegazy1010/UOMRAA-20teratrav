@@ -19,20 +19,6 @@ interface AuthRequest extends express.Request {
   };
 }
 
-// Hash the actual password
-const hashPassword = async (password: string): Promise<string> => {
-  return await bcrypt.hash(password, 10);
-};
-
-// Initialize admin password hash
-const initializeAdminPassword = async () => {
-  const hashedPassword = await hashPassword("teratrav2024");
-  ADMIN_USERS[0].passwordHash = hashedPassword;
-};
-
-// Initialize on startup
-initializeAdminPassword();
-
 export const handleLogin: RequestHandler = async (req, res) => {
   try {
     const { username, password }: LoginRequest = req.body;
