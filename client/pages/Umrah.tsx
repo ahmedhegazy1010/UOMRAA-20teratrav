@@ -115,7 +115,7 @@ export default function Umrah() {
           "_blank",
         );
       } else {
-        setContactError(data.message || "حدث خطأ في إرسال الاستفسار");
+        setContactError(data.message || "حدث خطأ في إرسال ��لاستفسار");
       }
     } catch (err) {
       setContactError("خطأ في الاتصال بالخادم");
@@ -359,7 +359,7 @@ export default function Umrah() {
               style={{ animationDelay: "0.4s", maxWidth: "999px" }}
             >
               سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة لرحلة
-              روحانية لا تُنسى
+              روحا��ية لا تُنسى
             </p>
 
             {/* Action Buttons */}
@@ -540,7 +540,7 @@ export default function Umrah() {
                         <div className="flex justify-between items-center">
                           <span className="text-gray-300">ثلاثي:</span>
                           <span className="font-bold text-red-400">
-                            {pkg.price_triple?.toLocaleString()} جن��ه
+                            {pkg.price_triple?.toLocaleString()} جن���ه
                           </span>
                         </div>
                         <div className="flex justify-between items-center">
@@ -633,43 +633,198 @@ export default function Umrah() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-              {/* Phone Numbers */}
-              <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Phone className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">اتصل بنا</h3>
-                <div className="space-y-3">
-                  <a
-                    href="tel:0225750707"
-                    className="block text-xl font-semibold text-red-400 hover:text-red-300 transition-colors"
-                  >
-                    0225750707
-                  </a>
-                  <a
-                    href="tel:01201666688"
-                    className="block text-xl font-semibold text-red-400 hover:text-red-300 transition-colors"
-                  >
-                    01201666688
-                  </a>
-                </div>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Contact Form */}
+              <Card className="bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-white flex items-center">
+                    <Send className="w-6 h-6 ml-2 text-red-400" />
+                    أرسل استفسارك
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {contactSuccess && (
+                    <Alert className="mb-6 bg-green-900/20 border-green-500/50">
+                      <CheckCircle className="h-4 w-4 text-green-400" />
+                      <AlertDescription className="text-green-200">
+                        تم إرسال استفسارك بنجاح! سنتواصل معك قريباً.
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
+                  {contactError && (
+                    <Alert className="mb-6 bg-red-900/20 border-red-500/50">
+                      <AlertCircle className="h-4 w-4 text-red-400" />
+                      <AlertDescription className="text-red-200">
+                        {contactError}
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
+                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="contact-name" className="text-gray-300">
+                          الاسم الكامل *
+                        </Label>
+                        <Input
+                          id="contact-name"
+                          value={contactForm.name}
+                          onChange={(e) =>
+                            handleContactInputChange("name", e.target.value)
+                          }
+                          className="bg-gray-800/50 border-gray-600 text-white"
+                          placeholder="ادخل اسمك الكامل"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label
+                          htmlFor="contact-phone"
+                          className="text-gray-300"
+                        >
+                          رقم الهاتف *
+                        </Label>
+                        <Input
+                          id="contact-phone"
+                          type="tel"
+                          value={contactForm.phone}
+                          onChange={(e) =>
+                            handleContactInputChange("phone", e.target.value)
+                          }
+                          className="bg-gray-800/50 border-gray-600 text-white"
+                          placeholder="01xxxxxxxxx"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="contact-email" className="text-gray-300">
+                        البريد الإلكتروني
+                      </Label>
+                      <Input
+                        id="contact-email"
+                        type="email"
+                        value={contactForm.email}
+                        onChange={(e) =>
+                          handleContactInputChange("email", e.target.value)
+                        }
+                        className="bg-gray-800/50 border-gray-600 text-white"
+                        placeholder="example@email.com"
+                      />
+                    </div>
+
+                    <div>
+                      <Label
+                        htmlFor="contact-message"
+                        className="text-gray-300"
+                      >
+                        رسالتك *
+                      </Label>
+                      <textarea
+                        id="contact-message"
+                        value={contactForm.message}
+                        onChange={(e) =>
+                          handleContactInputChange("message", e.target.value)
+                        }
+                        className="w-full min-h-[120px] p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400 resize-none"
+                        placeholder="اكتب استفسارك أو رسالتك هنا..."
+                        required
+                      />
+                    </div>
+
+                    <Button
+                      type="submit"
+                      disabled={contactLoading}
+                      className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-3 text-lg font-bold"
+                    >
+                      {contactLoading ? (
+                        <div className="flex items-center justify-center">
+                          <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-2"></div>
+                          جاري الإرسال...
+                        </div>
+                      ) : (
+                        <>
+                          <Send className="w-5 h-5 ml-2" />
+                          إرسال الاستفسار
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </CardContent>
               </Card>
 
-              {/* WhatsApp */}
-              <Card className="p-8 text-center hover:shadow-xl transition-all duration-300 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <MessageCircle className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">واتساب</h3>
-                <Button
-                  onClick={() => openWhatsApp()}
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
-                >
-                  تواصل عبر الواتساب
-                </Button>
-              </Card>
+              {/* Contact Information */}
+              <div className="space-y-6">
+                {/* Phone Numbers */}
+                <Card className="p-6 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-2">
+                        اتصل بنا
+                      </h3>
+                      <div className="space-y-1">
+                        <a
+                          href="tel:0225750707"
+                          className="block text-red-400 hover:text-red-300 transition-colors"
+                        >
+                          0225750707
+                        </a>
+                        <a
+                          href="tel:01201666688"
+                          className="block text-red-400 hover:text-red-300 transition-colors"
+                        >
+                          01201666688
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* WhatsApp */}
+                <Card className="p-6 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
+                      <MessageCircle className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-white mb-2">
+                        واتساب
+                      </h3>
+                      <Button
+                        onClick={() => openWhatsApp()}
+                        className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-300"
+                      >
+                        تواصل الآن
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Working Hours */}
+                <Card className="p-6 bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20">
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                    <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-amber-600 rounded-full flex items-center justify-center">
+                      <Clock className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-white mb-2">
+                        ساعات العمل
+                      </h3>
+                      <div className="text-gray-300 text-sm space-y-1">
+                        <div>السبت - الخميس: 9:00 ص - 9:00 م</div>
+                        <div>الجم��ة: 2:00 م - 9:00 م</div>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </div>
             </div>
           </div>
         </div>
