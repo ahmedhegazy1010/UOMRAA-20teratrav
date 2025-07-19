@@ -101,20 +101,31 @@ export default function Umrah() {
   // Fetch packages from API
   useEffect(() => {
     fetchPackages();
+
+    // إعادة تحميل الباقات كل 30 ثانية لضمان الحصول على أحدث البيانات
+    const interval = setInterval(fetchPackages, 30000);
+
+    return () => clearInterval(interval);
   }, []);
 
   const fetchPackages = async () => {
     try {
+      console.log("Fetching packages from API...");
       const response = await fetch("/.netlify/functions/packages");
       const data = await response.json();
-      if (data.success) {
+      console.log("Packages API response:", data);
+
+      if (data.success && data.data && data.data.length > 0) {
+        console.log("Setting packages from API:", data.data);
         setPackages(data.data);
       } else {
+        console.log("Using default packages - API returned empty or failed");
         // استخدام باقات افتراضية في حالة فشل API
         setPackages(defaultPackages);
       }
     } catch (error) {
       console.error("Error fetching packages:", error);
+      console.log("Using default packages due to error");
       // استخدام باقات افتراضية في حالة فشل API
       setPackages(defaultPackages);
     } finally {
