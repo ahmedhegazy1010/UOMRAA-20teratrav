@@ -1,22 +1,19 @@
 // وظيفة المصادقة للوحة التحكم
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// المستخدمون المسموح لهم بالدخول
+// المستخدمون المسموح لهم بالدخول (بكلمات مرور واضحة)
 const users = [
   {
     id: 1,
     username: "teratrav_admin",
-    password_hash:
-      "$2a$10$rOc.KnR4Y4jqE5FXqKc8tO.Yy.RRTH7vdKpBL3JRl5rk0L9VKnJgC", // TeraTrav@2024#Admin
+    password: "TeraTrav@2024#Admin",
     email: "admin@teratrav.sa",
     role: "admin",
   },
   {
     id: 2,
     username: "ahmed_hegazy",
-    password_hash:
-      "$2a$10$rOc.KnR4Y4jqE5FXqKc8tO.Yy.RRTH7vdKpBL3JRl5rk0L9VKnJgC", // Ahmed@TeraTrav2024
+    password: "Ahmed@TeraTrav2024",
     email: "ahmed@teratrav.sa",
     role: "admin",
   },
@@ -55,25 +52,8 @@ exports.handler = async (event, context) => {
         };
       }
 
-      // إنشاء hash لكلمة المرور المدخلة للمقارنة
-      const passwordHashes = {
-        "TeraTrav@2024#Admin":
-          "$2a$10$rOc.KnR4Y4jqE5FXqKc8tO.Yy.RRTH7vdKpBL3JRl5rk0L9VKnJgC",
-        "Ahmed@TeraTrav2024":
-          "$2a$10$ZmIwMjBmOTAtNTc0MS00ZGIxLWEyY2QtNWZjNThjOTM2M2Fi",
-      };
-
-      let isValid = false;
-      if (username === "teratrav_admin" && password === "TeraTrav@2024#Admin") {
-        isValid = true;
-      } else if (
-        username === "ahmed_hegazy" &&
-        password === "Ahmed@TeraTrav2024"
-      ) {
-        isValid = true;
-      }
-
-      if (!isValid) {
+      // التحقق من كلمة المرور مباشرة (بدون تشفير)
+      if (user.password !== password) {
         return {
           statusCode: 401,
           headers,
