@@ -343,7 +343,7 @@ export default function Umrah() {
                     }
                     className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 rounded-lg transform hover:scale-105 transition-all duration-200"
                   >
-                    احجز الآن
+                    اح��ز الآن
                   </Button>
                 </CardContent>
               </Card>
@@ -432,7 +432,7 @@ export default function Umrah() {
                   واتساب
                 </h3>
                 <Button
-                  onClick={openWhatsApp}
+                  onClick={() => openWhatsApp()}
                   className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
                 >
                   تواصل عبر الواتساب
