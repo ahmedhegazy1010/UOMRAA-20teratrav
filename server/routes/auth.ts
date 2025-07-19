@@ -31,7 +31,11 @@ export const handleLogin: RequestHandler = async (req, res) => {
     }
 
     // Find user in database
-    const user = queries.getUserByUsername.get(username) as User;
+    const db = getDB();
+    const user = db
+      .prepare("SELECT * FROM users WHERE username = ? AND is_active = 1")
+      .get(username) as any;
+
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -49,7 +53,9 @@ export const handleLogin: RequestHandler = async (req, res) => {
     }
 
     // Update last login
-    queries.updateUserLastLogin.run(user.id);
+    db.prepare(
+      "UPDATE users SET last_login = CURRENT_TIMESTAMP WHERE id = ?",
+    ).run(user.id);
 
     // Generate JWT token
     const token = jwt.sign(
