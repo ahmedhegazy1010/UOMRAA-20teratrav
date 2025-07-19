@@ -116,11 +116,11 @@ export const createPackage: RequestHandler = async (req, res) => {
         mecca_stay,
         medina_stay,
         itinerary,
-        parseInt(price_double),
-        parseInt(price_triple),
-        parseInt(price_quad),
-        price_infant ? parseInt(price_infant) : null,
-        price_child ? parseInt(price_child) : null,
+        parseInt(price_double) || 0,
+        parseInt(price_triple) || 0,
+        parseInt(price_quad) || 0,
+        price_infant && price_infant.trim() ? parseInt(price_infant) : null,
+        price_child && price_child.trim() ? parseInt(price_child) : null,
         status,
         popular ? 1 : 0,
         description || null,
@@ -135,7 +135,7 @@ export const createPackage: RequestHandler = async (req, res) => {
     console.error("Error creating package:", error);
     res.status(500).json({
       success: false,
-      message: "خطأ في إنشاء الباقة",
+      message: "خطأ في إن��اء الباقة",
     });
   }
 };
