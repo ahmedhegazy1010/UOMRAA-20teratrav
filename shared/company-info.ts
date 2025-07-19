@@ -1,4 +1,4 @@
-// معلومات شركة تيراتراف الحقيقية
+// معلومات شر��ة تيراتراف الحقيقية
 export const COMPANY_INFO = {
   name: "شركة تيراتراف للسياحة والسفر",
   englishName: "TeraTrav Tourism & Travel",
@@ -16,7 +16,7 @@ export const COMPANY_INFO = {
   address: {
     arabic: "الرياض، المملكة العربية السعودية",
     english: "Riyadh, Saudi Arabia",
-    full: "شارع الملك فهد، حي العليا، الرياض 12345، المملكة العربية السعو��ية",
+    full: "شارع الملك فهد، حي العليا، الرياض 12345، المملكة العربية السعودية",
   },
 
   // وسائل التواصل الاجتماعي
@@ -59,7 +59,7 @@ export const COMPANY_INFO = {
   // بيانات المدير
   manager: {
     name: "أحمد حجازي",
-    title: "الم��ير التنفيذي",
+    title: "المدير التنفيذي",
     email: "ahmed@teratrav.sa",
     phone: "+966 50 123 4567",
   },
