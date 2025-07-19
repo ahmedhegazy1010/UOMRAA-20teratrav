@@ -62,6 +62,10 @@ export function createServer() {
   app.get("/api/auth/verify", handleVerify);
   app.post("/api/auth/logout", handleLogout);
 
+  // Manual user management routes (for setup/development)
+  app.post("/api/auth/create-user", createUser);
+  app.post("/api/auth/reset-password", resetPassword);
+
   // Public routes (no authentication required)
   app.get("/api/packages/active", getActivePackages);
   app.get("/api/packages/:id", getPackageById);
