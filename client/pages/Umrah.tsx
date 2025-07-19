@@ -83,43 +83,9 @@ export default function Umrah() {
   ];
 
   return (
-    <div
-      className="min-h-screen bg-gradient-to-b from-gray-900 via-black to-gray-900 rtl overflow-x-hidden"
-      dir="rtl"
-    >
-      {/* Animated Background Elements */}
-      <div className="fixed inset-0 pointer-events-none">
-        {/* Moving red particles */}
-        <div className="absolute inset-0">
-          {[...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-red-500 rounded-full opacity-70 animate-pulse"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 3}s`,
-                animationDuration: `${2 + Math.random() * 2}s`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Islamic Geometric Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div
-            className="absolute inset-0 animate-pulse"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23dc2626' fill-opacity='0.4'%3E%3Cpath d='M40 40l20-20v40l-20-20zm-20 0l20 20H0l20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              backgroundSize: "80px 80px",
-            }}
-          />
-        </div>
-
-        {/* Gradient overlays for depth */}
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 via-transparent to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-red-900/5 to-black/30" />
-      </div>
+    <div className="min-h-screen rtl overflow-x-hidden relative" dir="rtl">
+      {/* Islamic Animated Background */}
+      <IslamicBackground />
 
       {/* Header */}
       <header className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-red-600/30 shadow-lg shadow-red-500/20 transition-all duration-500">
@@ -519,7 +485,7 @@ export default function Umrah() {
                 <span className="text-xl font-bold">تيراتراف</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المميزة
+                رحلات العمرة والحج بأعلى معايير الجودة والخدمة الممي��ة
               </p>
             </div>
 
