@@ -7,7 +7,7 @@ import {
   handleLogout,
   authenticateToken,
 } from "./routes/auth";
-import { initializeDatabase } from "./database/init";
+import { initializeDatabase } from "./database/db";
 import {
   getAllPackages,
   getActivePackages,
