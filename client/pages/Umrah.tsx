@@ -77,6 +77,27 @@ const includedItems = [
 
 export default function Umrah() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [packages, setPackages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch packages from API
+  useEffect(() => {
+    fetchPackages();
+  }, []);
+
+  const fetchPackages = async () => {
+    try {
+      const response = await fetch("/api/packages/active");
+      const data = await response.json();
+      if (data.success) {
+        setPackages(data.data);
+      }
+    } catch (error) {
+      console.error("Error fetching packages:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -372,7 +393,7 @@ export default function Umrah() {
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-gray-600">ثلاث��:</span>
+                        <span className="text-gray-600">ثلاثي:</span>
                         <span className="font-bold text-amber-600">
                           {pkg.priceTriple} جنيه
                         </span>
