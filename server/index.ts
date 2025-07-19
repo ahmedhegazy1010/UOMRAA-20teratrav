@@ -58,5 +58,27 @@ export function createServer() {
   app.get("/api/auth/verify", handleVerify);
   app.post("/api/auth/logout", handleLogout);
 
+  // Public routes (no authentication required)
+  app.get("/api/packages/active", getActivePackages);
+  app.post("/api/bookings", createBooking);
+  app.post("/api/inquiries", createInquiry);
+
+  // Protected admin routes
+  app.get("/api/packages", authenticateToken, getAllPackages);
+  app.get("/api/packages/:id", authenticateToken, getPackageById);
+  app.post("/api/packages", authenticateToken, createPackage);
+  app.put("/api/packages/:id", authenticateToken, updatePackage);
+  app.delete("/api/packages/:id", authenticateToken, deletePackage);
+
+  app.get("/api/bookings", authenticateToken, getAllBookings);
+  app.get("/api/bookings/:id", authenticateToken, getBookingById);
+  app.put("/api/bookings/:id/status", authenticateToken, updateBookingStatus);
+
+  app.get("/api/inquiries", authenticateToken, getAllInquiries);
+  app.get("/api/inquiries/:id", authenticateToken, getInquiryById);
+  app.put("/api/inquiries/:id/status", authenticateToken, updateInquiryStatus);
+
+  app.get("/api/stats", authenticateToken, getStats);
+
   return app;
 }
