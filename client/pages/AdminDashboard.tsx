@@ -94,7 +94,7 @@ export default function AdminDashboard() {
       }
 
       // Verify token with server
-      const response = await fetch("/api/auth/verify", {
+      const response = await fetch("/.netlify/functions/verify", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -747,7 +747,7 @@ export default function AdminDashboard() {
                             المولد النبوي (نوفمبر)
                           </option>
                           <option value="المولد النبوي (ديسمبر)">
-                            المولد النبوي (ديسمبر)
+                            المولد النبوي (دي��مبر)
                           </option>
                           <option value="عمرة رجب">عمرة رجب</option>
                           <option value="عمرة شعبان">عمرة شعبان</option>
