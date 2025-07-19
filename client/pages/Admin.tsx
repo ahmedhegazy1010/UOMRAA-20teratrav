@@ -237,7 +237,11 @@ export default function Admin() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="hover:shadow-lg transition-shadow">
+          <Card
+            key={index}
+            className="bg-gray-900/80 border-red-500/30 hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500 transform hover:scale-105 animate-fadeInUp"
+            style={{ animationDelay: `${index * 0.1}s` }}
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
