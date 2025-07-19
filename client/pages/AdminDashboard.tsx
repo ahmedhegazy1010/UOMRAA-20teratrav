@@ -317,11 +317,26 @@ export default function AdminDashboard() {
         loadDashboardData(); // Reload packages
       } else {
         console.error("Server error:", data);
-        alert(data.message || `حدث خطأ في إضافة الباقة: ${response.status}`);
+        console.error("Response status:", response.status);
+        console.error("URL used:", packagesUrl);
+
+        const errorMessage =
+          data?.message || `خطأ في إضافة الباقة (${response.status})`;
+        alert(
+          `${errorMessage}\n\nرابط API: ${packagesUrl}\nبيئة: ${isProduction ? "نتلايف" : "محلي"}`,
+        );
       }
     } catch (error) {
       console.error("Error saving package:", error);
-      alert("حدث خطأ في الاتصال بالخادم");
+      console.error("Request details:", {
+        packagesUrl,
+        isProduction,
+        apiBaseUrl,
+      });
+
+      alert(
+        `خطأ في الاتصال: ${error.message}\n\nرابط: ${packagesUrl}\nبيئة: ${isProduction ? "نتلايف" : "محلي"}`,
+      );
     } finally {
       setPackageLoading(false);
     }
@@ -1308,7 +1323,7 @@ export default function AdminDashboard() {
                       }
                     }}
                   >
-                    مسح الملفات المؤقتة
+                    مسح الملفات ا��مؤقتة
                   </Button>
                 </div>
               </CardContent>
