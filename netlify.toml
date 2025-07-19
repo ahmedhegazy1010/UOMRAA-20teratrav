@@ -6,38 +6,13 @@
   NODE_VERSION = "18"
 
 [[redirects]]
-  from = "/.netlify/functions/packages-admin/*"
-  to = "/.netlify/functions/packages-admin"
-  status = 200
-
-[[redirects]]
-  from = "/.netlify/functions/packages-admin"
-  to = "/.netlify/functions/packages-admin"
-  status = 200
-
-[[redirects]]
-  from = "/.netlify/functions/packages"
-  to = "/.netlify/functions/packages"
-  status = 200
-
-[[redirects]]
   from = "/api/packages"
   to = "/.netlify/functions/packages"
   status = 200
 
 [[redirects]]
   from = "/api/packages/*"
-  to = "/.netlify/functions/packages-admin"
-  status = 200
-
-[[redirects]]
-  from = "/.netlify/functions/login"
-  to = "/.netlify/functions/login"
-  status = 200
-
-[[redirects]]
-  from = "/.netlify/functions/verify"
-  to = "/.netlify/functions/verify"
+  to = "/.netlify/functions/packages-admin/:splat"
   status = 200
 
 [[redirects]]
@@ -52,7 +27,7 @@
 
 [[redirects]]
   from = "/api/auth/*"
-  to = "/.netlify/functions/auth"
+  to = "/.netlify/functions/auth/:splat"
   status = 200
 
 [[redirects]]
