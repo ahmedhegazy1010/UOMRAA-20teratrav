@@ -161,6 +161,12 @@ function AdminContent() {
                 <div>
                   الأسعار: {pkg.price_double} - {pkg.price_quad} ج
                 </div>
+                {(pkg.price_infant || pkg.price_child) && (
+                  <div className="text-xs space-y-1">
+                    {pkg.price_infant && <div>رضيع: {pkg.price_infant} ج</div>}
+                    {pkg.price_child && <div>طفل: {pkg.price_child} ج</div>}
+                  </div>
+                )}
               </div>
               <div className="mt-4 flex justify-between">
                 <Badge
