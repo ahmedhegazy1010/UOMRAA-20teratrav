@@ -108,7 +108,7 @@ function verifyToken(authHeader) {
   try {
     return jwt.verify(token, JWT_SECRET);
   } catch (error) {
-    throw new Error("رمز المصادقة غير صحيح");
+    throw new Error("رمز المصادقة غير ��حيح");
   }
 }
 
@@ -213,7 +213,7 @@ exports.handler = async (event, context) => {
 
       const packageData = JSON.parse(event.body);
 
-      // التحقق من البيانات المطلوبة
+      // التحقق من البيانات المط��وبة
       if (
         !packageData.name ||
         !packageData.duration ||
@@ -267,7 +267,7 @@ exports.handler = async (event, context) => {
     }
 
     // PUT update package (requires auth)
-    if (method === "PUT" && isIdPath) {
+    if (method === "PUT") {
       try {
         verifyToken(event.headers.authorization);
       } catch (error) {
@@ -281,8 +281,22 @@ exports.handler = async (event, context) => {
         };
       }
 
+      const updateData = JSON.parse(event.body);
+      const updatePackageId = updateData.id;
+
+      if (!updatePackageId) {
+        return {
+          statusCode: 400,
+          headers,
+          body: JSON.stringify({
+            success: false,
+            message: "معرف الباقة مطلوب",
+          }),
+        };
+      }
+
       const packageIndex = packages.findIndex(
-        (p) => p.id === parseInt(packageId),
+        (p) => p.id === parseInt(updatePackageId),
       );
       if (packageIndex === -1) {
         return {
@@ -295,13 +309,39 @@ exports.handler = async (event, context) => {
         };
       }
 
-      const updateData = JSON.parse(event.body);
+      // تحديث البيانات مع التحقق من صحة البيانات
+      if (
+        !updateData.name ||
+        !updateData.duration ||
+        !updateData.price_double ||
+        !updateData.price_triple ||
+        !updateData.price_quad
+      ) {
+        return {
+          statusCode: 400,
+          headers,
+          body: JSON.stringify({
+            success: false,
+            message: "البيانات المطلوبة ناقصة",
+          }),
+        };
+      }
 
       // تحديث البيانات
       packages[packageIndex] = {
         ...packages[packageIndex],
-        ...updateData,
-        id: parseInt(packageId), // التأكد من عدم تغيير الـ ID
+        name: updateData.name,
+        duration: updateData.duration,
+        mecca_stay: updateData.mecca_stay || "",
+        medina_stay: updateData.medina_stay || "",
+        itinerary: updateData.itinerary || "",
+        price_double: parseInt(updateData.price_double),
+        price_triple: parseInt(updateData.price_triple),
+        price_quad: parseInt(updateData.price_quad),
+        price_infant: parseInt(updateData.price_infant) || 0,
+        price_child: parseInt(updateData.price_child) || 0,
+        status: updateData.status || "active",
+        popular: updateData.popular || false,
         updated_at: new Date().toISOString().split("T")[0],
       };
 
