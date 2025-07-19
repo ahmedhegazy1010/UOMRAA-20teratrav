@@ -194,17 +194,17 @@ export default function Umrah() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-amber-200 py-4">
+            <div className="md:hidden bg-black/95 backdrop-blur-md border-t border-red-600/30 py-4 animate-slideDown">
               <nav className="flex flex-col space-y-4">
                 <button
                   onClick={() => scrollToSection("packages")}
-                  className="text-gray-700 hover:text-amber-600 transition-colors px-4 text-right"
+                  className="text-gray-300 hover:text-red-400 transition-all duration-300 px-4 text-right font-medium transform hover:translate-x-2"
                 >
                   رحلات العمرة
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
-                  className="text-gray-700 hover:text-amber-600 transition-colors px-4 text-right"
+                  className="text-gray-300 hover:text-red-400 transition-all duration-300 px-4 text-right font-medium transform hover:translate-x-2"
                 >
                   تواصل معنا
                 </button>
