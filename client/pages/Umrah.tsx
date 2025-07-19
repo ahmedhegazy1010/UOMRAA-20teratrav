@@ -43,7 +43,7 @@ const packages = [
     id: 2,
     duration: "10 أيام",
     meccaStay: "5 ليالي - فندق 5 نجوم",
-    medinaStay: "4 ليالي - فندق 5 نجوم",
+    medinaStay: "4 ليالي - فندق 5 نجو��",
     itinerary: "مكة - المدينة - مكة",
     priceDouble: "35,000",
     priceTriple: "32,000",
@@ -89,12 +89,16 @@ export default function Umrah() {
     setIsMenuOpen(false);
   };
 
-  const openWhatsApp = () => {
+  const openWhatsApp = (packageInfo?: string) => {
     const phoneNumber = "201201666688"; // Main WhatsApp number
-    const message = encodeURIComponent(
-      "السلام عليكم، أريد الاستفسار عن باقات العمرة",
+    const baseMessage = "السلام عليكم، أريد الاستفسار عن باقات العمرة";
+    const message = packageInfo
+      ? `${baseMessage}\n\nباقة ${packageInfo}`
+      : baseMessage;
+    window.open(
+      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
+      "_blank",
     );
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   };
 
   return (
@@ -201,7 +205,7 @@ export default function Umrah() {
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6">
           <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-              رحلات العمرة - المولد النبوي الشريف
+              رحلا�� العمرة - المولد النبوي الشريف
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-amber-100 leading-relaxed">
               سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة
