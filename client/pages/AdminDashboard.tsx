@@ -37,7 +37,7 @@ interface User {
 }
 
 export default function AdminDashboard() {
-  // تحديد ما إذا كنا في بيئة النشر أو التطوير
+  // تحديد ما إذا كنا ��ي بيئة النشر أو التطوير
   const isProduction = window.location.hostname.includes("netlify.app");
   const apiBaseUrl = isProduction ? "/.netlify/functions" : "/api";
 
@@ -394,7 +394,7 @@ export default function AdminDashboard() {
               <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg shadow-red-500/30 animate-pulse bg-white/10 backdrop-blur-sm">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e6933d312b74b23a89dafd2e32a307b%2Fd916b8a876584dc48a2246340e732356?format=webp&width=800"
-                  alt="تيراتراف"
+                  alt="تيرا��راف"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -408,6 +408,7 @@ export default function AdminDashboard() {
             </p>
 
             {/* Debug info */}
+            {/* System info */}
             <div className="mb-4 p-3 bg-slate-700/30 rounded-lg text-xs border border-slate-600">
               <p className="text-blue-300 mb-1">
                 البيئة: {isProduction ? "نتلايف (نشر)" : "خادم محلي (تطوير)"}
@@ -416,6 +417,28 @@ export default function AdminDashboard() {
               <p className="text-yellow-300">
                 الرابط: {window.location.hostname}
               </p>
+            </div>
+
+            {/* Login credentials */}
+            <div className="mb-4 p-3 bg-red-900/20 rounded-lg text-xs border border-red-500/30">
+              <p className="text-red-300 font-semibold mb-2">بيانات الدخول:</p>
+              <div className="space-y-1">
+                <p className="text-white">
+                  <span className="text-red-400">المدير:</span> teratrav_admin
+                </p>
+                <p className="text-white">
+                  <span className="text-red-400">كلمة المرور:</span>{" "}
+                  TeraTrav@2024#Admin
+                </p>
+                <div className="border-t border-red-500/30 my-1"></div>
+                <p className="text-white">
+                  <span className="text-red-400">أحمد:</span> ahmed_hegazy
+                </p>
+                <p className="text-white">
+                  <span className="text-red-400">كلمة المرور:</span>{" "}
+                  Ahmed@TeraTrav2024
+                </p>
+              </div>
             </div>
           </CardHeader>
 
@@ -1232,7 +1255,7 @@ export default function AdminDashboard() {
                   إدارة المستخدمين
                 </CardTitle>
                 <CardDescription className="text-gray-300">
-                  إضافة وإدارة مستخدمي لوحة التحكم
+                  إضافة وإدارة مستخدم�� لوحة التحكم
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
