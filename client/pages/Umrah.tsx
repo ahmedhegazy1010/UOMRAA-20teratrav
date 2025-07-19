@@ -271,14 +271,22 @@ export default function Umrah() {
       {/* Packages Section */}
       <section
         id="packages"
-        className="py-20 bg-gradient-to-b from-white to-amber-50"
+        className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
       >
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        {/* Background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 border border-red-500 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-16 h-16 border-2 border-red-400 rounded-full animate-spin slow"></div>
+          <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-red-500 rounded-full animate-ping"></div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-16 animate-fadeInUp">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 text-gradient-animate">
               باقات العمرة المميزة
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
+            <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
               بعناية
             </p>
