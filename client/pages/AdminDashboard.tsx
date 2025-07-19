@@ -231,38 +231,49 @@ export default function AdminDashboard() {
   };
 
   const handleSavePackage = async () => {
-    if (!packageForm.name || !packageForm.duration) {
-      alert("يرجى ملء جميع البيانات المطلوبة");
+    if (!packageForm.name?.trim() || !packageForm.duration?.trim()) {
+      alert("يرجى ملء اسم الباقة ��المدة على الأقل");
+      return;
+    }
+
+    if (
+      !packageForm.price_double ||
+      !packageForm.price_triple ||
+      !packageForm.price_quad
+    ) {
+      alert("يرجى ملء جميع أسعار الغرف");
       return;
     }
 
     setPackageLoading(true);
     try {
       const token = localStorage.getItem("admin_token");
+
+      // Prepare data with proper types
+      const packageData = {
+        name: packageForm.name.trim(),
+        duration: packageForm.duration.trim(),
+        mecca_stay: packageForm.mecca_stay.trim() || "",
+        medina_stay: packageForm.medina_stay.trim() || "",
+        itinerary: packageForm.itinerary.trim() || "",
+        price_double: packageForm.price_double,
+        price_triple: packageForm.price_triple,
+        price_quad: packageForm.price_quad,
+        price_child: packageForm.price_child || "",
+        price_infant: packageForm.price_infant || "",
+        status: packageForm.status,
+        popular: packageForm.popular,
+      };
+
+      console.log("Sending package data:", packageData);
+
       const response = await fetch("/api/packages", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({
-          name: packageForm.name,
-          duration: packageForm.duration,
-          mecca_stay: packageForm.mecca_stay,
-          medina_stay: packageForm.medina_stay,
-          itinerary: packageForm.itinerary,
-          price_double: parseInt(packageForm.price_double) || 0,
-          price_triple: parseInt(packageForm.price_triple) || 0,
-          price_quad: parseInt(packageForm.price_quad) || 0,
-          price_child: packageForm.price_child
-            ? parseInt(packageForm.price_child)
-            : null,
-          price_infant: packageForm.price_infant
-            ? parseInt(packageForm.price_infant)
-            : null,
-          status: packageForm.status,
-          popular: packageForm.popular,
-        }),
+        body: JSON.stringify(packageData),
       });
 
       const data = await response.json();
@@ -595,7 +606,7 @@ export default function AdminDashboard() {
                 onClick={() => setShowPackageModal(true)}
                 className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
               >
-                إضافة باقة جديدة
+                إض��فة باقة جديدة
               </Button>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -1018,7 +1029,7 @@ export default function AdminDashboard() {
                         </div>
                         <div className="bg-gray-800/50 rounded p-4">
                           <h4 className="text-sm font-semibold text-white mb-2">
-                            الاستفسار:
+                            الاس��فسار:
                           </h4>
                           <p className="text-gray-300 text-sm leading-relaxed">
                             {inquiry.message}
