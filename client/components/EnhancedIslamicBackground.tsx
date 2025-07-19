@@ -7,7 +7,7 @@ export default function EnhancedIslamicBackground() {
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
 
       {/* Layer 1: Large Islamic geometric mandala */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-15">
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <svg
             width="800"
