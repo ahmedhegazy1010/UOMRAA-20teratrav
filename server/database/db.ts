@@ -122,6 +122,22 @@ async function insertDefaults() {
       console.log("✅ Admin user created");
     }
 
+    // Check if hegazy user exists
+    const existingHegazy = db
+      .prepare("SELECT id FROM users WHERE username = ?")
+      .get("hegazy");
+
+    if (!existingHegazy) {
+      const hegazyPassword = await bcrypt.hash("hegazy01550", 10);
+      db.prepare(
+        `
+        INSERT INTO users (username, password_hash, email, role)
+        VALUES (?, ?, ?, ?)
+      `,
+      ).run("hegazy", hegazyPassword, "hegazy@teratrav.com", "admin");
+      console.log("✅ Hegazy user created");
+    }
+
     // Sample packages
     const packageCount = db
       .prepare("SELECT COUNT(*) as count FROM packages")
@@ -133,7 +149,7 @@ async function insertDefaults() {
           "8 أيام",
           "4 ليالي - فندق 4 نجوم",
           "3 ليالي - ��ندق 4 نجوم",
-          "مكة - المدينة - مكة",
+          "مكة - ال��دينة - مكة",
           25000,
           23000,
           21000,
