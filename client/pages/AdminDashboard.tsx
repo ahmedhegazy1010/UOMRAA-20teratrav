@@ -722,8 +722,7 @@ export default function AdminDashboard() {
                         <label className="text-sm font-medium text-gray-300">
                           اسم الباقة *
                         </label>
-                        <input
-                          type="text"
+                        <select
                           value={packageForm.name}
                           onChange={(e) =>
                             setPackageForm({
@@ -732,9 +731,37 @@ export default function AdminDashboard() {
                             })
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
-                          placeholder="مثال: عمرة رمضان"
                           required
-                        />
+                        >
+                          <option value="">اختر اسم الباقة</option>
+                          <option value="المولد النبوي (اغسطس)">
+                            المولد النبوي (اغسطس)
+                          </option>
+                          <option value="المولد النبوي (سبتمبر)">
+                            المولد النبوي (سبتمبر)
+                          </option>
+                          <option value="المولد النبوي (اكتوبر)">
+                            المولد النبوي (اكتوبر)
+                          </option>
+                          <option value="المولد النبوي (نوفمبر)">
+                            المولد النبوي (نوفمبر)
+                          </option>
+                          <option value="المولد النبوي (ديسمبر)">
+                            المولد النبوي (ديسمبر)
+                          </option>
+                          <option value="عمرة رجب">عمرة رجب</option>
+                          <option value="عمرة شعبان">عمرة شعبان</option>
+                          <option value="عمرة شعبان رمضان (2*1)">
+                            عمرة شعبان رمضان (2*1)
+                          </option>
+                          <option value="عمرة اول رمضان">عمرة اول رمضان</option>
+                          <option value="عمرة رمضان كامل">
+                            عمرة رمضان كامل
+                          </option>
+                          <option value="عمرة ختام رمضان">
+                            عمرة ختام رمضان
+                          </option>
+                        </select>
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
