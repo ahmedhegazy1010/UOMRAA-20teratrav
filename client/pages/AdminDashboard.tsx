@@ -241,7 +241,7 @@ export default function AdminDashboard() {
       !packageForm.price_triple ||
       !packageForm.price_quad
     ) {
-      alert("يرجى ملء جم��ع أسعار الغرف");
+      alert("يرجى ملء جميع أسعار الغرف");
       return;
     }
 
@@ -490,7 +490,7 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
-        <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
+        <p className="text-gray-300">نظرة عامة على أداء ��لموقع والحجوزات</p>
       </div>
 
       {dataLoading ? (
@@ -634,7 +634,7 @@ export default function AdminDashboard() {
                       <div>مكة: {pkg.mecca_stay}</div>
                       <div>المدينة: {pkg.medina_stay}</div>
                       <div>
-                        الأسعار: {pkg.price_double?.toLocaleString()} -{" "}
+                        الأسع��ر: {pkg.price_double?.toLocaleString()} -{" "}
                         {pkg.price_quad?.toLocaleString()} ج
                       </div>
                       {(pkg.price_infant || pkg.price_child) && (
@@ -818,6 +818,8 @@ export default function AdminDashboard() {
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
                           placeholder="50000"
+                          required
+                          min="0"
                         />
                       </div>
                       <div className="space-y-2">
@@ -939,7 +941,7 @@ export default function AdminDashboard() {
                         disabled={packageLoading}
                         className="bg-green-600 hover:bg-green-700 text-white"
                       >
-                        {packageLoading ? "جاري الحفظ..." : "إضافة"}
+                        {packageLoading ? "جاري الح��ظ..." : "إضافة"}
                       </Button>
                     </div>
                   </CardContent>
@@ -979,7 +981,7 @@ export default function AdminDashboard() {
                     <CardContent>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                         <div className="space-y-2 text-gray-300">
-                          <div>���� الهاتف: {booking.phone}</div>
+                          <div>📞 الهاتف: {booking.phone}</div>
                           <div>🏨 نوع الغرفة: {booking.room_type}</div>
                         </div>
                         <div className="space-y-2 text-gray-300">
@@ -1178,7 +1180,7 @@ export default function AdminDashboard() {
 
                 <div className="space-y-4">
                   <h4 className="text-lg font-semibold text-white">
-                    إضافة م��تخدم جديد
+                    إضافة مستخدم جديد
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input
