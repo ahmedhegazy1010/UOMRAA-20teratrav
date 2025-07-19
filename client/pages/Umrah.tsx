@@ -163,54 +163,199 @@ export default function Umrah() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+        {/* Background Image with Enhanced Overlay */}
         <div className="absolute inset-0">
-          <div className="w-full h-full bg-gradient-to-r from-black/80 via-red-900/20 to-black/60 relative">
+          <div className="w-full h-full relative">
             <img
               src="/kaaba-placeholder.svg"
               alt="الكعبة المشرفة"
-              className="w-full h-full object-cover opacity-70"
+              className="w-full h-full object-cover opacity-60"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-red-900/20 to-black/50"></div>
-            {/* Animated overlay elements */}
-            <div className="absolute inset-0">
-              <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-red-500 rounded-full animate-ping opacity-60"></div>
-              <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white rounded-full animate-pulse opacity-80"></div>
-              <div
-                className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-red-400 rounded-full animate-ping opacity-50"
-                style={{ animationDelay: "1s" }}
-              ></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-red-900/30 to-black/80"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/40"></div>
+          </div>
+        </div>
+
+        {/* Islamic Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          {/* Top decorative corners */}
+          <div className="absolute top-10 right-10 opacity-20">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              className="text-red-400"
+            >
+              <path
+                d="M40 10 L50 25 L65 25 L53 35 L58 50 L40 42 L22 50 L27 35 L15 25 L30 25 Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <div className="absolute top-10 left-10 opacity-20">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              className="text-red-400 transform scale-x-[-1]"
+            >
+              <path
+                d="M40 10 L50 25 L65 25 L53 35 L58 50 L40 42 L22 50 L27 35 L15 25 L30 25 Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+
+          {/* Bottom decorative corners */}
+          <div className="absolute bottom-10 right-10 opacity-20">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              className="text-red-400 transform rotate-180"
+            >
+              <path
+                d="M40 10 L50 25 L65 25 L53 35 L58 50 L40 42 L22 50 L27 35 L15 25 L30 25 Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+          <div className="absolute bottom-10 left-10 opacity-20">
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
+              className="text-red-400 transform rotate-180 scale-x-[-1]"
+            >
+              <path
+                d="M40 10 L50 25 L65 25 L53 35 L58 50 L40 42 L22 50 L27 35 L15 25 L30 25 Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        </div>
+
+        {/* Hero Content with New Design */}
+        <div className="relative z-10 text-center text-white max-w-6xl mx-auto px-4 sm:px-6">
+          {/* Main Content Container */}
+          <div className="relative">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 400 300"
+                className="text-red-500"
+              >
+                <defs>
+                  <pattern
+                    id="islamicPattern"
+                    x="0"
+                    y="0"
+                    width="40"
+                    height="40"
+                    patternUnits="userSpaceOnUse"
+                  >
+                    <path
+                      d="M20 5 L25 15 L35 15 L28 22 L30 32 L20 27 L10 32 L12 22 L5 15 L15 15 Z"
+                      fill="currentColor"
+                      opacity="0.3"
+                    />
+                  </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#islamicPattern)" />
+              </svg>
+            </div>
+
+            {/* Company Badge */}
+            <div className="mb-8 flex justify-center animate-fadeInUp">
+              <div className="bg-gradient-to-r from-red-600/20 to-red-800/20 backdrop-blur-md rounded-full px-8 py-3 border border-red-500/30 shadow-lg">
+                <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                  <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-700 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-white font-bold text-sm">T</span>
+                  </div>
+                  <span className="text-red-100 font-semibold text-lg">
+                    تيراتراف للسياحة الدينية
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Main Title */}
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight animate-fadeInUp"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <span className="block bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
+                رحلات العمرة
+              </span>
+              <span className="block bg-gradient-to-r from-red-400 via-red-300 to-red-400 bg-clip-text text-transparent mt-2">
+                المولد النبوي الشريف
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <p
+              className="text-xl sm:text-2xl md:text-3xl mb-12 text-gray-200 leading-relaxed max-w-4xl mx-auto animate-fadeInUp"
+              style={{ animationDelay: "0.4s" }}
+            >
+              سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة لرحلة
+              روحانية لا تُنسى
+            </p>
+
+            {/* Action Buttons */}
+            <div
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12 animate-fadeInUp"
+              style={{ animationDelay: "0.6s" }}
+            >
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("packages")}
+                className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:from-red-700 hover:via-red-800 hover:to-red-900 text-white px-12 py-6 text-xl font-bold rounded-full shadow-2xl shadow-red-500/50 transform hover:scale-110 transition-all duration-500 border-2 border-red-400/30 hover:border-red-300/50 relative overflow-hidden group"
+              >
+                <span className="relative z-10">اكتشف الباقات</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => openWhatsApp()}
+                className="border-2 border-white/30 text-white hover:bg-white hover:text-gray-900 px-10 py-6 text-lg font-semibold rounded-full backdrop-blur-md bg-white/10 transform hover:scale-105 transition-all duration-300 shadow-lg"
+              >
+                <MessageCircle className="w-5 h-5 ml-2" />
+                استفسر الآن
+              </Button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div
+              className="flex justify-center items-center space-x-8 rtl:space-x-reverse text-gray-300 animate-fadeInUp"
+              style={{ animationDelay: "0.8s" }}
+            >
+              <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                <Shield className="w-5 h-5 text-green-400" />
+                <span className="text-sm">مرخص رسمياً</span>
+              </div>
+              <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                <Users className="w-5 h-5 text-blue-400" />
+                <span className="text-sm">خبرة +10 سنوات</span>
+              </div>
+              <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                <CheckCircle className="w-5 h-5 text-red-400" />
+                <span className="text-sm">ضمان الجودة</span>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="backdrop-blur-md bg-black/30 rounded-3xl p-6 sm:p-8 md:p-12 border border-red-500/30 shadow-2xl shadow-red-500/20 transform hover:scale-105 transition-all duration-700 animate-fadeInUp">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent animate-pulse">
-              رحلات العمرة - المولد النبوي الشريف
-            </h1>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 text-gray-200 leading-relaxed animate-slideInLeft">
-              سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة
-            </p>
-            <Button
-              size="lg"
-              onClick={() => scrollToSection("packages")}
-              className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:from-red-700 hover:via-red-800 hover:to-red-900 text-white px-10 py-6 text-xl font-bold rounded-full shadow-2xl shadow-red-500/40 transform hover:scale-110 transition-all duration-500 animate-bounce border-2 border-red-400/50"
-            >
-              اكتشف الباقات
-            </Button>
-
-            {/* Floating elements around button */}
-            <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-red-400 rounded-full animate-spin opacity-30"></div>
-            <div className="absolute -bottom-4 -right-4 w-6 h-6 border-2 border-white rounded-full animate-ping opacity-40"></div>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+        {/* Enhanced Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/70 animate-bounce">
+          <div className="flex flex-col items-center space-y-2">
+            <span className="text-xs font-medium">استكشف المزيد</span>
+            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center relative">
+              <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
+            </div>
           </div>
         </div>
       </section>
