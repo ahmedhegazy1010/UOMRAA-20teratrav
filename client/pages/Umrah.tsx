@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import IslamicBackground from "@/components/IslamicBackground";
+import EnhancedIslamicBackground from "@/components/EnhancedIslamicBackground";
 import {
   Phone,
   MessageCircle,
@@ -485,7 +485,7 @@ export default function Umrah() {
                 <span className="text-xl font-bold">تيراتراف</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                رحلات العمرة والحج بأعلى معايير الجودة والخدمة الممي��ة
+                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المميزة
               </p>
             </div>
 
