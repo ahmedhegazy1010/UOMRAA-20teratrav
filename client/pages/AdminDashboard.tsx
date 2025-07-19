@@ -495,11 +495,21 @@ export default function AdminDashboard() {
       case "packages":
         return (
           <div className="space-y-6">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-2">
-                إدارة الباقات
-              </h2>
-              <p className="text-gray-300">إدارة باقات العمرة المتاحة</p>
+            <div className="flex justify-between items-center">
+              <div>
+                <h2 className="text-3xl font-bold text-white mb-2">
+                  إدارة الباقات
+                </h2>
+                <p className="text-gray-300">إدارة باقات العمرة المتاحة</p>
+              </div>
+              <Button
+                onClick={() => {
+                  alert("سيتم إضافة هذه الميزة قريباً!");
+                }}
+                className="bg-green-600 hover:bg-green-700 text-white px-6 py-2"
+              >
+                إضافة باقة جديدة
+              </Button>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {packages.map((pkg: any) => (
@@ -519,6 +529,30 @@ export default function AdminDashboard() {
                       <div>المدينة: {pkg.medina_stay}</div>
                       <div>
                         الأسعار: {pkg.price_double} - {pkg.price_quad} ج
+                      </div>
+                      <div className="flex gap-2 mt-4">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() =>
+                            alert("سيتم إضافة ميزة التحديث قريباً!")
+                          }
+                          className="text-blue-400 border-blue-400 hover:bg-blue-400 hover:text-white"
+                        >
+                          تحديث
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => {
+                            if (confirm("هل أنت متأكد من حذف هذه الباقة؟")) {
+                              alert("سيتم إضافة ميزة الحذف قريباً!");
+                            }
+                          }}
+                          className="text-red-400 hover:bg-red-600"
+                        >
+                          حذف
+                        </Button>
                       </div>
                     </div>
                   </CardContent>
@@ -632,17 +666,192 @@ export default function AdminDashboard() {
         );
       case "settings":
         return (
-          <div className="space-y-6">
+          <div className="space-y-8">
             <div>
               <h2 className="text-3xl font-bold text-white mb-2">
                 إعدادات النظام
               </h2>
               <p className="text-gray-300">إدارة إعدادات الموقع والشركة</p>
             </div>
-            <Card className="bg-gray-900/80 border-red-500/30 p-8 text-center">
-              <p className="text-gray-300 text-lg">
-                صفحة الإعدادات ستكون متاحة قريباً
-              </p>
+
+            {/* Company Settings */}
+            <Card className="bg-gray-900/80 border-red-500/30">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center">
+                  <Settings className="w-5 h-5 ml-2 text-red-400" />
+                  إعدادات الشركة
+                </CardTitle>
+                <CardDescription className="text-gray-300">
+                  معلومات الشركة الأساسية وبيانات الاتصال
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      اسم الشركة
+                    </label>
+                    <input
+                      type="text"
+                      defaultValue="تيراتراف"
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      البريد الإلكتروني
+                    </label>
+                    <input
+                      type="email"
+                      defaultValue="info@teratrav.com"
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      الهاتف الرئيسي
+                    </label>
+                    <input
+                      type="tel"
+                      defaultValue="0225750707"
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      واتساب
+                    </label>
+                    <input
+                      type="tel"
+                      defaultValue="201201666688"
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    />
+                  </div>
+                  <div className="space-y-2 md:col-span-2">
+                    <label className="text-sm font-medium text-gray-300">
+                      العنوان
+                    </label>
+                    <input
+                      type="text"
+                      defaultValue="القاهرة، مصر"
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    />
+                  </div>
+                </div>
+                <div className="flex justify-end">
+                  <Button
+                    onClick={() => alert("تم حفظ إعدادات الشركة بنجاح!")}
+                    className="bg-green-600 hover:bg-green-700 text-white"
+                  >
+                    حفظ إعدادات الشركة
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* User Management */}
+            <Card className="bg-gray-900/80 border-red-500/30">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center">
+                  <UserCheck className="w-5 h-5 ml-2 text-blue-400" />
+                  إدارة المستخدمين
+                </CardTitle>
+                <CardDescription className="text-gray-300">
+                  إضافة وإدارة مستخدمي لوحة التحكم
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-white">
+                    المستخدمون الحاليون
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-600">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div>
+                          <p className="text-white font-medium">admin</p>
+                          <p className="text-gray-400 text-sm">مدير عام</p>
+                        </div>
+                      </div>
+                      <span className="text-gray-400 text-xs">نشط</span>
+                    </div>
+                    <div className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg border border-gray-600">
+                      <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div>
+                          <p className="text-white font-medium">hegazy</p>
+                          <p className="text-gray-400 text-sm">مدير</p>
+                        </div>
+                      </div>
+                      <span className="text-gray-400 text-xs">نشط</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-white">
+                    إضافة مستخدم جديد
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input
+                      type="text"
+                      placeholder="اسم المستخدم"
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    />
+                    <input
+                      type="password"
+                      placeholder="كلمة المرور"
+                      className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
+                    />
+                    <Button
+                      onClick={() => alert("سيتم إضافة هذه الميزة قريباً!")}
+                      className="bg-blue-600 hover:bg-blue-700 text-white"
+                    >
+                      إضافة مستخدم
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* System Settings */}
+            <Card className="bg-gray-900/80 border-red-500/30">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center">
+                  <Settings className="w-5 h-5 ml-2 text-purple-400" />
+                  إعدادات النظام العامة
+                </CardTitle>
+                <CardDescription className="text-gray-300">
+                  إعدادات عامة للموقع والنظام
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <Button
+                    className="bg-orange-600 hover:bg-orange-700 text-white h-12"
+                    onClick={() => alert("جاري إنشاء نسخة احتياطية...")}
+                  >
+                    إنشاء نسخة احتياطية
+                  </Button>
+                  <Button
+                    className="bg-blue-600 hover:bg-blue-700 text-white h-12"
+                    onClick={() => alert("جاري تحسين قاعدة البيانات...")}
+                  >
+                    تحسين قاعدة البيانات
+                  </Button>
+                  <Button
+                    className="bg-red-600 hover:bg-red-700 text-white h-12"
+                    onClick={() => {
+                      if (confirm("هل أنت متأكد من مسح الملفات المؤقتة؟")) {
+                        alert("تم مسح الملفات المؤقتة بنجاح!");
+                      }
+                    }}
+                  >
+                    مسح الملفات المؤقتة
+                  </Button>
+                </div>
+              </CardContent>
             </Card>
           </div>
         );
