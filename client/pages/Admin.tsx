@@ -76,7 +76,7 @@ const packagesData = [
     id: 2,
     name: "باقة 10 أيام",
     duration: "10 أيام",
-    meccaStay: "5 ليالي - فندق 5 نجوم",
+    meccaStay: "5 ليالي - فندق 5 ��جوم",
     medinaStay: "4 ليالي - فندق 5 نجوم",
     priceDouble: 35000,
     priceTriple: 32000,
@@ -176,7 +176,7 @@ export default function Admin() {
       trend: "+12%",
     },
     {
-      title: "المبيعات الشهري��",
+      title: "المبيعات الشهري���",
       value: "2.4M",
       icon: DollarSign,
       color: "text-green-600",
@@ -665,7 +665,7 @@ export default function Admin() {
                   <SelectValue placeholder="اختر العملة" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="egp">جنيه م��ري (ج)</SelectItem>
+                  <SelectItem value="egp">جن��ه م��ري (ج)</SelectItem>
                   <SelectItem value="sar">ريال سعودي (ر.س)</SelectItem>
                   <SelectItem value="usd">دولار أمريكي ($)</SelectItem>
                 </SelectContent>
@@ -809,3 +809,5 @@ export default function Admin() {
     </div>
   );
 }
+
+export default Admin;
