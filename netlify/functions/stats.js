@@ -1,4 +1,4 @@
-// وظيفة الإحصائيات للوحة التحكم
+// دالة الإحصائيات للوحة التحكم
 const jwt = require("jsonwebtoken");
 
 const JWT_SECRET = "teratrav_jwt_secret_2024_umrah_admin";
@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+    "Access-Control-Allow-Methods": "GET",
   };
 
   if (event.httpMethod === "OPTIONS") {
@@ -29,39 +29,58 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // التحقق من المصادقة
-    try {
-      verifyToken(event.headers.authorization);
-    } catch (error) {
+    const method = event.httpMethod;
+
+    if (method === "GET") {
+      try {
+        verifyToken(event.headers.authorization);
+      } catch (error) {
+        return {
+          statusCode: 401,
+          headers,
+          body: JSON.stringify({
+            success: false,
+            message: error.message,
+          }),
+        };
+      }
+
+      // إحصائيات تجريبية
+      const stats = {
+        total_packages: 5,
+        active_packages: 5,
+        total_bookings: 12,
+        pending_bookings: 3,
+        completed_bookings: 9,
+        total_inquiries: 8,
+        new_inquiries: 2,
+        revenue: 450000,
+        monthly_revenue: 180000,
+        popular_packages: [
+          { name: "المولد النبوي (اغسطس)", bookings: 5 },
+          { name: "المولد النبوي (سبتمبر)", bookings: 4 },
+        ],
+      };
+
       return {
-        statusCode: 401,
+        statusCode: 200,
         headers,
         body: JSON.stringify({
-          success: false,
-          message: error.message,
+          success: true,
+          data: {
+            stats: stats,
+          },
+          message: "تم جلب الإحصائيات بنجاح",
         }),
       };
     }
 
-    // إحصائيات وهمية (في التطبيق الحقيقي، ستأتي من قاعدة البيانات)
-    const stats = {
-      totalPackages: 5,
-      activePackages: 5,
-      totalBookings: 12,
-      pendingBookings: 3,
-      totalInquiries: 8,
-      newInquiries: 2,
-      totalRevenue: 85000,
-      monthlyRevenue: 25000,
-    };
-
     return {
-      statusCode: 200,
+      statusCode: 405,
       headers,
       body: JSON.stringify({
-        success: true,
-        data: stats,
-        message: "تم جلب الإحصائيات بنجاح",
+        success: false,
+        message: "طريقة غير مسموحة",
       }),
     };
   } catch (error) {
