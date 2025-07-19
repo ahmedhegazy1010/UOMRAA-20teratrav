@@ -1,4 +1,4 @@
-import { RequestHandler } from "express";
+import express, { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 
