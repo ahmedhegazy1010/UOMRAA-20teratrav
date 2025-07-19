@@ -83,9 +83,49 @@ export default function Umrah() {
     );
   };
 
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setContactLoading(true);
+    setContactError("");
+
+    try {
+      const response = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactForm),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setContactSuccess(true);
+        setContactForm({ name: "", phone: "", email: "", message: "" });
+
+        // Send to WhatsApp as well
+        const whatsappMessage = `استفسار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nالإيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
+        window.open(
+          `https://wa.me/201201666688?text=${encodeURIComponent(whatsappMessage)}`,
+          "_blank",
+        );
+      } else {
+        setContactError(data.message || "حدث خطأ في إرسال الاستفسار");
+      }
+    } catch (err) {
+      setContactError("خطأ في الاتصال بالخادم");
+    } finally {
+      setContactLoading(false);
+    }
+  };
+
+  const handleContactInputChange = (field: string, value: string) => {
+    setContactForm((prev) => ({ ...prev, [field]: value }));
+  };
+
   const includedItems = [
     { icon: Shield, text: "رسوم التأشيرة" },
-    { icon: Plane, text: "ت���اكر الطيران" },
+    { icon: Plane, text: "ت��اكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
     { icon: Users, text: "التنقلات الداخلية بأحدث ا��باصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
