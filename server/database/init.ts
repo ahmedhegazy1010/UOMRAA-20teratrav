@@ -20,9 +20,6 @@ export function getDatabase() {
   return db;
 }
 
-// Enable foreign keys
-db.pragma("foreign_keys = ON");
-
 export interface Package {
   id: number;
   name: string;
