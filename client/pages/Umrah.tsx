@@ -78,7 +78,7 @@ export default function Umrah() {
     { icon: Shield, text: "رسوم التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
-    { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
+    { icon: Users, text: "التنقلات الداخلية بأحدث ا��باصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "زيارات دينية" },
     { icon: Gift, text: "هدايا وشنطة عمرة" },
@@ -124,7 +124,7 @@ export default function Umrah() {
             {/* CTA Button */}
             <div className="flex items-center space-x-4 rtl:space-x-reverse">
               <Button
-                onClick={() => scrollToSection("contact")}
+                onClick={() => scrollToSection("packages")}
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2 shadow-lg shadow-red-500/30 transform hover:scale-105 transition-all duration-300 animate-pulse"
               >
                 احجز الآن
@@ -149,7 +149,7 @@ export default function Umrah() {
                   onClick={() => scrollToSection("packages")}
                   className="text-gray-300 hover:text-red-400 transition-all duration-300 px-4 text-right font-medium transform hover:translate-x-2"
                 >
-                  رحلات ��لعمرة
+                  رحلات ���لعمرة
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
