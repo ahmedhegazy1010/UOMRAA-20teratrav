@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { sql } from "../database/neon-db";
+import { sql } from "../database/real-neon-db";
 
 export const getAllPackages: RequestHandler = async (req, res) => {
   try {
