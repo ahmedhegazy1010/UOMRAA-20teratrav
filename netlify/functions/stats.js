@@ -45,21 +45,29 @@ exports.handler = async (event, context) => {
         };
       }
 
-      // إحصائيات تجريبية
+      // إحصائيات حقيقية من النظام (فارغة في البداية)
+      let packagesCount = 0;
+      let activePackagesCount = 0;
+
+      // قراءة إحصائيات الباقات من global
+      if (typeof global !== "undefined" && global.sharedPackages) {
+        packagesCount = global.sharedPackages.length;
+        activePackagesCount = global.sharedPackages.filter(
+          (pkg) => pkg.status === "active",
+        ).length;
+      }
+
       const stats = {
-        total_packages: 5,
-        active_packages: 5,
-        total_bookings: 12,
-        pending_bookings: 3,
-        completed_bookings: 9,
-        total_inquiries: 8,
-        new_inquiries: 2,
-        revenue: 450000,
-        monthly_revenue: 180000,
-        popular_packages: [
-          { name: "المولد النبوي (اغسطس)", bookings: 5 },
-          { name: "المولد النبوي (سبتمبر)", bookings: 4 },
-        ],
+        total_packages: packagesCount,
+        active_packages: activePackagesCount,
+        total_bookings: 0,
+        pending_bookings: 0,
+        completed_bookings: 0,
+        total_inquiries: 0,
+        new_inquiries: 0,
+        revenue: 0,
+        monthly_revenue: 0,
+        popular_packages: [],
       };
 
       return {
