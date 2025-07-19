@@ -89,7 +89,7 @@ function AdminContent() {
   const renderDashboard = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
+        <h2 className="text-3xl font-bold text-white mb-2">لوحة ال��حكم</h2>
         <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
@@ -183,7 +183,7 @@ function AdminContent() {
                       : "bg-gray-100 text-gray-800"
                   }
                 >
-                  {pkg.status === "active" ? "نشط" : "غير نشط"}
+                  {pkg.status === "active" ? "نشط" : "غير نش��"}
                 </Badge>
                 {pkg.popular && (
                   <Badge className="bg-red-100 text-red-800">
@@ -194,6 +194,97 @@ function AdminContent() {
             </CardContent>
           </Card>
         ))}
+      </div>
+    </div>
+  );
+
+  const renderBookings = () => (
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-3xl font-bold text-white mb-2">إدارة الحجوزات</h2>
+        <p className="text-gray-300">عرض وإدارة طلبات الحجز</p>
+      </div>
+
+      <div className="grid grid-cols-1 gap-6">
+        {bookings.length === 0 ? (
+          <Card className="bg-gray-900/80 border-red-500/30 p-8 text-center">
+            <p className="text-gray-300 text-lg">لا توجد حجوزات حتى الآن</p>
+          </Card>
+        ) : (
+          bookings.map((booking: any) => (
+            <Card
+              key={booking.id}
+              className="bg-gray-900/80 border-red-500/30 hover:shadow-lg transition-shadow"
+            >
+              <CardHeader>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="text-white flex items-center">
+                    <Users className="w-5 h-5 ml-2 text-red-400" />
+                    {booking.customer_name}
+                  </CardTitle>
+                  <Badge
+                    className={
+                      booking.status === "pending"
+                        ? "bg-yellow-100 text-yellow-800"
+                        : booking.status === "confirmed"
+                          ? "bg-green-100 text-green-800"
+                          : booking.status === "cancelled"
+                            ? "bg-red-100 text-red-800"
+                            : "bg-blue-100 text-blue-800"
+                    }
+                  >
+                    {booking.status === "pending"
+                      ? "في الانتظار"
+                      : booking.status === "confirmed"
+                        ? "مؤكد"
+                        : booking.status === "cancelled"
+                          ? "ملغي"
+                          : "مكتمل"}
+                  </Badge>
+                </div>
+                <CardDescription className="text-gray-300">
+                  تاريخ الطلب:{" "}
+                  {new Date(booking.created_at).toLocaleDateString("ar-EG")}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div className="space-y-2 text-gray-300">
+                    <div>📞 الهاتف: {booking.phone}</div>
+                    {booking.email && <div>📧 الإيميل: {booking.email}</div>}
+                    <div>🏨 نوع الغرفة: {booking.room_type}</div>
+                    <div>👥 عدد المسافرين: {booking.travelers_count}</div>
+                  </div>
+                  <div className="space-y-2 text-gray-300">
+                    <div>📦 الباقة: {booking.package_name}</div>
+                    <div>⏱️ المدة: {booking.package_duration}</div>
+                    {booking.travel_date && (
+                      <div>
+                        📅 تاريخ السفر:{" "}
+                        {new Date(booking.travel_date).toLocaleDateString(
+                          "ar-EG",
+                        )}
+                      </div>
+                    )}
+                    <div className="text-lg font-bold text-red-400">
+                      💰 المجموع: {booking.total_price?.toLocaleString()} ج
+                    </div>
+                  </div>
+                </div>
+                {booking.special_requests && (
+                  <div className="mt-4 p-3 bg-gray-800/50 rounded">
+                    <h4 className="text-sm font-semibold text-white mb-2">
+                      طلبات خاصة:
+                    </h4>
+                    <p className="text-gray-300 text-sm">
+                      {booking.special_requests}
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          ))
+        )}
       </div>
     </div>
   );
