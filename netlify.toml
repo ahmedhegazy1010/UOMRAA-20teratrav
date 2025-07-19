@@ -6,13 +6,18 @@
   NODE_VERSION = "18"
 
 [[redirects]]
-  from = "/.netlify/functions/packages"
-  to = "/.netlify/functions/packages"
+  from = "/.netlify/functions/packages-admin/*"
+  to = "/.netlify/functions/packages-admin"
   status = 200
 
 [[redirects]]
-  from = "/.netlify/functions/packages-admin*"
+  from = "/.netlify/functions/packages-admin"
   to = "/.netlify/functions/packages-admin"
+  status = 200
+
+[[redirects]]
+  from = "/.netlify/functions/packages"
+  to = "/.netlify/functions/packages"
   status = 200
 
 [[redirects]]
