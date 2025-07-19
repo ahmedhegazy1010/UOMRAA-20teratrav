@@ -29,6 +29,7 @@ import {
   Home,
   AlertCircle,
   Send,
+  Package,
 } from "lucide-react";
 
 // لا توجد بيانات افتراضية - النظام يبدأ فارغاً
@@ -125,7 +126,7 @@ export default function Umrah() {
         setContactForm({ name: "", phone: "", email: "", message: "" });
 
         // Send to WhatsApp as well
-        const whatsappMessage = `استفسار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nا��إيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
+        const whatsappMessage = `استف��ار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nا��إيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
         window.open(
           `https://wa.me/201201666688?text=${encodeURIComponent(whatsappMessage)}`,
           "_blank",
