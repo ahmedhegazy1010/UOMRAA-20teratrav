@@ -13,7 +13,7 @@ import {
   createUser,
   resetPassword,
 } from "./routes/neon-auth";
-import { initializeNeonDatabase } from "./database/neon-db";
+import { initializeNeonDatabase } from "./database/real-neon-db";
 import {
   getAllPackages,
   getActivePackages,
@@ -43,9 +43,12 @@ import {
 export function createNeonServer() {
   const app = express();
 
-  // تهيئة قاعدة البيانات
+  // تهيئة قاعدة البيانات بالبيانات الحقيقية
   initializeNeonDatabase().catch((error) => {
-    console.error("❌ Failed to initialize Neon database:", error);
+    console.error(
+      "❌ Failed to initialize Neon database with real data:",
+      error,
+    );
   });
 
   // Middleware
