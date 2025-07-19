@@ -412,7 +412,7 @@ export default function Admin() {
                 <TableHead className="text-right">الإقامة</TableHead>
                 <TableHead className="text-right">الأسعار</TableHead>
                 <TableHead className="text-right">الحجوزات</TableHead>
-                <TableHead className="text-right">الحالة</TableHead>
+                <TableHead className="text-right">الح��لة</TableHead>
                 <TableHead className="text-right">الإجراءات</TableHead>
               </TableRow>
             </TableHeader>
@@ -586,17 +586,15 @@ export default function Admin() {
                 </CardTitle>
                 {getStatusBadge(inquiry.status)}
               </div>
-              <CardDescription>
-                <div className="flex items-center space-x-4 rtl:space-x-reverse text-sm">
-                  <div className="flex items-center">
-                    <Phone className="w-4 h-4 ml-1" />
-                    {inquiry.phone}
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="w-4 h-4 ml-1" />
-                    {inquiry.date}
-                  </div>
-                </div>
+              <CardDescription className="flex items-center space-x-4 rtl:space-x-reverse text-sm">
+                <span className="flex items-center">
+                  <Phone className="w-4 h-4 ml-1" />
+                  {inquiry.phone}
+                </span>
+                <span className="flex items-center">
+                  <Clock className="w-4 h-4 ml-1" />
+                  {inquiry.date}
+                </span>
               </CardDescription>
             </CardHeader>
             <CardContent>
