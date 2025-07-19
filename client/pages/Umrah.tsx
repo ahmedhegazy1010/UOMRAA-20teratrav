@@ -324,22 +324,26 @@ export default function Umrah() {
               </Button>
             </div>
 
-            {/* Trust Indicators */}
+            {/* Islamic Pattern Divider */}
             <div
-              className="flex justify-center items-center space-x-8 rtl:space-x-reverse text-gray-300 animate-fadeInUp"
+              className="flex justify-center items-center animate-fadeInUp"
               style={{ animationDelay: "0.8s" }}
             >
-              <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                <Shield className="w-5 h-5 text-green-400" />
-                <span className="text-sm">مرخص رسمياً</span>
-              </div>
-              <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                <Users className="w-5 h-5 text-blue-400" />
-                <span className="text-sm">خبرة +10 سنوات</span>
-              </div>
-              <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                <CheckCircle className="w-5 h-5 text-red-400" />
-                <span className="text-sm">ضمان الجودة</span>
+              <div className="flex items-center space-x-4 rtl:space-x-reverse">
+                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  className="text-red-400"
+                >
+                  <path
+                    d="M12 2L15 9H22L16.5 13.5L18.5 22L12 17L5.5 22L7.5 13.5L2 9H9L12 2Z"
+                    fill="currentColor"
+                    opacity="0.8"
+                  />
+                </svg>
+                <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
               </div>
             </div>
           </div>
