@@ -103,7 +103,7 @@ const packagesData = [
 const bookingsData = [
   {
     id: 1,
-    customerName: "��حمد محمد",
+    customerName: "أحمد محمد",
     phone: "01234567890",
     email: "ahmed@example.com",
     package: "باقة 10 أيام",
@@ -155,7 +155,7 @@ const inquiriesData = [
     id: 2,
     customerName: "عبدالله محمد",
     phone: "01444555666",
-    message: "��ل يمكن تخصيص باقة خاصة لمجموعة من 20 شخص؟",
+    message: "هل يمكن تخصيص باقة خاصة لمجموعة من 20 شخص؟",
     date: "2024-01-21",
     status: "replied",
   },
@@ -373,7 +373,7 @@ function AdminContent() {
                   <Label htmlFor="medina">الإقامة بالمدينة</Label>
                   <Input
                     id="medina"
-                    placeholder="مثال: 4 ليالي - فندق 5 نجوم"
+                    placeholder="مثال: 4 ليالي - فندق 5 ��جوم"
                   />
                 </div>
               </div>
@@ -790,12 +790,33 @@ function AdminContent() {
               </div>
               <span className="text-lg font-bold text-white">لوحة التحكم</span>
             </div>
-            <button
-              onClick={() => setSidebarOpen(false)}
-              className="lg:hidden p-2 rounded-md hover:bg-gray-100"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            <div className="flex items-center space-x-2 rtl:space-x-reverse">
+              <button
+                onClick={handleLogout}
+                className="p-2 rounded-md hover:bg-red-600/20 transition-all duration-300 text-red-400 hover:text-red-300"
+                title="تسجيل خروج"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={() => setSidebarOpen(false)}
+                className="lg:hidden p-2 rounded-md hover:bg-gray-600/20 transition-all duration-300 text-gray-400"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
           </div>
 
           <nav className="mt-6 px-3">
