@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "dev:neon": "DATABASE_URL=${DATABASE_URL:-postgresql://localhost:5432/teratrav} vite",
+    "dev:neon": "vite --config vite.config.neon-dev.ts",
     "build": "npm run build:client && npm run build:server",
     "build:neon": "npm run build:client && npm run build:server:neon",
     "build:client": "vite build",
