@@ -109,7 +109,7 @@ export default function EnhancedIslamicBackground() {
       </div>
 
       {/* Layer 3: Islamic star patterns with glow effect */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-25">
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
