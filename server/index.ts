@@ -1,7 +1,34 @@
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
-import { handleLogin, handleVerify, handleLogout } from "./routes/auth";
+import {
+  handleLogin,
+  handleVerify,
+  handleLogout,
+  authenticateToken,
+} from "./routes/auth";
+import { initializeDatabase } from "./database/init";
+import {
+  getAllPackages,
+  getActivePackages,
+  getPackageById,
+  createPackage,
+  updatePackage,
+  deletePackage,
+} from "./routes/packages";
+import {
+  getAllBookings,
+  getBookingById,
+  createBooking,
+  updateBookingStatus,
+} from "./routes/bookings";
+import {
+  getAllInquiries,
+  getInquiryById,
+  createInquiry,
+  updateInquiryStatus,
+} from "./routes/inquiries";
+import { getStats } from "./routes/stats";
 
 export function createServer() {
   const app = express();
