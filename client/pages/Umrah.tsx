@@ -295,7 +295,7 @@ export default function Umrah() {
               className="text-xl sm:text-2xl md:text-3xl mb-12 text-gray-200 leading-relaxed max-w-4xl mx-auto animate-fadeInUp"
               style={{ animationDelay: "0.4s" }}
             >
-              ساف�� مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة لرحلة
+              ساف�� مع تيراتراف براحة وأمان – باقات متن��عة وخدمة مميزة لرحلة
               روحانية لا تُنسى
             </p>
 
@@ -374,7 +374,7 @@ export default function Umrah() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              اختر الباقة التي تناسبك من مجموعة م��ن��عة من الخيارات المدروسة
+              اختر الباقة التي تناسب�� من مجموعة متنوعة من الخيارات المدروسة
               بعناية
             </p>
           </div>
