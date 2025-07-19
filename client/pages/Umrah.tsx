@@ -31,62 +31,12 @@ import {
   Send,
 } from "lucide-react";
 
-// باقات افتراضية للعرض في حالة عدم توفر API
-const defaultPackages = [
-  {
-    id: 1,
-    name: "المولد النبوي (اغسطس)",
-    duration: "7 أيام / 6 ليالي",
-    mecca_stay: "4 ليالي - فندق هيلتون الحرم",
-    medina_stay: "2 ليالي - فندق دار الهجرة",
-    itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
-    price_double: 4500,
-    price_triple: 3800,
-    price_quad: 3200,
-    price_infant: 1500,
-    price_child: 2800,
-    status: "active",
-    popular: true,
-    description: "باقة المولد النبوي الشريف تشمل زيارة الحرمين الشريفين",
-  },
-  {
-    id: 2,
-    name: "المولد النبوي (سبتمبر)",
-    duration: "10 أيام / 9 ليالي",
-    mecca_stay: "6 ليالي - فندق فيرمونت مكة",
-    medina_stay: "3 ليالي - فندق المدينة موفنبيك",
-    itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
-    price_double: 6800,
-    price_triple: 5900,
-    price_quad: 5200,
-    price_infant: 2200,
-    price_child: 4100,
-    status: "active",
-    popular: true,
-    description: "باقة شاملة للمولد النبوي مع إقامة ممتدة",
-  },
-  {
-    id: 3,
-    name: "عشر ذي الحجة (ديسمبر)",
-    duration: "8 أيام / 7 ليالي",
-    mecca_stay: "5 ليالي - برج الساعة فيرمونت",
-    medina_stay: "2 ليالي - فندق الأنصار الذهبي",
-    itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
-    price_double: 5200,
-    price_triple: 4500,
-    price_quad: 3900,
-    price_infant: 1800,
-    price_child: 3400,
-    status: "active",
-    popular: false,
-    description: "باقة العشر الأوائل من ذي الحجة",
-  },
-];
+// لا توجد بيانات افتراضية - النظام يبدأ فارغاً
 
 export default function Umrah() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [packages, setPackages] = useState(defaultPackages);
+  const [packages, setPackages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [contactForm, setContactForm] = useState({
     name: "",
@@ -115,19 +65,17 @@ export default function Umrah() {
       const data = await response.json();
       console.log("Packages API response:", data);
 
-      if (data.success && data.data && data.data.length > 0) {
+      if (data.success && data.data) {
         console.log("Setting packages from API:", data.data);
         setPackages(data.data);
       } else {
-        console.log("Using default packages - API returned empty or failed");
-        // استخدام باقات افتراضية في حالة فشل API
-        setPackages(defaultPackages);
+        console.log("API returned empty or failed - keeping empty packages");
+        setPackages([]);
       }
     } catch (error) {
       console.error("Error fetching packages:", error);
-      console.log("Using default packages due to error");
-      // استخدام باقات افتراضية في حالة فشل API
-      setPackages(defaultPackages);
+      console.log("Keeping empty packages due to error");
+      setPackages([]);
     } finally {
       setLoading(false);
     }
@@ -525,7 +473,7 @@ export default function Umrah() {
                 </Card>
               ))}
             </div>
-          ) : (
+          ) : packages.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 max-w-7xl mx-auto">
               {packages.map((pkg: any, index) => (
                 <Card
@@ -649,6 +597,27 @@ export default function Umrah() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <Card className="bg-gray-900/60 backdrop-blur-md border-red-500/30 shadow-2xl shadow-red-500/20 p-8 max-w-md mx-auto">
+                <CardContent>
+                  <Package className="w-16 h-16 text-red-400 mx-auto mb-4" />
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    لا توجد باقات متاحة حالياً
+                  </h3>
+                  <p className="text-gray-300 mb-4">
+                    سيتم إضافة الباقات قريباً. تابعنا للحصول على آخر التحديثات.
+                  </p>
+                  <Button
+                    onClick={() => openWhatsApp()}
+                    className="bg-green-600 hover:bg-green-700 text-white"
+                  >
+                    <MessageCircle className="w-4 h-4 ml-2" />
+                    تواصل معنا
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           )}
         </div>
@@ -873,7 +842,7 @@ export default function Umrah() {
                         onClick={() => openWhatsApp()}
                         className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-300"
                       >
-                        تواصل الآن
+                        تو��صل الآن
                       </Button>
                     </div>
                   </div>
