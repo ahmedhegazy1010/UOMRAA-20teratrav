@@ -89,7 +89,7 @@ function AdminContent() {
   const renderDashboard = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-white mb-2">لوحة ال��حكم</h2>
+        <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
         <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
@@ -183,7 +183,7 @@ function AdminContent() {
                       : "bg-gray-100 text-gray-800"
                   }
                 >
-                  {pkg.status === "active" ? "نشط" : "غير نش��"}
+                  {pkg.status === "active" ? "نشط" : "غير نشط"}
                 </Badge>
                 {pkg.popular && (
                   <Badge className="bg-red-100 text-red-800">
@@ -296,12 +296,7 @@ function AdminContent() {
       case "packages":
         return renderPackages();
       case "bookings":
-        return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-white mb-4">الحجوزات</h2>
-            <p className="text-gray-300">قريباً...</p>
-          </div>
-        );
+        return renderBookings();
       case "inquiries":
         return (
           <div className="text-center py-12">
