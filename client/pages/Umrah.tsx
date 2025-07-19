@@ -88,7 +88,7 @@ export default function Umrah() {
       <EnhancedIslamicBackground />
 
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-red-600/30 shadow-lg shadow-red-500/20 transition-all duration-500">
+      <header className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-red-600/30 shadow-lg shadow-red-500/20 transition-all duration-500 relative">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -216,10 +216,7 @@ export default function Umrah() {
       </section>
 
       {/* Packages Section */}
-      <section
-        id="packages"
-        className="py-20 bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden"
-      >
+      <section id="packages" className="py-20 relative overflow-hidden z-10">
         {/* Background elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-20 h-20 border border-red-500 rounded-full animate-pulse"></div>
@@ -366,7 +363,7 @@ export default function Umrah() {
       </section>
 
       {/* What's Included Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden z-10">
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 right-20 w-32 h-32 border border-red-500 rounded-full animate-pulse"></div>
           <div
@@ -405,10 +402,7 @@ export default function Umrah() {
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-20 bg-gradient-to-b from-black to-gray-900"
-      >
+      <section id="contact" className="py-20 relative z-10">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -473,7 +467,7 @@ export default function Umrah() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 border-t border-red-600/30">
+      <footer className="bg-gray-900/80 backdrop-blur-md text-white py-12 border-t border-red-600/30 relative z-10">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Logo and Description */}
