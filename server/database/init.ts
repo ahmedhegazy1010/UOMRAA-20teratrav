@@ -4,7 +4,21 @@ import bcrypt from "bcryptjs";
 
 // Create database instance
 const dbPath = path.join(process.cwd(), "data", "teratrav.db");
-export const db = new Database(dbPath);
+let db: Database.Database;
+
+export function getDatabase() {
+  if (!db) {
+    const fs = require("fs");
+    const dataDir = path.join(process.cwd(), "data");
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+
+    db = new Database(dbPath);
+    db.pragma("foreign_keys = ON");
+  }
+  return db;
+}
 
 // Enable foreign keys
 db.pragma("foreign_keys = ON");
