@@ -289,9 +289,9 @@ function AdminContent() {
     return <Badge className={config.className}>{config.label}</Badge>;
   };
 
-  const renderDashboard = () => (
+    const renderDashboard = () => (
     <div className="space-y-6">
-            <div>
+      <div>
         <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
         <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
@@ -651,7 +651,7 @@ function AdminContent() {
         <h2 className="text-3xl font-bold text-gray-900 mb-2">
           إدارة الاستفسارات
         </h2>
-        <p className="text-gray-600">الرد على استفسارات العملاء</p>
+        <p className="text-gray-600">الرد على اس��فسارات العملاء</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
