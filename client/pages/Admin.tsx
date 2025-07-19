@@ -394,12 +394,7 @@ function AdminContent() {
       case "bookings":
         return renderBookings();
       case "inquiries":
-        return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-white mb-4">الاستفسارات</h2>
-            <p className="text-gray-300">قريباً...</p>
-          </div>
-        );
+        return renderInquiries();
       case "settings":
         return (
           <div className="text-center py-12">
