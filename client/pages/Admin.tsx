@@ -214,7 +214,7 @@ function AdminContent() {
           ...packageForm,
         };
         setPackages([...packages, newPackage]);
-        alert("تم إضافة الباقة بنجاح!");
+        alert("تم إضا��ة الباقة بنجاح!");
       }
 
       setShowPackageModal(false);
@@ -223,6 +223,60 @@ function AdminContent() {
     } catch (error) {
       alert("حدث خطأ في حفظ الباقة");
     }
+  };
+
+  // Booking management functions
+  const handleBookingStatusChange = async (
+    bookingId: number,
+    newStatus: string,
+  ) => {
+    const statusMessages = {
+      confirmed: "تأكيد",
+      cancelled: "إلغاء",
+      completed: "إكمال",
+    };
+
+    if (confirm(`هل أنت متأكد من ${statusMessages[newStatus]} هذا الحجز؟`)) {
+      try {
+        // Here you would normally send API request
+        setBookings(
+          bookings.map((booking: any) =>
+            booking.id === bookingId
+              ? { ...booking, status: newStatus }
+              : booking,
+          ),
+        );
+        alert(`تم ${statusMessages[newStatus]} الحجز بنجاح!`);
+      } catch (error) {
+        alert("حدث خطأ في تحديث حالة الحجز");
+      }
+    }
+  };
+
+  const handleContactCustomer = (booking: any) => {
+    const message = `السلام عليكم ${booking.customer_name}، نود التواصل معكم بخصوص حجز العمرة رقم ${booking.id}`;
+    window.open(
+      `https://wa.me/${booking.phone.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`,
+      "_blank",
+    );
+  };
+
+  const handleViewBookingDetails = (booking: any) => {
+    const details = `
+تفاصيل الحجز:
+- رقم الحجز: ${booking.id}
+- اسم العميل: ${booking.customer_name}
+- رقم الهاتف: ${booking.phone}
+- الباقة: ${booking.package_name}
+- نوع الغرفة: ${booking.room_type}
+- عدد المسافرين: ${booking.travelers_count}
+- المبلغ الإجمالي: ${booking.total_price} جنيه
+- تاريخ السفر: ${booking.travel_date}
+- الحالة: ${booking.status}
+- تاريخ الطلب: ${new Date(booking.created_at).toLocaleDateString("ar-EG")}
+${booking.special_requests ? `- طلبات خاصة: ${booking.special_requests}` : ""}
+    `;
+    alert(details);
   };
 
   // Fetch data from API
@@ -284,7 +338,7 @@ function AdminContent() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
-        <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
+        <p className="text-gray-300">نظ��ة عامة على أداء الموقع والحجوزات</p>
       </div>
 
       {loading ? (
