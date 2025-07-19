@@ -273,6 +273,7 @@ export const authenticateToken: RequestHandler = async (req, res, next) => {
     (req as AuthRequest).user = decoded;
     next();
   } catch (error) {
+    console.error("Authentication error:", error);
     res.status(403).json({
       success: false,
       message: "رمز المصادقة غير صالح",
