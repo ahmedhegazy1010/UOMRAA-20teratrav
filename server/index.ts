@@ -64,6 +64,7 @@ export function createServer() {
   app.get("/api/packages/active", getActivePackages);
   app.get("/api/packages/:id", getPackageById);
   app.post("/api/bookings", createBooking);
+  app.post("/api/inquiries", createInquiry);
 
   // Protected admin routes
   app.get("/api/packages", authenticateToken, getAllPackages);
@@ -77,10 +78,12 @@ export function createServer() {
   app.delete("/api/bookings/:id", authenticateToken, deleteBooking);
   app.get("/api/bookings/stats", authenticateToken, getBookingStats);
 
-  // Placeholder route for inquiries
-  app.get("/api/inquiries", authenticateToken, (req, res) => {
-    res.json({ success: true, data: [], message: "قريباً" });
-  });
+  // Inquiry management routes (admin only)
+  app.get("/api/inquiries", authenticateToken, getAllInquiries);
+  app.get("/api/inquiries/:id", authenticateToken, getInquiryById);
+  app.put("/api/inquiries/:id/status", authenticateToken, updateInquiryStatus);
+  app.delete("/api/inquiries/:id", authenticateToken, deleteInquiry);
+  app.get("/api/inquiries/stats", authenticateToken, getInquiryStats);
 
   return app;
 }
