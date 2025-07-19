@@ -218,32 +218,45 @@ export default function Umrah() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <div className="w-full h-full bg-gradient-to-r from-black/60 to-black/30 relative">
+          <div className="w-full h-full bg-gradient-to-r from-black/80 via-red-900/20 to-black/60 relative">
             <img
               src="/kaaba-placeholder.svg"
               alt="الكعبة المشرفة"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-70"
             />
-            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-red-900/20 to-black/50"></div>
+            {/* Animated overlay elements */}
+            <div className="absolute inset-0">
+              <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-red-500 rounded-full animate-ping opacity-60"></div>
+              <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white rounded-full animate-pulse opacity-80"></div>
+              <div
+                className="absolute bottom-1/4 left-1/3 w-1.5 h-1.5 bg-red-400 rounded-full animate-ping opacity-50"
+                style={{ animationDelay: "1s" }}
+              ></div>
+            </div>
           </div>
         </div>
 
         {/* Hero Content */}
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-4 sm:p-6 md:p-8 border border-white/20">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+          <div className="backdrop-blur-md bg-black/30 rounded-3xl p-6 sm:p-8 md:p-12 border border-red-500/30 shadow-2xl shadow-red-500/20 transform hover:scale-105 transition-all duration-700 animate-fadeInUp">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent animate-pulse">
               رحلات العمرة - المولد النبوي الشريف
             </h1>
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-amber-100 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 text-gray-200 leading-relaxed animate-slideInLeft">
               سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة
             </p>
             <Button
               size="lg"
               onClick={() => scrollToSection("packages")}
-              className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
+              className="bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:from-red-700 hover:via-red-800 hover:to-red-900 text-white px-10 py-6 text-xl font-bold rounded-full shadow-2xl shadow-red-500/40 transform hover:scale-110 transition-all duration-500 animate-bounce border-2 border-red-400/50"
             >
               اكتشف الباقات
             </Button>
+
+            {/* Floating elements around button */}
+            <div className="absolute -top-4 -left-4 w-8 h-8 border-2 border-red-400 rounded-full animate-spin opacity-30"></div>
+            <div className="absolute -bottom-4 -right-4 w-6 h-6 border-2 border-white rounded-full animate-ping opacity-40"></div>
           </div>
         </div>
 
