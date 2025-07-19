@@ -1,6 +1,22 @@
 // دالة عامة لعرض الباقات (بدون مصادقة)
-// متغير عام لتخزين الباقات (فارغ في البداية)
+// ملاحظة: هذا الملف يقرأ البيانات من نفس المصدر المشترك مع packages-admin.js
+
+// متغير عام لتخزين الباقات
 let packages = [];
+
+// دالة للحصول على البيانات من global إذا كانت متاحة
+function syncWithAdminData() {
+  if (typeof global !== "undefined" && global.sharedPackages) {
+    packages = global.sharedPackages;
+  }
+}
+
+// دالة لحفظ البيانات في global للمشاركة
+function saveToGlobal() {
+  if (typeof global !== "undefined") {
+    global.sharedPackages = packages;
+  }
+}
 
 exports.handler = async (event, context) => {
   const headers = {
@@ -18,8 +34,15 @@ exports.handler = async (event, context) => {
 
     // GET all active packages (public, no auth required)
     if (method === "GET") {
+      // مزامنة البيانات مع packages-admin
+      syncWithAdminData();
+
+      console.log("Current packages in packages.js:", packages);
+
       // فلترة الباقات النشطة فقط
       const activePackages = packages.filter((pkg) => pkg.status === "active");
+
+      console.log("Active packages found:", activePackages.length);
 
       return {
         statusCode: 200,
@@ -41,6 +64,7 @@ exports.handler = async (event, context) => {
       }),
     };
   } catch (error) {
+    console.error("Error in packages.js:", error);
     return {
       statusCode: 500,
       headers,
@@ -51,65 +75,4 @@ exports.handler = async (event, context) => {
       }),
     };
   }
-};
-
-// دالة لإضافة باقة (يتم استدعاؤها من packages-admin)
-function addPackage(newPackage) {
-  const newId = Math.max(...packages.map((p) => p.id), 0) + 1;
-  const packageWithId = {
-    ...newPackage,
-    id: newId,
-    created_at: new Date().toISOString().split("T")[0],
-    updated_at: new Date().toISOString().split("T")[0],
-  };
-  packages.push(packageWithId);
-  return packageWithId;
-}
-
-// دالة لتحديث باقة
-function updatePackage(id, updateData) {
-  const index = packages.findIndex((pkg) => pkg.id === parseInt(id));
-  if (index === -1) {
-    return null;
-  }
-
-  packages[index] = {
-    ...packages[index],
-    ...updateData,
-    id: parseInt(id),
-    updated_at: new Date().toISOString().split("T")[0],
-  };
-
-  return packages[index];
-}
-
-// دالة لحذف باقة
-function deletePackage(id) {
-  const index = packages.findIndex((pkg) => pkg.id === parseInt(id));
-  if (index === -1) {
-    return null;
-  }
-
-  const deletedPackage = packages[index];
-  packages.splice(index, 1);
-  return deletedPackage;
-}
-
-// دالة للحصول على جميع الباقات
-function getAllPackages() {
-  return packages;
-}
-
-// دالة للحصول على باقة بالمعرف
-function getPackageById(id) {
-  return packages.find((pkg) => pkg.id === parseInt(id));
-}
-
-// تصدير الدوال للاستخدام في packages-admin
-global.packagesData = {
-  addPackage,
-  updatePackage,
-  deletePackage,
-  getAllPackages,
-  getPackageById,
 };
