@@ -157,18 +157,18 @@ export default function Umrah() {
           {isMenuOpen && (
             <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-amber-200 py-4">
               <nav className="flex flex-col space-y-4">
-                <a
-                  href="#packages"
-                  className="text-gray-700 hover:text-amber-600 transition-colors px-4"
+                <button
+                  onClick={() => scrollToSection("packages")}
+                  className="text-gray-700 hover:text-amber-600 transition-colors px-4 text-right"
                 >
                   رحلات العمرة
-                </a>
-                <a
-                  href="#contact"
-                  className="text-gray-700 hover:text-amber-600 transition-colors px-4"
+                </button>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className="text-gray-700 hover:text-amber-600 transition-colors px-4 text-right"
                 >
                   تواصل معنا
-                </a>
+                </button>
               </nav>
             </div>
           )}
@@ -435,7 +435,7 @@ export default function Umrah() {
                 <span className="text-xl font-bold">تيراتراف</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المم��زة
+                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المميزة
               </p>
             </div>
 
