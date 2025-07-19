@@ -76,7 +76,7 @@ const packagesData = [
     id: 2,
     name: "باقة 10 أيام",
     duration: "10 أيام",
-    meccaStay: "5 ليالي - فندق 5 ��جوم",
+    meccaStay: "5 ليال�� - فندق 5 ��جوم",
     medinaStay: "4 ليالي - فندق 5 نجوم",
     priceDouble: 35000,
     priceTriple: 32000,
@@ -176,7 +176,7 @@ export default function Admin() {
       trend: "+12%",
     },
     {
-      title: "المبيعات الشهري���",
+      title: "المبي��ات الشهري���",
       value: "2.4M",
       icon: DollarSign,
       color: "text-green-600",
@@ -344,7 +344,7 @@ export default function Admin() {
             <div className="grid grid-cols-1 gap-4 py-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="name">اسم الباقة</Label>
+                  <Label htmlFor="name">اسم ��لباقة</Label>
                   <Input id="name" placeholder="مثال: باقة 10 أيام" />
                 </div>
                 <div>
@@ -809,5 +809,3 @@ export default function Admin() {
     </div>
   );
 }
-
-export default Admin;
