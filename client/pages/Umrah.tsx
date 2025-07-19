@@ -232,7 +232,7 @@ export default function Umrah() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              باقات العمرة المميز��
+              باقات العمرة المميزة
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
@@ -422,7 +422,10 @@ export default function Umrah() {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   واتساب
                 </h3>
-                <Button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300">
+                <Button
+                  onClick={openWhatsApp}
+                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
+                >
                   تواصل عبر الواتساب
                 </Button>
               </Card>
