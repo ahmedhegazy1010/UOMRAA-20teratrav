@@ -460,7 +460,7 @@ export default function AdminDashboard() {
                   <span className="text-red-400 font-mono">admin</span>
                 </p>
                 <p>
-                  كلمة المر��ر:{" "}
+                  كلمة المرور:{" "}
                   <span className="text-red-400 font-mono">teratrav2024</span>
                 </p>
                 <p className="text-xs text-gray-600 mt-2">أو</p>
