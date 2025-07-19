@@ -44,8 +44,8 @@ export const handleLogin: RequestHandler = async (req, res) => {
       });
     }
 
-    // Find user
-    const user = ADMIN_USERS.find((u) => u.username === username);
+    // Find user in database
+    const user = queries.getUserByUsername.get(username) as User;
     if (!user) {
       return res.status(401).json({
         success: false,
@@ -54,13 +54,16 @@ export const handleLogin: RequestHandler = async (req, res) => {
     }
 
     // Verify password
-    const isValidPassword = await bcrypt.compare(password, user.passwordHash);
+    const isValidPassword = await bcrypt.compare(password, user.password_hash);
     if (!isValidPassword) {
       return res.status(401).json({
         success: false,
         message: "اسم المستخدم أو كلمة المرور غير صحيحة",
       });
     }
+
+    // Update last login
+    queries.updateUserLastLogin.run(user.id);
 
     // Generate JWT token
     const token = jwt.sign(
