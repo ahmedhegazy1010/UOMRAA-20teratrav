@@ -103,7 +103,7 @@ export default function Umrah() {
               <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">T</span>
               </div>
-              <span className="text-xl font-bold text-gray-900">تيراتر��ف</span>
+              <span className="text-xl font-bold text-gray-900">تيراتراف</span>
             </div>
 
             {/* Desktop Navigation */}
@@ -147,7 +147,7 @@ export default function Umrah() {
                   href="#packages"
                   className="text-gray-700 hover:text-amber-600 transition-colors px-4"
                 >
-                  رحلات العمرة
+                  رحلا�� العمرة
                 </a>
                 <a
                   href="#contact"
@@ -167,7 +167,7 @@ export default function Umrah() {
         <div className="absolute inset-0">
           <div className="w-full h-full bg-gradient-to-r from-black/60 to-black/30 relative">
             <img
-              src="/placeholder.svg"
+              src="/kaaba-placeholder.svg"
               alt="الكعبة المشرفة"
               className="w-full h-full object-cover"
             />
@@ -209,7 +209,7 @@ export default function Umrah() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              باقات العمرة المميزة
+              باقات العمرة المم��زة
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
