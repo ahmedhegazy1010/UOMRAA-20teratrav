@@ -115,7 +115,7 @@ export default function Umrah() {
           "_blank",
         );
       } else {
-        setContactError(data.message || "حدث خطأ في إرسال ��لاستفسار");
+        setContactError(data.message || "حدث خطأ في إرسال الاستفسار");
       }
     } catch (err) {
       setContactError("خطأ في الاتصال بالخادم");
@@ -130,9 +130,9 @@ export default function Umrah() {
 
   const includedItems = [
     { icon: Shield, text: "رسوم التأشيرة" },
-    { icon: Plane, text: "ت��اكر الطيران" },
+    { icon: Plane, text: "تذاكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
-    { icon: Users, text: "التنقلات الداخلية بأحدث ا��باصات" },
+    { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "زيارات دينية" },
     { icon: Gift, text: "هدايا وشنطة عمرة" },
@@ -153,7 +153,7 @@ export default function Umrah() {
                 <span className="text-white font-bold text-lg">T</span>
               </div>
               <span className="text-xl font-bold text-white bg-gradient-to-r from-white to-red-100 bg-clip-text text-transparent">
-                تيراتراف
+                تيرات��اف
               </span>
             </div>
 
@@ -210,7 +210,7 @@ export default function Umrah() {
                   onClick={() => scrollToSection("packages")}
                   className="text-gray-300 hover:text-red-400 transition-all duration-300 px-4 text-right font-medium transform hover:translate-x-2"
                 >
-                  رحلات ���لعمرة
+                  رحلات العمرة
                 </button>
                 <button
                   onClick={() => scrollToSection("contact")}
@@ -359,7 +359,7 @@ export default function Umrah() {
               style={{ animationDelay: "0.4s", maxWidth: "999px" }}
             >
               سافر مع تيراتراف براحة وأمان – باقات متنوعة وخدمة مميزة لرحلة
-              روحا��ية لا تُنسى
+              روحانية لا تُنسى
             </p>
 
             {/* Action Buttons */}
@@ -437,7 +437,7 @@ export default function Umrah() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              اختر ا��باقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
+              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
               بعناية
             </p>
           </div>
@@ -540,11 +540,11 @@ export default function Umrah() {
                         <div className="flex justify-between items-center">
                           <span className="text-gray-300">ثلاثي:</span>
                           <span className="font-bold text-red-400">
-                            {pkg.price_triple?.toLocaleString()} جن���ه
+                            {pkg.price_triple?.toLocaleString()} جنيه
                           </span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span className="text-gray-300">ر��اعي:</span>
+                          <span className="text-gray-300">رباعي:</span>
                           <span className="font-bold text-red-400">
                             {pkg.price_quad?.toLocaleString()} جنيه
                           </span>
@@ -819,7 +819,7 @@ export default function Umrah() {
                       </h3>
                       <div className="text-gray-300 text-sm space-y-1">
                         <div>السبت - الخميس: 9:00 ص - 9:00 م</div>
-                        <div>الجم��ة: 2:00 م - 9:00 م</div>
+                        <div>الجمعة: 2:00 م - 9:00 م</div>
                       </div>
                     </div>
                   </div>
@@ -854,7 +854,7 @@ export default function Umrah() {
                 <span className="text-xl font-bold">تيراتراف</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
-                رحلات العم��ة والحج بأعلى معايير الجودة والخدمة المميزة
+                رحلات العمرة والحج بأعلى معايير الجودة والخدمة المميزة
               </p>
             </div>
 
