@@ -748,7 +748,7 @@ export default function Umrah() {
                       {contactLoading ? (
                         <div className="flex items-center justify-center">
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-2"></div>
-                          جاري الإرسال...
+                          جا��ي الإرسال...
                         </div>
                       ) : (
                         <>
@@ -854,7 +854,7 @@ export default function Umrah() {
               <div className="flex items-center justify-center md:justify-start space-x-2 rtl:space-x-reverse mb-4">
                 <div className="w-10 h-10 rounded-lg overflow-hidden bg-white/10 backdrop-blur-sm">
                   <img
-                    src="https://cdn.builder.io/o/assets%2F6e6933d312b74b23a89dafd2e32a307b%2F331dc497cf8948eeab1b0314f9019b47?alt=media&token=d7e14e32-f441-4824-978d-9df3e06b6cc7&apiKey=6e6933d312b74b23a89dafd2e32a307b"
+                    src="https://cdn.builder.io/api/v1/image/assets%2F6e6933d312b74b23a89dafd2e32a307b%2Fd916b8a876584dc48a2246340e732356?format=webp&width=800"
                     alt="تيراتراف"
                     className="w-full h-full object-contain"
                   />
