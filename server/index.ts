@@ -15,6 +15,14 @@ import {
   createPackage,
 } from "./routes/packages-simple";
 import { getStats } from "./routes/stats-simple";
+import {
+  createBooking,
+  getAllBookings,
+  getBookingById,
+  updateBookingStatus,
+  deleteBooking,
+  getBookingStats,
+} from "./routes/bookings";
 
 export function createServer() {
   const app = express();
