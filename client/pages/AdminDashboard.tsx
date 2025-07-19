@@ -37,6 +37,10 @@ interface User {
 }
 
 export default function AdminDashboard() {
+  // تحديد ما إذا كنا في بيئة النشر أو التطوير
+  const isProduction = window.location.hostname.includes("netlify.app");
+  const apiBaseUrl = isProduction ? "/.netlify/functions" : "/api";
+
   // Authentication state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -479,7 +483,7 @@ export default function AdminDashboard() {
 
         {/* Footer */}
         <div className="absolute bottom-4 text-center text-gray-500 text-sm">
-          <p>© 2024 تيراتراف - جميع الحقوق محفوظة</p>
+          <p>© 2024 تي��اتراف - جميع الحقوق محفوظة</p>
         </div>
       </div>
     );
