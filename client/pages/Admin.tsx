@@ -231,7 +231,7 @@ export default function Admin() {
     <div className="space-y-6">
       <div>
         <h2 className="text-3xl font-bold text-gray-900 mb-2">لوحة التحكم</h2>
-        <p className="text-gray-600">نظ��ة عامة على أداء الموقع والحجوزات</p>
+        <p className="text-gray-600">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
       {/* Stats Cards */}
@@ -423,7 +423,7 @@ export default function Admin() {
                   <TableCell>{pkg.duration}</TableCell>
                   <TableCell>
                     <div className="text-sm">
-                      <div>مك��: {pkg.meccaStay}</div>
+                      <div>مكة: {pkg.meccaStay}</div>
                       <div>المدينة: {pkg.medinaStay}</div>
                     </div>
                   </TableCell>
@@ -810,8 +810,8 @@ export default function Admin() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 lg:mr-64">
-          <main className="p-6">{renderContent()}</main>
+        <div className="flex-1 lg:mr-64 relative">
+          <main className="p-6 relative z-10">{renderContent()}</main>
         </div>
       </div>
 
