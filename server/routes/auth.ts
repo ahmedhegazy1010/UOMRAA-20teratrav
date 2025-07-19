@@ -22,7 +22,7 @@ interface LoginRequest {
   password: string;
 }
 
-interface AuthRequest extends Request {
+interface AuthRequest extends express.Request {
   user?: {
     id: string;
     username: string;
