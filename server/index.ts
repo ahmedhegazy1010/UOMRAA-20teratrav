@@ -23,6 +23,14 @@ import {
   deleteBooking,
   getBookingStats,
 } from "./routes/bookings";
+import {
+  createInquiry,
+  getAllInquiries,
+  getInquiryById,
+  updateInquiryStatus,
+  deleteInquiry,
+  getInquiryStats,
+} from "./routes/inquiries";
 
 export function createServer() {
   const app = express();
