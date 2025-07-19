@@ -183,11 +183,17 @@ export default function AdminDashboard() {
         "Content-Type": "application/json",
       };
 
+      const packagesUrl = isProduction
+        ? `${apiBaseUrl}/packages-admin`
+        : "/api/packages";
+      const statsUrl = isProduction ? `${apiBaseUrl}/stats` : "/api/stats";
+      const bookingsUrl = "/api/bookings";
+
       const [packagesRes, statsRes, bookingsRes, inquiriesRes] =
         await Promise.all([
-          fetch("/api/packages", { headers }),
-          fetch("/api/stats", { headers }),
-          fetch("/api/bookings", { headers }),
+          fetch(packagesUrl, { headers }),
+          fetch(statsUrl, { headers }),
+          fetch(bookingsUrl, { headers }),
           fetch("/api/inquiries", { headers }),
         ]);
 
