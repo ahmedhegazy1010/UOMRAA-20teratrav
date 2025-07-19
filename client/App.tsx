@@ -14,6 +14,8 @@ import Umrah from "./pages/Umrah";
 import Admin from "./pages/Admin";
 import Booking from "./pages/Booking";
 import About from "./pages/About";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 
 const queryClient = new QueryClient();
 
