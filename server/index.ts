@@ -54,17 +54,22 @@ export function createServer() {
 
   // Public routes (no authentication required)
   app.get("/api/packages/active", getActivePackages);
+  app.get("/api/packages/:id", getPackageById);
+  app.post("/api/bookings", createBooking);
 
   // Protected admin routes
   app.get("/api/packages", authenticateToken, getAllPackages);
-  app.get("/api/packages/:id", authenticateToken, getPackageById);
   app.post("/api/packages", authenticateToken, createPackage);
   app.get("/api/stats", authenticateToken, getStats);
 
-  // Placeholder routes for bookings and inquiries
-  app.get("/api/bookings", authenticateToken, (req, res) => {
-    res.json({ success: true, data: [], message: "قريباً" });
-  });
+  // Booking management routes (admin only)
+  app.get("/api/bookings", authenticateToken, getAllBookings);
+  app.get("/api/bookings/:id", authenticateToken, getBookingById);
+  app.put("/api/bookings/:id/status", authenticateToken, updateBookingStatus);
+  app.delete("/api/bookings/:id", authenticateToken, deleteBooking);
+  app.get("/api/bookings/stats", authenticateToken, getBookingStats);
+
+  // Placeholder route for inquiries
   app.get("/api/inquiries", authenticateToken, (req, res) => {
     res.json({ success: true, data: [], message: "قريباً" });
   });
