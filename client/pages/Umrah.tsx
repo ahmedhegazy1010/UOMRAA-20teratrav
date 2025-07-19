@@ -289,7 +289,10 @@ export default function Umrah() {
               <span className="block bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
                 رحلات العمرة
               </span>
-              <span className="block bg-gradient-to-r from-red-400 via-red-300 to-red-400 bg-clip-text text-transparent mt-2">
+              <span
+                className="block bg-gradient-to-r from-red-400 via-red-300 to-red-400 bg-clip-text text-transparent mt-2 pt-5"
+                style={{ fontFamily: "Cairo, sans-serif" }}
+              >
                 المولد النبوي الشريف
               </span>
             </h1>
@@ -376,7 +379,7 @@ export default function Umrah() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-400 mx-auto mb-6 animate-shimmer"></div>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروسة
+              اختر الباقة التي تناسبك من مجموعة متنوعة من الخيارات المدروس��
               بعناية
             </p>
           </div>
