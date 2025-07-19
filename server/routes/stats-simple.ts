@@ -12,22 +12,22 @@ export const getStats: RequestHandler = async (req, res) => {
 
     const pendingBookings = db
       .prepare(
-        'SELECT COUNT(*) as count FROM bookings WHERE status = "pending"',
+        "SELECT COUNT(*) as count FROM bookings WHERE status = 'pending'",
       )
       .get() as { count: number };
 
     const newInquiries = db
-      .prepare('SELECT COUNT(*) as count FROM inquiries WHERE status = "new"')
+      .prepare("SELECT COUNT(*) as count FROM inquiries WHERE status = 'new'")
       .get() as { count: number };
 
     const totalRevenue = db
       .prepare(
-        'SELECT SUM(total_price) as total FROM bookings WHERE status IN ("confirmed", "completed")',
+        "SELECT SUM(total_price) as total FROM bookings WHERE status IN ('confirmed', 'completed')",
       )
       .get() as { total: number };
 
     const activePackages = db
-      .prepare('SELECT COUNT(*) as count FROM packages WHERE status = "active"')
+      .prepare("SELECT COUNT(*) as count FROM packages WHERE status = 'active'")
       .get() as { count: number };
 
     const formattedStats = {
@@ -70,7 +70,7 @@ export const getStats: RequestHandler = async (req, res) => {
       data: {
         stats: formattedStats,
       },
-      message: "تم جلب الإح��ائيات بنجاح",
+      message: "تم جلب الإحصائيات بنجاح",
     });
   } catch (error) {
     console.error("Error fetching stats:", error);
