@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Set Cairo as default font */
+* {
+  font-family: "Cairo", sans-serif;
+}
+
+html,
+body {
+  font-family: "Cairo", sans-serif;
+}
+
 /* Islamic Background Animations */
 @keyframes islamicFloat {
   0%,
