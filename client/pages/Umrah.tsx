@@ -203,7 +203,7 @@ export default function Umrah() {
   const includedItems = [
     { icon: Shield, text: "رسوم التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
-    { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
+    { icon: Hotel, text: "الإقامة الكاملة بفناد�� مكة والمدينة" },
     { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "مزارات دينية" },
@@ -425,7 +425,7 @@ export default function Umrah() {
                   padding: "20px 0 28px",
                 }}
               >
-                ��لعمرة معانا اسهل
+                العمرة معانا اسهل
               </span>
             </h1>
 
@@ -726,7 +726,7 @@ export default function Umrah() {
               تواصل معنا
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              فريقنا جاهز لمساعدتك في أي وقت
+              فريقنا جاهز لمساع��تك في أي وقت
             </p>
           </div>
 
