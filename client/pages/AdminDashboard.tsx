@@ -877,6 +877,7 @@ export default function AdminDashboard() {
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
                           placeholder="30000"
+                          min="0"
                         />
                       </div>
                       <div className="space-y-2">
@@ -894,6 +895,7 @@ export default function AdminDashboard() {
                           }
                           className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white"
                           placeholder="15000"
+                          min="0"
                         />
                       </div>
                       <div className="space-y-2">
@@ -1084,7 +1086,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-300">
-                      اسم الشركة
+                      ا��م الشركة
                     </label>
                     <input
                       type="text"
@@ -1191,7 +1193,7 @@ export default function AdminDashboard() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input
                       type="text"
-                      placeholder="ا��م المستخدم"
+                      placeholder="اسم المستخدم"
                       className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
                     />
                     <input
@@ -1218,7 +1220,7 @@ export default function AdminDashboard() {
                   إعد��دات النظام العامة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
-                  إعداد���� عامة للموقع والنظام
+                  إعداد��ت عامة للموقع والنظام
                 </CardDescription>
               </CardHeader>
               <CardContent>
