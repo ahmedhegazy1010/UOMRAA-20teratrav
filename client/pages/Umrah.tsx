@@ -269,15 +269,22 @@ export default function Umrah() {
 
             {/* Main Title */}
             <h1
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight animate-fadeInUp"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight animate-fadeInUp flex flex-col"
               style={{ animationDelay: "0.2s" }}
             >
-              <span className="block bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent">
+              <span
+                className="bg-gradient-to-r from-white via-red-100 to-white bg-clip-text text-transparent pb-7 mx-auto"
+                style={{ margin: "-5px auto 0" }}
+              >
                 رحلات العمرة
               </span>
               <span
-                className="block bg-gradient-to-r from-red-400 via-red-300 to-red-400 bg-clip-text text-transparent mt-2 pt-5"
-                style={{ fontFamily: "Cairo, sans-serif" }}
+                className="bg-gradient-to-r from-red-400 via-red-300 to-red-400 bg-clip-text text-transparent mx-auto"
+                style={{
+                  fontFamily: "Cairo, sans-serif",
+                  margin: "-5px auto 35px",
+                  padding: "20px 0 28px",
+                }}
               >
                 المولد النبوي الشريف
               </span>
