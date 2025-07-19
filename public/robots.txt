@@ -10,7 +10,7 @@ Allow: /booking
 Disallow: /admin
 
 # Sitemap location
-Sitemap: https://teratrav.com/sitemap.xml
+Sitemap: https://umrah-teratrav.netlify.app/sitemap.xml
 
 # Crawl-delay for better server performance
 Crawl-delay: 1
