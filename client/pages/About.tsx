@@ -49,7 +49,7 @@ export default function About() {
     {
       icon: Users,
       title: "الإرشاد السياحي",
-      description: "مرشدين متخصصين لإر��ادكم طوال الرحلة",
+      description: "مرشدين متخصصين لإرضادكم طوال الرحلة",
     },
   ];
 
