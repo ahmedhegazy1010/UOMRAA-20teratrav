@@ -277,7 +277,10 @@ export default function AdminDashboard() {
 
       console.log("Sending package data:", packageData);
 
-      const response = await fetch("/api/packages", {
+      const packagesUrl = isProduction
+        ? `${apiBaseUrl}/packages-admin`
+        : "/api/packages";
+      const response = await fetch(packagesUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -748,7 +751,7 @@ export default function AdminDashboard() {
                             المولد النبوي (اغسطس)
                           </option>
                           <option value="المولد النبوي (سبتمبر)">
-                            المولد النبوي (سبتمبر)
+                            المولد الن��وي (سبتمبر)
                           </option>
                           <option value="المولد النبوي (اكتوبر)">
                             المولد النبوي (اكتوبر)
