@@ -65,12 +65,21 @@ export default function Umrah() {
 
     window.addEventListener("packagesUpdated", handlePackageUpdate);
 
+    // Refresh when user returns to page/tab
+    const handleWindowFocus = () => {
+      console.log("Window focused - refreshing packages...");
+      fetchPackages();
+    };
+
+    window.addEventListener("focus", handleWindowFocus);
+
     // إعادة تحميل الباقات كل 10 ثواني لضمان الحصول على أحدث البيانات
     const interval = setInterval(fetchPackages, 10000);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener("packagesUpdated", handlePackageUpdate);
+      window.removeEventListener("focus", handleWindowFocus);
     };
   }, []);
 
