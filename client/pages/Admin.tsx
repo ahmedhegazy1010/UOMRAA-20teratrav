@@ -230,7 +230,7 @@ export default function Admin() {
   const renderDashboard = () => (
     <div className="space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">لوحة التحكم</h2>
+        <h2 className="text-3xl font-bold text-gray-900 mb-2">ل��حة التحكم</h2>
         <p className="text-gray-600">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
@@ -489,7 +489,7 @@ export default function Admin() {
             <TableHeader>
               <TableRow>
                 <TableHead className="text-right">اسم العميل</TableHead>
-                <TableHead className="text-right">معلومات الاتصال</TableHead>
+                <TableHead className="text-right">معلوم��ت الاتصال</TableHead>
                 <TableHead className="text-right">الباقة</TableHead>
                 <TableHead className="text-right">التفاصيل</TableHead>
                 <TableHead className="text-right">المبلغ الإجمالي</TableHead>
@@ -743,20 +743,20 @@ export default function Admin() {
         </div>
       </div>
       {/* Mobile Header */}
-      <div className="lg:hidden bg-white shadow-sm border-b px-4 py-3">
+      <div className="lg:hidden bg-black/90 backdrop-blur-md shadow-lg shadow-red-500/20 border-b border-red-600/30 px-4 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-2 rounded-md hover:bg-gray-100"
+              className="p-2 rounded-md hover:bg-red-600/20 transition-all duration-300"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6 text-red-400" />
             </button>
             <div className="flex items-center space-x-2 rtl:space-x-reverse">
-              <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-br from-red-600 to-red-700 rounded-lg flex items-center justify-center shadow-lg shadow-red-500/30 animate-pulse">
                 <span className="text-white font-bold">T</span>
               </div>
-              <span className="text-lg font-bold text-gray-900">
+              <span className="text-lg font-bold text-white">
                 لوحة تحكم تيراتراف
               </span>
             </div>
