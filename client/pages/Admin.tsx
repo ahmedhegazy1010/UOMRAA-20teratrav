@@ -191,7 +191,7 @@ function AdminContent() {
                       : "bg-gray-100 text-gray-800"
                   }
                 >
-                  {pkg.status === "active" ? "نشط" : "غي�� نشط"}
+                  {pkg.status === "active" ? "نشط" : "غير نشط"}
                 </Badge>
                 {pkg.popular && (
                   <Badge className="bg-red-100 text-red-800">
@@ -793,7 +793,7 @@ function AdminContent() {
                 </h4>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-300">وضع ال��يانة</span>
+                    <span className="text-gray-300">وضع الصيانة</span>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
                         type="checkbox"
