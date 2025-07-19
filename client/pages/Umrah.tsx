@@ -200,6 +200,7 @@ export default function Umrah() {
             </p>
             <Button
               size="lg"
+              onClick={() => scrollToSection("packages")}
               className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-4 text-lg font-semibold rounded-full transform hover:scale-105 transition-all duration-300"
             >
               اكتشف الباقات
