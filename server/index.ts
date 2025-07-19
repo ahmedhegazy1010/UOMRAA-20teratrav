@@ -13,22 +13,8 @@ import {
   getActivePackages,
   getPackageById,
   createPackage,
-  updatePackage,
-  deletePackage,
-} from "./routes/packages";
-import {
-  getAllBookings,
-  getBookingById,
-  createBooking,
-  updateBookingStatus,
-} from "./routes/bookings";
-import {
-  getAllInquiries,
-  getInquiryById,
-  createInquiry,
-  updateInquiryStatus,
-} from "./routes/inquiries";
-import { getStats } from "./routes/stats";
+} from "./routes/packages-simple";
+import { getStats } from "./routes/stats-simple";
 
 export function createServer() {
   const app = express();
