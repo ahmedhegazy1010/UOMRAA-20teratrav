@@ -112,7 +112,7 @@ const bookingsData = [
     totalPrice: 70000,
     status: "pending",
     date: "2024-01-15",
-    notes: "يفضل فندق قريب من الحرم",
+    notes: "يفضل فندق قريب من الحر��",
   },
   {
     id: 2,
@@ -291,14 +291,26 @@ function AdminContent() {
 
   const renderDashboard = () => (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">لوحة التحكم</h2>
-        <p className="text-gray-600">نظرة عامة على أداء الموقع والحجوزات</p>
+            <div>
+        <h2 className="text-3xl font-bold text-white mb-2">لوحة التحكم</h2>
+        <p className="text-gray-300">نظرة عامة على أداء الموقع والحجوزات</p>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, index) => (
+      {loading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[...Array(4)].map((_, index) => (
+            <Card key={index} className="bg-gray-900/80 border-red-500/30 animate-pulse">
+              <CardContent className="p-6">
+                <div className="h-20 bg-gray-700 rounded"></div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : (
+        <>
+          {/* Stats Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats && Object.values(stats).map((stat, index) => (
           <Card
             key={index}
             className="bg-gray-900/80 border-red-500/30 hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500 transform hover:scale-105 animate-fadeInUp"
@@ -534,7 +546,7 @@ function AdminContent() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4">
-        <Input placeholder="البحث في الحجوزات..." className="max-w-sm" />
+        <Input placeholder="ا��بحث في الحجوزات..." className="max-w-sm" />
         <Select>
           <SelectTrigger className="max-w-sm">
             <SelectValue placeholder="تصفية حسب الحالة" />
