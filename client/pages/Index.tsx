@@ -6,7 +6,10 @@ export default function Index() {
 
   // توجيه المستخدم مباشرة إلى صفحة باقات العمرة الرئيسية
   useEffect(() => {
-    navigate("/umrah");
+    const timer = setTimeout(() => {
+      navigate("/umrah");
+    }, 500);
+    return () => clearTimeout(timer);
   }, [navigate]);
 
   // عرض شاشة تحميل بسيطة أثناء التوجيه
