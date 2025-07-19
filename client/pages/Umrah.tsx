@@ -73,8 +73,8 @@ export default function Umrah() {
       if (isNetlify) {
         apiUrl = "/.netlify/functions/packages";
       } else if (isDev) {
-        // في بيئة التطوير، استخدم API الخادم المحلي
-        apiUrl = "/api/packages";
+        // في بيئة التطوير، استخدم API الخادم المحلي للباقات النشطة (بدون مصادقة)
+        apiUrl = "/api/packages/active";
       } else {
         apiUrl = "/.netlify/functions/packages";
       }
@@ -126,7 +126,7 @@ export default function Umrah() {
 
   const openWhatsApp = (packageInfo?: string) => {
     const phoneNumber = "201201666688";
-    const baseMessage = "السلام عليك��، أريد الاستفسار عن باقات العمرة";
+    const baseMessage = "السلام عليكم، أريد الاستفسار عن باقات العمرة";
     const message = packageInfo
       ? `${baseMessage}\n\nباقة ${packageInfo}`
       : baseMessage;
@@ -580,7 +580,7 @@ export default function Umrah() {
                     {/* Pricing */}
                     <div className="bg-gray-800/50 rounded-lg p-4 space-y-3">
                       <h4 className="font-bold text-white text-center mb-3">
-                        ��لسعر للفرد
+                        السعر للفرد
                       </h4>
                       <div className="grid grid-cols-1 gap-2 text-sm">
                         <div className="flex justify-between items-center">
