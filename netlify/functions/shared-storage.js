@@ -179,12 +179,10 @@ function getPackageById(id) {
   return getPackages().find((pkg) => pkg.id === parseInt(id));
 }
 
-module.exports = {
-  getPackages,
-  setPackages,
-  addPackage,
-  updatePackage,
-  deletePackage,
-  getActivePackages,
-  getPackageById,
-};
+exports.getPackages = getPackages;
+exports.setPackages = setPackages;
+exports.addPackage = addPackage;
+exports.updatePackage = updatePackage;
+exports.deletePackage = deletePackage;
+exports.getActivePackages = getActivePackages;
+exports.getPackageById = getPackageById;
