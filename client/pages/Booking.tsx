@@ -171,7 +171,7 @@ export default function Booking() {
       if (response.ok) {
         setSuccess(true);
         // Redirect to WhatsApp with booking details
-        const whatsappMessage = `السلام عليك��، تم إرسال طلب حجز جديد:\n\n📋 الباقة: ${selectedPackage?.name}\n👤 الاسم: ${formData.customer_name}\n📞 الهاتف: ${formData.phone}\n👥 المسافرون: ${formData.adults_count + formData.children_count + formData.infants_count} أشخاص\n💰 المجموع: ${totalPrice.toLocaleString()} جنيه\n\nيرجى التواصل معي لإتمام الحجز.`;
+        const whatsappMessage = `السلام عليكم، تم إرسال طلب حجز جديد:\n\n📋 الباقة: ${selectedPackage?.name}\n👤 الاسم: ${formData.customer_name}\n📞 الهاتف: ${formData.phone}\n👥 المسافرون: ${formData.adults_count + formData.children_count + formData.infants_count} أشخاص\n💰 المجموع: ${totalPrice.toLocaleString()} جنيه\n\nيرجى التواصل معي لإتمام الحجز.`;
         window.open(
           `https://wa.me/201201666688?text=${encodeURIComponent(whatsappMessage)}`,
           "_blank",
