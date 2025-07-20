@@ -1,5 +1,5 @@
-// دالة عامة لعرض الباقات (بدون مصادقة)
-const storage = require("./shared-storage");
+// دالة عامة لعرض الباقات (بد��ن مصادقة)
+const storage = require("./persistent-storage");
 
 exports.handler = async (event, context) => {
   const headers = {
