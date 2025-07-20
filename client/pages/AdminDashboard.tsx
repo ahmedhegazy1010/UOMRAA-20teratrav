@@ -388,7 +388,9 @@ export default function AdminDashboard() {
 
       if (response.ok) {
         alert(
-          editingPackage ? "تم تحديث الباقة بنجاح!" : "تم إضافة الباقة بنجاح!",
+          editingPackage
+            ? "تم تحديث الباقة بنجاح!\n\nملاحظة: قد تحتاج إلى إعادة تحميل الصفحة الرئيسية لرؤية التغييرات."
+            : "تم إضافة الباقة بنجاح!\n\nملاحظة: قد تحتاج إلى إعادة تحميل الصفحة الرئيسية لرؤية الباقة الجديدة.",
         );
         setShowPackageModal(false);
         resetPackageForm();
@@ -835,7 +837,7 @@ export default function AdminDashboard() {
                           onClick={() => handleEditPackage(pkg)}
                           className="text-blue-400 border-blue-400 hover:bg-blue-400 hover:text-white"
                         >
-                          تحديث
+                          تحدي��
                         </Button>
                         <Button
                           size="sm"
