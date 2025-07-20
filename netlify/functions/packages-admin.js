@@ -1,6 +1,6 @@
 // وظائف إدارة باقات العمرة
 const jwt = require("jsonwebtoken");
-const storage = require("./shared-storage");
+const storage = require("./persistent-storage");
 
 const JWT_SECRET = "teratrav_jwt_secret_2024_umrah_admin";
 
