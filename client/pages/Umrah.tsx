@@ -203,7 +203,7 @@ export default function Umrah() {
   const includedItems = [
     { icon: Shield, text: "رسوم التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
-    { icon: Hotel, text: "الإقامة الكاملة بفناد�� مكة والمدينة" },
+    { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
     { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "مزارات دينية" },
