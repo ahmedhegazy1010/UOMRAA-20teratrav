@@ -58,7 +58,7 @@ exports.handler = async (event, context) => {
         headers,
         body: JSON.stringify({
           success: true,
-          data: getAllPackages(),
+          data: storage.getPackages(),
           message: "تم جلب الباقات بنجاح",
         }),
       };
