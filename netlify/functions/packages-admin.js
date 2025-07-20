@@ -79,7 +79,7 @@ exports.handler = async (event, context) => {
         };
       }
 
-      const pkg = getPackageById(packageId);
+      const pkg = storage.getPackageById(packageId);
       if (!pkg) {
         return {
           statusCode: 404,
