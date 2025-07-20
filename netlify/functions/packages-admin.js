@@ -153,7 +153,7 @@ exports.handler = async (event, context) => {
         description: packageData.description || "",
       };
 
-      const newPackage = addPackage(packageToAdd);
+      const newPackage = storage.addPackage(packageToAdd);
 
       return {
         statusCode: 201,
