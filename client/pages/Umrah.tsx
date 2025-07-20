@@ -51,6 +51,101 @@ export default function Umrah() {
 
   // Fetch packages from API
   useEffect(() => {
+    // إعداد بيانات افتراضية في localStorage إذا لم تكن موجودة
+    const savedPackages = localStorage.getItem("teratrav_packages");
+    if (!savedPackages) {
+      const defaultPackages = [
+        {
+          id: 1,
+          name: "المولد النبوي (اغسطس)",
+          duration: "7 أيام / 6 ليالي",
+          mecca_stay: "4 ليالي - فندق هيلتون الحرم",
+          medina_stay: "2 ليالي - فندق دار الهجرة",
+          itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
+          price_double: 4500,
+          price_triple: 3800,
+          price_quad: 3200,
+          price_infant: 1500,
+          price_child: 2800,
+          status: "active",
+          popular: true,
+          description:
+            "باقة المولد النبوي الشريف تشمل زيارة الحرمين الشريفين مع إقامة فاخرة وخدمات متميزة",
+        },
+        {
+          id: 2,
+          name: "المولد النبوي (سبتمبر)",
+          duration: "10 أيام / 9 ليالي",
+          mecca_stay: "6 ليالي - فندق فيرمونت مكة",
+          medina_stay: "3 ��يالي - فندق المدينة موفنبيك",
+          itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
+          price_double: 6800,
+          price_triple: 5900,
+          price_quad: 5200,
+          price_infant: 2200,
+          price_child: 4100,
+          status: "active",
+          popular: true,
+          description:
+            "باقة شاملة للمولد النبوي مع إقامة ممتدة وبرنامج زيارات شامل",
+        },
+        {
+          id: 3,
+          name: "عشر ذي الحجة (ديسمبر)",
+          duration: "8 أيام / 7 ليالي",
+          mecca_stay: "5 ليالي - برج الساعة فيرمونت",
+          medina_stay: "2 ليالي - فندق الأنصار الذهبي",
+          itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
+          price_double: 5200,
+          price_triple: 4500,
+          price_quad: 3900,
+          price_infant: 1800,
+          price_child: 3400,
+          status: "active",
+          popular: false,
+          description:
+            "باقة العشر الأوائل من ذي الحجة مع إقامة قريبة من الحرم المكي",
+        },
+        {
+          id: 4,
+          name: "رجب المبارك (فبراير)",
+          duration: "5 أيام / 4 ليالي",
+          mecca_stay: "3 ليالي - فندق دار التوحيد",
+          medina_stay: "1 ليلة - فندق الطيبة سيتي",
+          itinerary: "الرياض - المدينة - مكة - جدة - الرياض",
+          price_double: 3200,
+          price_triple: 2800,
+          price_quad: 2400,
+          price_infant: 1200,
+          price_child: 2000,
+          status: "active",
+          popular: false,
+          description: "باقة قصيرة لشهر رجب المبارك مناسبة للرحلات السريعة",
+        },
+        {
+          id: 5,
+          name: "شعبان المبارك (مارس)",
+          duration: "6 أيام / 5 ليالي",
+          mecca_stay: "3 ليالي - فندق سويس أوتيل",
+          medina_stay: "2 ليالي - فندق شذا المدينة",
+          itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
+          price_double: 3800,
+          price_triple: 3300,
+          price_quad: 2900,
+          price_infant: 1400,
+          price_child: 2500,
+          status: "active",
+          popular: false,
+          description: "باقة شهر شعبان مع خدمات متميزة وإقامة مريحة",
+        },
+      ];
+      localStorage.setItem(
+        "teratrav_packages",
+        JSON.stringify(defaultPackages),
+      );
+      console.log("Set default packages in localStorage");
+    }
+
     fetchPackages();
 
     // Event listener for package updates from admin dashboard
@@ -263,7 +358,7 @@ export default function Umrah() {
     { icon: Shield, text: "رسوم التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
-    { icon: Users, text: "التنقلات الداخل��ة بأحدث الباصات" },
+    { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "مزارات دينية" },
     { icon: Gift, text: "هدايا وشنطة عمرة" },
@@ -652,7 +747,7 @@ export default function Umrah() {
                       <div className="flex items-start space-x-3 rtl:space-x-reverse">
                         <MapPin className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold text-white">خط ��لسير</p>
+                          <p className="font-semibold text-white">خط السير</p>
                           <p className="text-gray-300 text-sm">
                             {pkg.itinerary}
                           </p>
@@ -900,7 +995,7 @@ export default function Umrah() {
                       {contactLoading ? (
                         <div className="flex items-center justify-center">
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-2"></div>
-                          جاري الإ��سال...
+                          جاري الإرسال...
                         </div>
                       ) : (
                         <>
