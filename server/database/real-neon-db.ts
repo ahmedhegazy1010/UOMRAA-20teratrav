@@ -112,12 +112,15 @@ async function insertRealData() {
     // حذف المستخدمين القدامى وإعادة إنشائهم
     await sql`DELETE FROM users WHERE username IN ('teratrav_admin', 'ahmed_hegazy')`;
 
-    // إنشاء المستخدمين بكلمات مرور واضحة (غير مشفرة)
+    // إنشاء المستخدمين بكلمات مرور مشفرة
+    const adminHashedPassword = await bcrypt.hash("TeraTrav@2024#Admin", 10);
+    const ahmedHashedPassword = await bcrypt.hash("Ahmed@TeraTrav2024", 10);
+
     await sql`
       INSERT INTO users (username, password_hash, email, role)
       VALUES
-        ('teratrav_admin', 'TeraTrav@2024#Admin', 'admin@teratrav.sa', 'admin'),
-        ('ahmed_hegazy', 'Ahmed@TeraTrav2024', 'ahmed@teratrav.sa', 'admin')
+        ('teratrav_admin', ${adminHashedPassword}, 'admin@teratrav.sa', 'admin'),
+        ('ahmed_hegazy', ${ahmedHashedPassword}, 'ahmed@teratrav.sa', 'admin')
     `;
     console.log("✅ Users created with clear passwords:");
     console.log("✅ Admin: teratrav_admin / TeraTrav@2024#Admin");
@@ -136,7 +139,7 @@ async function insertRealData() {
           ('المولد النبوي (سبتمبر)', '10 أيام / 9 ليالي', '6 ليالي - فندق فيرمونت مكة', '3 ليالي - فندق المدينة موفنبيك', 'الرياض - جدة - مكة - المدينة - جدة - الرياض', 6800, 5900, 5200, 2200, 4100, 'active', true, 'باقة شاملة للمولد النبوي مع إقامة ممتدة وبرنامج زيارات شامل'),
           ('عشر ذي الحجة (ديسمبر)', '8 أيام / 7 ليالي', '5 ليالي - برج الساعة فيرمونت', '2 ليالي - فندق الأنصار الذهبي', 'الرياض - جدة - مكة - المدينة - جدة - الرياض', 5200, 4500, 3900, 1800, 3400, 'active', false, 'باقة العشر الأوائل من ذي الحجة مع إقامة قريبة من الحرم المكي'),
           ('رجب المبارك (فبراير)', '5 أيام / 4 ليالي', '3 ليالي - فندق دار التوحيد', '1 ليلة - فندق الطيبة سيتي', 'الرياض - المدينة - مكة - جدة - الرياض', 3200, 2800, 2400, 1200, 2000, 'active', false, 'باقة قصيرة لشهر رجب المبارك مناسبة للرحلات السريعة'),
-          ('شعبان المبارك (مارس)', '6 أيام / 5 ليالي', '3 ليالي - فندق سويس أوتيل', '2 ليالي - فندق شذا المدينة', 'الرياض - جدة - مكة - المدينة - جدة - الرياض', 3800, 3300, 2900, 1400, 2500, 'active', false, 'باقة شهر شعبان مع ��دمات متميزة وإقامة مريحة')
+          ('شعبان المبارك (مارس)', '6 أيام / 5 ليالي', '3 ليالي - فندق سويس أوتيل', '2 ليالي - فندق شذا المدينة', 'الرياض - جدة - مكة - المدينة - جدة - الرياض', 3800, 3300, 2900, 1400, 2500, 'active', false, 'باقة شهر شعبان مع ��دمات متميزة و��قامة مريحة')
       `;
       console.log("✅ Real Umrah packages created");
     }
