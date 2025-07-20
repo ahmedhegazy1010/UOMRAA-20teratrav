@@ -56,11 +56,49 @@ export default function Umrah() {
     // Event listener for package updates from admin dashboard
     const handlePackageUpdate = (event) => {
       console.log("Package update event received:", event.detail);
-      // Refresh packages immediately when admin makes changes
+
+      // تحديث فوري بناءً على نوع العملية
+      if (event.detail.action === "added" && event.detail.data) {
+        // إضافة الباقة الجديدة مباشرة
+        setPackages((prevPackages) => {
+          const newPackages = [...prevPackages, event.detail.data];
+          localStorage.setItem(
+            "teratrav_packages",
+            JSON.stringify(newPackages),
+          );
+          return newPackages;
+        });
+      } else if (event.detail.action === "updated" && event.detail.data) {
+        // تحديث الباقة الموجودة
+        setPackages((prevPackages) => {
+          const updatedPackages = prevPackages.map((pkg) =>
+            pkg.id === event.detail.data.id ? event.detail.data : pkg,
+          );
+          localStorage.setItem(
+            "teratrav_packages",
+            JSON.stringify(updatedPackages),
+          );
+          return updatedPackages;
+        });
+      } else if (event.detail.action === "deleted" && event.detail.packageId) {
+        // حذف الباقة
+        setPackages((prevPackages) => {
+          const filteredPackages = prevPackages.filter(
+            (pkg) => pkg.id !== event.detail.packageId,
+          );
+          localStorage.setItem(
+            "teratrav_packages",
+            JSON.stringify(filteredPackages),
+          );
+          return filteredPackages;
+        });
+      }
+
+      // أيضاً جلب البيانات من الخادم للتأكد
       setTimeout(() => {
-        console.log("Refreshing packages due to admin update...");
+        console.log("Refreshing packages from server...");
         fetchPackages();
-      }, 500); // Small delay to ensure database is updated
+      }, 500);
     };
 
     window.addEventListener("packagesUpdated", handlePackageUpdate);
@@ -225,7 +263,7 @@ export default function Umrah() {
     { icon: Shield, text: "رسوم التأشيرة" },
     { icon: Plane, text: "تذاكر الطيران" },
     { icon: Hotel, text: "الإقامة الكاملة بفنادق مكة والمدينة" },
-    { icon: Users, text: "التنقلات الداخلية بأحدث الباصات" },
+    { icon: Users, text: "التنقلات الداخل��ة بأحدث الباصات" },
     { icon: CheckCircle, text: "إشراف كامل من فريق تيراتراف" },
     { icon: MapPin, text: "مزارات دينية" },
     { icon: Gift, text: "هدايا وشنطة عمرة" },
@@ -614,7 +652,7 @@ export default function Umrah() {
                       <div className="flex items-start space-x-3 rtl:space-x-reverse">
                         <MapPin className="w-5 h-5 text-blue-600 mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold text-white">خط السير</p>
+                          <p className="font-semibold text-white">خط ��لسير</p>
                           <p className="text-gray-300 text-sm">
                             {pkg.itinerary}
                           </p>
@@ -862,7 +900,7 @@ export default function Umrah() {
                       {contactLoading ? (
                         <div className="flex items-center justify-center">
                           <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin ml-2"></div>
-                          جاري الإرسال...
+                          جاري الإ��سال...
                         </div>
                       ) : (
                         <>
