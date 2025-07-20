@@ -84,7 +84,7 @@ let packages = [
     medina_stay: "2 ليالي - فندق شذا المدينة",
     itinerary: "الرياض - جدة - مكة - المدينة - جدة - الرياض",
     price_double: 3800,
-    price_áfrica: 3300,
+    price_triple: 3300,
     price_quad: 2900,
     price_infant: 1400,
     price_child: 2500,
