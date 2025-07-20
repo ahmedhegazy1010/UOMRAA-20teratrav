@@ -398,10 +398,40 @@ export default function AdminDashboard() {
         resetPackageForm();
         loadDashboardData(); // Reload packages
 
+        // تحديث localStorage للمزامنة مع الصفحة الرئيسية
+        try {
+          const currentPackages = localStorage.getItem("teratrav_packages");
+          if (currentPackages) {
+            const parsedPackages = JSON.parse(currentPackages);
+            if (editingPackage) {
+              // تحديث الباقة الموجودة
+              const index = parsedPackages.findIndex(
+                (p) => p.id === data.data.id,
+              );
+              if (index !== -1) {
+                parsedPackages[index] = data.data;
+              }
+            } else {
+              // إضافة باقة جديدة
+              parsedPackages.push(data.data);
+            }
+            localStorage.setItem(
+              "teratrav_packages",
+              JSON.stringify(parsedPackages),
+            );
+            console.log("Updated localStorage with new package data");
+          }
+        } catch (error) {
+          console.error("Error updating localStorage:", error);
+        }
+
         // Trigger refresh for homepage (if open in another tab)
         window.dispatchEvent(
           new CustomEvent("packagesUpdated", {
-            detail: { action: editingPackage ? "updated" : "added" },
+            detail: {
+              action: editingPackage ? "updated" : "added",
+              data: data.data,
+            },
           }),
         );
       } else {
@@ -1423,7 +1453,7 @@ export default function AdminDashboard() {
                     className="bg-blue-600 hover:bg-blue-700 text-white h-12"
                     onClick={() => alert("جاري تحسين قاعدة البيانات...")}
                   >
-                    تحسين قاعدة البيانات
+                    تح��ين قاعدة البيانات
                   </Button>
                   <Button
                     className="bg-red-600 hover:bg-red-700 text-white h-12"
