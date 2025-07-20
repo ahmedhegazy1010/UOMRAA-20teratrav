@@ -121,12 +121,33 @@ export default function Umrah() {
       const data = await response.json();
       console.log("Packages API response:", data);
 
-      if (data.success && data.data) {
+      if (data.success && data.data && data.data.length > 0) {
         console.log("Setting packages from API:", data.data);
         setPackages(data.data);
+        // حفظ البيانات في localStorage كنسخة احتياطية
+        localStorage.setItem("teratrav_packages", JSON.stringify(data.data));
       } else {
-        console.log("API returned empty or failed - keeping empty packages");
-        setPackages([]);
+        console.log(
+          "API returned empty or failed - trying localStorage backup",
+        );
+        // محاولة تحميل البيانات من localStorage
+        const savedPackages = localStorage.getItem("teratrav_packages");
+        if (savedPackages) {
+          try {
+            const parsedPackages = JSON.parse(savedPackages);
+            console.log(
+              "Loaded packages from localStorage:",
+              parsedPackages.length,
+            );
+            setPackages(parsedPackages);
+          } catch (error) {
+            console.error("Error parsing saved packages:", error);
+            setPackages([]);
+          }
+        } else {
+          console.log("No backup data found - showing empty");
+          setPackages([]);
+        }
       }
     } catch (error) {
       console.error("Error fetching packages:", error);
