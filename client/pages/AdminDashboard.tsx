@@ -37,7 +37,7 @@ interface User {
 }
 
 export default function AdminDashboard() {
-  // تحديد ما إذا كنا ��ي بيئة النشر أو التطوير
+  // تحديد ما إذا كنا ��ي بيئة النش�� أو التطوير
   const isProduction = window.location.hostname.includes("netlify.app");
   const apiBaseUrl = isProduction ? "/.netlify/functions" : "/api";
 
@@ -289,7 +289,9 @@ export default function AdminDashboard() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("تم حذف الباقة بنجاح!");
+        alert(
+          "تم حذف الباقة بنجاح!\n\nملاحظة: قد تحتاج إلى إعادة تحميل الصفحة الرئيسية لرؤية التغييرات.",
+        );
         loadDashboardData(); // إعادة تحميل البيانات
 
         // Trigger refresh for homepage (if open in another tab)
@@ -905,7 +907,7 @@ export default function AdminDashboard() {
                             المولد النبوي (ديسمبر)
                           </option>
                           <option value="عمرة رجب">عمرة رجب</option>
-                          <option value="عمرة شعبان">عمرة شعبان</option>
+                          <option value="عمرة ش��بان">عمرة شعبان</option>
                           <option value="عمرة شعبان رمضان (2*1)">
                             عمرة شعبان رمضان (2*1)
                           </option>
