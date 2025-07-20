@@ -309,7 +309,7 @@ export default function AdminDashboard() {
 
   const handleSavePackage = async () => {
     if (!packageForm.name?.trim() || !packageForm.duration?.trim()) {
-      alert("يرجى اختيار اسم الب��قة وملء المدة");
+      alert("يرجى اختيار اسم الباقة وملء المدة");
       return;
     }
 
@@ -479,7 +479,7 @@ export default function AdminDashboard() {
               <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg shadow-red-500/30 animate-pulse bg-white/10 backdrop-blur-sm">
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e6933d312b74b23a89dafd2e32a307b%2Fd916b8a876584dc48a2246340e732356?format=webp&width=800"
-                  alt="تيرا��راف"
+                  alt="تيراتراف"
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -891,16 +891,16 @@ export default function AdminDashboard() {
                             المولد النبوي (اغسطس)
                           </option>
                           <option value="المولد النبوي (سبتمبر)">
-                            المولد الن��وي (سبتمبر)
+                            المولد النبوي (سبتمبر)
                           </option>
                           <option value="المولد النبوي (اكتوبر)">
                             المولد النبوي (اكتوبر)
                           </option>
-                          <option value="ال��ولد النبوي (نوفمبر)">
+                          <option value="المولد النبوي (نوفمبر)">
                             المولد النبوي (نوفمبر)
                           </option>
                           <option value="المولد النبوي (ديسمبر)">
-                            المولد النبوي (دي��مبر)
+                            المولد النبوي (ديسمبر)
                           </option>
                           <option value="عمرة رجب">عمرة رجب</option>
                           <option value="عمرة شعبان">عمرة شعبان</option>
@@ -1006,7 +1006,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
-                          سعر الغ��فة الثلاثية *
+                          سعر الغرفة الثلاثية *
                         </label>
                         <input
                           type="number"
@@ -1025,7 +1025,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
-                          سعر الغرفة ال��باعية *
+                          سعر الغرفة الرباعية *
                         </label>
                         <input
                           type="number"
@@ -1260,7 +1260,7 @@ export default function AdminDashboard() {
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <Settings className="w-5 h-5 ml-2 text-red-400" />
-                  إعداد��ت الشركة
+                  إعدادات الشركة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
                   معلومات الشركة الأساسية وبيانات الاتصال
@@ -1270,7 +1270,7 @@ export default function AdminDashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-300">
-                      ا��م الشركة
+                      م الشركة
                     </label>
                     <input
                       type="text"
@@ -1280,7 +1280,7 @@ export default function AdminDashboard() {
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-300">
-                      البر��د الإلكتروني
+                      البريد الإلكتروني
                     </label>
                     <input
                       type="email"
@@ -1338,7 +1338,7 @@ export default function AdminDashboard() {
                   إدارة المستخدمين
                 </CardTitle>
                 <CardDescription className="text-gray-300">
-                  إضافة وإدارة مستخدم�� لوحة التحكم
+                  إضافة وإدارة مستخدمين لوحة التحكم
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -1377,12 +1377,12 @@ export default function AdminDashboard() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <input
                       type="text"
-                      placeholder="اسم المس��خدم"
+                      placeholder="اسم المستخدم"
                       className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
                     />
                     <input
                       type="password"
-                      placeholder="كلمة ال��رور"
+                      placeholder="كلمة المرور"
                       className="w-full p-3 bg-gray-800/50 border border-gray-600 rounded-md text-white placeholder-gray-400"
                     />
                     <Button
@@ -1401,10 +1401,10 @@ export default function AdminDashboard() {
               <CardHeader>
                 <CardTitle className="text-white flex items-center">
                   <Settings className="w-5 h-5 ml-2 text-purple-400" />
-                  إعد��دات النظام العامة
+                  إعدادات النظام العامة
                 </CardTitle>
                 <CardDescription className="text-gray-300">
-                  إعداد��ت عام�� للموقع والنظام
+                  إعدادات عامه للموقع والنظام
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -1424,12 +1424,12 @@ export default function AdminDashboard() {
                   <Button
                     className="bg-red-600 hover:bg-red-700 text-white h-12"
                     onClick={() => {
-                      if (confirm("هل أن�� متأكد من مسح الملفات المؤقتة؟")) {
+                      if (confirm("هل أنت متأكد من مسح الملفات المؤقتة؟")) {
                         alert("تم مسح الملفات المؤقتة بنجاح!");
                       }
                     }}
                   >
-                    مسح الملفات ا��مؤقتة
+                    مسح الملفات المؤقتة
                   </Button>
                 </div>
               </CardContent>
@@ -1521,7 +1521,7 @@ export default function AdminDashboard() {
               </div>
               <div>
                 <p className="text-white font-medium">{user?.username}</p>
-                <p className="text-gray-400 text-xs">مدير ال��ظام</p>
+                <p className="text-gray-400 text-xs">مدير النظام</p>
               </div>
             </div>
           </div>
