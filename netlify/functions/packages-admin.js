@@ -195,7 +195,7 @@ exports.handler = async (event, context) => {
         };
       }
 
-      // تحديث البيانات مع التحقق من صحة البيانا��
+      // تحديث البيانات مع التحقق من صحة البيانات
       if (
         !updateData.name ||
         !updateData.duration ||
@@ -270,7 +270,7 @@ exports.handler = async (event, context) => {
         };
       }
 
-      const deletedPackage = deletePackage(packageId);
+      const deletedPackage = storage.deletePackage(packageId);
 
       if (!deletedPackage) {
         return {
