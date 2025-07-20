@@ -181,7 +181,7 @@ export default function Umrah() {
         setContactForm({ name: "", phone: "", email: "", message: "" });
 
         // Send to WhatsApp as well
-        const whatsappMessage = `استفسار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nا��إيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
+        const whatsappMessage = `استفسار جديد من الموقع:\n\nالاسم: ${contactForm.name}\nالهاتف: ${contactForm.phone}\nالإيميل: ${contactForm.email}\nالرسالة: ${contactForm.message}`;
         window.open(
           `https://wa.me/201201666688?text=${encodeURIComponent(whatsappMessage)}`,
           "_blank",
@@ -726,7 +726,7 @@ export default function Umrah() {
               تواصل معنا
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              فريقنا جاهز لمساع��تك في أي وقت
+              فريقنا جاهز لمساعدتك في أي وقت
             </p>
           </div>
 
@@ -898,7 +898,7 @@ export default function Umrah() {
                         onClick={() => openWhatsApp()}
                         className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full transform hover:scale-105 transition-all duration-300"
                       >
-                        تو��صل الآن
+                        تواصل الآن
                       </Button>
                     </div>
                   </div>
