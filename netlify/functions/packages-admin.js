@@ -19,8 +19,6 @@ function verifyToken(authHeader) {
 }
 
 exports.handler = async (event, context) => {
-  // تحميل البيانات من global في بداية كل طلب
-  loadFromGlobal();
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type, Authorization",
