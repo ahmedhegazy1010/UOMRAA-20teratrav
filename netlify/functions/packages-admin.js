@@ -195,7 +195,7 @@ exports.handler = async (event, context) => {
         };
       }
 
-      // تحديث البيانات مع التحقق من صحة البيانات
+      // تحديث البيانات مع التحقق من صحة البيانا��
       if (
         !updateData.name ||
         !updateData.duration ||
@@ -228,7 +228,7 @@ exports.handler = async (event, context) => {
         popular: updateData.popular || false,
       };
 
-      const updatedPackage = updatePackage(
+      const updatedPackage = storage.updatePackage(
         updatePackageId,
         updateDataFormatted,
       );
