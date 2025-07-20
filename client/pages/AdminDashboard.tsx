@@ -294,14 +294,32 @@ export default function AdminDashboard() {
         );
         loadDashboardData(); // إعادة تحميل البيانات
 
+        // تحديث localStorage لحذف الباقة
+        try {
+          const currentPackages = localStorage.getItem("teratrav_packages");
+          if (currentPackages) {
+            const parsedPackages = JSON.parse(currentPackages);
+            const filteredPackages = parsedPackages.filter(
+              (p) => p.id !== parseInt(packageId),
+            );
+            localStorage.setItem(
+              "teratrav_packages",
+              JSON.stringify(filteredPackages),
+            );
+            console.log("Removed package from localStorage");
+          }
+        } catch (error) {
+          console.error("Error updating localStorage:", error);
+        }
+
         // Trigger refresh for homepage (if open in another tab)
         window.dispatchEvent(
           new CustomEvent("packagesUpdated", {
-            detail: { action: "deleted" },
+            detail: { action: "deleted", packageId: parseInt(packageId) },
           }),
         );
       } else {
-        alert(`خطأ في حذف الباقة: ${data.message}`);
+        alert(`خطأ في حذف البا��ة: ${data.message}`);
       }
     } catch (error) {
       console.error("Error deleting package:", error);
@@ -970,7 +988,7 @@ export default function AdminDashboard() {
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-medium text-gray-300">
-                          الإقامة بمكة
+                          الإقامة بم��ة
                         </label>
                         <input
                           type="text"
