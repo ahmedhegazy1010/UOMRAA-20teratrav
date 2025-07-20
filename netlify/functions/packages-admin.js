@@ -18,72 +18,6 @@ function verifyToken(authHeader) {
   }
 }
 
-// دوال إدارة البيانات
-function getAllPackages() {
-  return packages;
-}
-
-function getActivePackages() {
-  return packages.filter((pkg) => pkg.status === "active");
-}
-
-function getPackageById(id) {
-  return packages.find((pkg) => pkg.id === parseInt(id));
-}
-
-function addPackage(newPackage) {
-  const newId = Math.max(...packages.map((p) => p.id), 0) + 1;
-  const packageWithId = {
-    ...newPackage,
-    id: newId,
-    created_at: new Date().toISOString().split("T")[0],
-    updated_at: new Date().toISOString().split("T")[0],
-  };
-  packages.push(packageWithId);
-
-  // حفظ البيانات في المتغير العام للمشاركة
-  saveToGlobal();
-  console.log("Package added successfully, total packages:", packages.length);
-
-  return packageWithId;
-}
-
-function updatePackage(id, updateData) {
-  const index = packages.findIndex((pkg) => pkg.id === parseInt(id));
-  if (index === -1) {
-    return null;
-  }
-
-  packages[index] = {
-    ...packages[index],
-    ...updateData,
-    id: parseInt(id),
-    updated_at: new Date().toISOString().split("T")[0],
-  };
-
-  // حفظ البيانات في المتغير العام للمشاركة
-  saveToGlobal();
-  console.log("Package updated successfully, total packages:", packages.length);
-
-  return packages[index];
-}
-
-function deletePackage(id) {
-  const index = packages.findIndex((pkg) => pkg.id === parseInt(id));
-  if (index === -1) {
-    return null;
-  }
-
-  const deletedPackage = packages[index];
-  packages.splice(index, 1);
-
-  // حفظ البيانات في المتغير العام للمشاركة
-  saveToGlobal();
-  console.log("Package deleted successfully, total packages:", packages.length);
-
-  return deletedPackage;
-}
-
 exports.handler = async (event, context) => {
   // تحميل البيانات من global في بداية كل طلب
   loadFromGlobal();
@@ -127,7 +61,7 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({
           success: true,
           data: getAllPackages(),
-          message: "تم جلب ال��اقات بنجاح",
+          message: "تم جلب الباقات بنجاح",
         }),
       };
     }
